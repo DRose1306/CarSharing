@@ -1,0 +1,9 @@
+spring:
+  main:
+    banner-mode: off
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/bankapp
+    hikari:
+      username: Urmat Bolotbek Uulu
+      password: 14131103Urmat
