@@ -40,9 +40,6 @@ public class User {
     @Column(name = "driver_license")
     private DriverLicense driverLicense;
 
-    //  private ZonedDateTime createAt;
-    //  private ZonedDateTime updateAt;
-
 
     @Override
     public boolean equals(Object o) {

@@ -25,8 +25,6 @@ public class Brand {
     @Column(name = "name")
     private String name;
 
-    //private ZonedDateTime createAt;
-    //private ZonedDateTime updateAt;
 
 
     @Override

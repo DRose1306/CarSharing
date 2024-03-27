@@ -35,11 +35,9 @@ public class UserInfo {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "user_role")
     private Set<Role> roles;
-
-    // private ZonedDateTime createAt;
-    // private ZonedDateTime updateAt;
 
 
     @Override

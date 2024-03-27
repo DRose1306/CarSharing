@@ -37,15 +37,14 @@ public class Car {
     private CarStatus status;
 
     @ManyToOne
-    @Column(name = "brand")
+    @JoinColumn(name = "brand")
     private Brand brand;
 
     @ManyToOne
-    @Column(name = "model")
+    @JoinColumn(name = "model")
     private Model model;
 
-   // private ZonedDateTime createAt;
-   // private ZonedDateTime updateAt;
+
 
 
     @Override

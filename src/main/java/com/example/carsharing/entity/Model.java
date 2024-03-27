@@ -24,9 +24,6 @@ public class Model {
     @Column(name = "name")
     private String name;
 
-    //private ZonedDateTime createAt;
-    //private ZonedDateTime updateAt;
-
 
     @Override
     public boolean equals(Object o) {

@@ -25,11 +25,8 @@ public class Authority {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "authorities")
     private Set<Role> roles;
-
-   // private ZonedDateTime createAt;
-   // private ZonedDateTime updateAt;
 
 
     @Override

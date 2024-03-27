@@ -26,10 +26,8 @@ public class Role {
     private String name;
 
     @ManyToMany
+    @JoinTable(name = "role_authority")
     private Set<Authority> authorities;
-
-    // private ZonedDateTime createAt;
-    // private ZonedDateTime updateAt;
 
 
     @Override
