@@ -22,8 +22,8 @@ public class Role {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "role")
+    private String role;
 
     @ManyToMany
     @JoinTable(name = "role_authority")
@@ -35,19 +35,19 @@ public class Role {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return Objects.equals(id, role.id) && Objects.equals(name, role.name);
+        return Objects.equals(id, role.id) && Objects.equals(role, role.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, role);
     }
 
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + role + '\'' +
                 '}';
     }
 }

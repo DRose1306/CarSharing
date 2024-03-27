@@ -22,8 +22,8 @@ public class Authority {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "authority")
+    private String authority;
 
     @ManyToMany(mappedBy = "authorities")
     private Set<Role> roles;
@@ -34,19 +34,19 @@ public class Authority {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Authority authority = (Authority) o;
-        return Objects.equals(id, authority.id) && Objects.equals(name, authority.name);
+        return Objects.equals(id, authority.id) && Objects.equals(authority, authority.authority);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, authority);
     }
 
     @Override
     public String toString() {
         return "Authority{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + authority + '\'' +
                 '}';
     }
 }
