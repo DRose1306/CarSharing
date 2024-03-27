@@ -43,9 +43,6 @@ public class Trip {
     @JoinColumn(name = "user_id")
     private User user;
 
-    //private ZonedDateTime createAt;
-    //private ZonedDateTime updateAt;
-
 
     @Override
     public boolean equals(Object o) {

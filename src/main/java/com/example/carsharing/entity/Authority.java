@@ -46,7 +46,8 @@ public class Authority {
     public String toString() {
         return "Authority{" +
                 "id=" + id +
-                ", name='" + authority + '\'' +
+                ", authority='" + authority + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }

@@ -40,10 +40,6 @@ public class Payment {
     private User user;
 
 
-   // private ZonedDateTime createAt;
-   // private ZonedDateTime updateAt;
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

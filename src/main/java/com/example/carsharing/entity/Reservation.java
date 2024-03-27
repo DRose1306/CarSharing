@@ -36,9 +36,6 @@ public class Reservation {
     @JoinColumn(name = "user_id")
     private User user;
 
-    //private ZonedDateTime createAt;
-    //private ZonedDateTime updateAt;
-
 
     @Override
     public boolean equals(Object o) {

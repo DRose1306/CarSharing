@@ -22,11 +22,9 @@ public class PaymentMethod {
     private UUID id;
 
     //следует ли сделать через инам как и RoleName??
-    @Column(name = "name")
-    private String name;
+    @Column(name = "payment_method")
+    private String paymentMethod;
 
-  //  private ZonedDateTime createAt;
-  //  private ZonedDateTime updateAt;
 
 
     @Override
@@ -34,19 +32,19 @@ public class PaymentMethod {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PaymentMethod that = (PaymentMethod) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        return Objects.equals(id, that.id) && Objects.equals(paymentMethod, that.paymentMethod);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, paymentMethod);
     }
 
     @Override
     public String toString() {
         return "PaymentMethod{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
                 '}';
     }
 }
