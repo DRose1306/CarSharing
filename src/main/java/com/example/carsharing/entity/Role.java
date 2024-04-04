@@ -26,7 +26,9 @@ public class Role {
     private String role;
 
     @ManyToMany
-    @JoinTable(name = "role_authority")
+    @JoinTable(name = "role_authority",
+    joinColumns = @JoinColumn(name = "role_id"),
+    inverseJoinColumns = @JoinColumn(name = "authority_id"))
     private Set<Authority> authorities;
 
 

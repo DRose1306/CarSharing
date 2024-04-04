@@ -7,3 +7,12 @@ spring:
     # hikari:
     #   username: Urmat Bolotbek Uulu
     #   password: **********
+
+
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: none
+
+    liquibase:
+      change-log: classpath:/db/changelog/changelog-master.xml

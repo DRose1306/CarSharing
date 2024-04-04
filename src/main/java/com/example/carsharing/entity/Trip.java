@@ -39,7 +39,7 @@ public class Trip {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @ManyToOne //TODO уточнить
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

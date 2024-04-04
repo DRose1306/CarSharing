@@ -1,20 +1,20 @@
-package com.example.carsharing.entity;
+package com.example.carsharing.deleteThis;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
+
 
 @Entity
 @Getter
 @Setter
-@Table(name = "models")
+@Table(name = "brands")
 @NoArgsConstructor
-public class Model {
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,12 +25,13 @@ public class Model {
     private String name;
 
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Model model = (Model) o;
-        return Objects.equals(id, model.id) && Objects.equals(name, model.name);
+        Brand brand = (Brand) o;
+        return Objects.equals(id, brand.id) && Objects.equals(name, brand.name);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class Model {
 
     @Override
     public String toString() {
-        return "Model{" +
+        return "CarBrand{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

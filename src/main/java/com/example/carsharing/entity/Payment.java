@@ -1,12 +1,12 @@
 package com.example.carsharing.entity;
 
+import com.example.carsharing.entity.enums.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,11 +31,11 @@ public class Payment {
     @Column(name = "status")
     private boolean status;
 
-    @ManyToOne //TODO уточнить
-    @JoinColumn(name = "payment_method_id")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_method") //TODO уточнить
     private PaymentMethod paymentMethod;
 
-    @OneToOne //TODO уточнить
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 

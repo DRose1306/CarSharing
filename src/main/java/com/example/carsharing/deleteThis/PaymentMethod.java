@@ -1,11 +1,10 @@
-package com.example.carsharing.entity;
+package com.example.carsharing.deleteThis;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
 

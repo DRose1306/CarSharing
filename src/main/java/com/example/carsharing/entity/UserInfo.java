@@ -35,7 +35,7 @@ public class UserInfo {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role")
     private Set<Role> roles;
 
