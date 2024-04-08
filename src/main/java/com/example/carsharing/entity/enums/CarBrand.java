@@ -2,8 +2,6 @@ package com.example.carsharing.entity.enums;
 
 public enum CarBrand {
     AUDI,
-    BMW,
-    CITROEN,
     FORD,
     HONDA,
     HYUNDAI,
@@ -11,14 +9,7 @@ public enum CarBrand {
     LEXUS,
     MAZDA,
     MERCEDES_BENZ,
-    MITSUBISHI,
-    NISSAN,
-    PEUGEOT,
-    RENAULT,
-    SEAT,
     SKODA,
-    SUBARU,
-    SUZUKI,
     TESLA,
     TOYOTA,
     VOLKSWAGEN,

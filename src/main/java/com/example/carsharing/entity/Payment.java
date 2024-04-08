@@ -1,10 +1,12 @@
 package com.example.carsharing.entity;
 
 import com.example.carsharing.entity.enums.PaymentMethod;
+import com.example.carsharing.generator.UuidTimeSequenceGenerator;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -18,9 +20,15 @@ import java.util.UUID;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id")
-    private UUID id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+            type = UuidTimeSequenceGenerator.class)
+    @Column(name = "payment_id")
+    private UUID paymentId;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "amount")
     private double amount;
@@ -28,16 +36,12 @@ public class Payment {
     @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 
-    @Column(name = "status")
-    private boolean status;
-
     @Enumerated(EnumType.STRING)
-    @Column(name = "payment_method") //TODO уточнить
+    @Column(name = "payment_method")
     private PaymentMethod paymentMethod;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "payment_status")
+    private boolean status;
 
 
     @Override
@@ -45,23 +49,23 @@ public class Payment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payment payment = (Payment) o;
-        return Double.compare(amount, payment.amount) == 0 && Objects.equals(id, payment.id) && Objects.equals(paymentDate, payment.paymentDate);
+        return Double.compare(amount, payment.amount) == 0 && Objects.equals(paymentId, payment.paymentId) && Objects.equals(user, payment.user) && Objects.equals(paymentDate, payment.paymentDate) && paymentMethod == payment.paymentMethod;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, paymentDate);
+        return Objects.hash(paymentId, user, amount, paymentDate, paymentMethod);
     }
 
     @Override
     public String toString() {
         return "Payment{" +
-                "id=" + id +
+                "paymentId=" + paymentId +
+                ", user=" + user +
                 ", amount=" + amount +
                 ", paymentDate=" + paymentDate +
-                ", status=" + status +
                 ", paymentMethod=" + paymentMethod +
-                ", user=" + user +
+                ", status=" + status +
                 '}';
     }
 }

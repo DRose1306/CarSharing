@@ -1,7 +1,7 @@
 package com.example.carsharing.entity.enums;
 
 public enum PaymentMethod {
-VISA,
+    VISA,
     MASTERCARD,
     AMERICAN_EXPRESS,
     SEPA_DIRECT_DEBIT,

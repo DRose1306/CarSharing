@@ -2,7 +2,11 @@ package com.example.carsharing.entity.enums;
 
 public enum CarStatus {
     AVAILABLE,
-    BUSY,
-    BOOKED,
-    REPAIR;
+    RESERVED,
+    IN_USE,
+    FAULTY,
+    UNDER_REPAIR,
+    RETURNED,
+    BLOCKED,
+    UNDER_MAINTENANCE;
 }

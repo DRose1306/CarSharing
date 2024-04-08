@@ -1,9 +1,11 @@
 package com.example.carsharing.entity;
 
+import com.example.carsharing.generator.UuidTimeSequenceGenerator;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,9 +21,19 @@ import java.util.UUID;
 public class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id")
-    private UUID id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+            type = UuidTimeSequenceGenerator.class)
+    @Column(name = "trip_id")
+    private UUID tripId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 
     @Column(name = "start_time")
     private LocalDateTime startTime;
@@ -35,38 +47,29 @@ public class Trip {
     @Column(name = "cost")
     private BigDecimal cost;
 
-    @OneToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trip trip = (Trip) o;
-        return Double.compare(distance, trip.distance) == 0 && Objects.equals(id, trip.id) && Objects.equals(startTime, trip.startTime) && Objects.equals(endTime, trip.endTime) && Objects.equals(cost, trip.cost);
+        return Double.compare(distance, trip.distance) == 0 && Objects.equals(tripId, trip.tripId) && Objects.equals(user, trip.user) && Objects.equals(car, trip.car) && Objects.equals(startTime, trip.startTime) && Objects.equals(endTime, trip.endTime) && Objects.equals(cost, trip.cost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, startTime, endTime, distance, cost);
+        return Objects.hash(tripId, user, car, startTime, endTime, distance, cost);
     }
 
     @Override
     public String toString() {
         return "Trip{" +
-                "id=" + id +
+                "tripId=" + tripId +
+                ", user=" + user +
+                ", car=" + car +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", distance=" + distance +
                 ", cost=" + cost +
-                ", car=" + car +
-                ", user=" + user +
                 '}';
     }
 }

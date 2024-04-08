@@ -3,11 +3,13 @@ package com.example.carsharing.entity;
 
 import com.example.carsharing.entity.enums.DriverLicense;
 
+import com.example.carsharing.generator.UuidTimeSequenceGenerator;
 import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -22,9 +24,15 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id")
-    private UUID id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+            type = UuidTimeSequenceGenerator.class)
+    @Column(name = "user_id")
+    private UUID userId;
+
+    @OneToOne(mappedBy = "user")
+    @JoinColumn(name = "user_info_id")
+    private UserInfo userInfo;
 
     @Column(name = "first_name")
     private String firstName;
@@ -32,34 +40,24 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(mappedBy = "user")
-    @JoinColumn(name = "user_info_id")
-    private UserInfo userInfo;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "driver_license")
-    private DriverLicense driverLicense;
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id)
-                && Objects.equals(firstName, user.firstName)
-                && Objects.equals(lastName, user.lastName);
+        return Objects.equals(userId, user.userId) && Objects.equals(userInfo, user.userInfo) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(userId, userInfo, firstName, lastName);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
+                ", userInfo=" + userInfo +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';

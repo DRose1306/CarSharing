@@ -1,13 +1,13 @@
 package com.example.carsharing.entity;
 
-import com.example.carsharing.deleteThis.Brand;
-import com.example.carsharing.deleteThis.Model;
 import com.example.carsharing.entity.enums.CarBrand;
 import com.example.carsharing.entity.enums.CarStatus;
+import com.example.carsharing.generator.UuidTimeSequenceGenerator;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.awt.*;
 import java.util.Objects;
@@ -21,7 +21,9 @@ import java.util.UUID;
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+            type = UuidTimeSequenceGenerator.class)
     @Column(name = "car_id")
     private UUID carId;
 
@@ -35,16 +37,12 @@ public class Car {
     private Point currentLocation;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "car_status")
     private CarStatus status;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "brand")
+    @Column(name = "car_brand")
     private CarBrand brand;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "model")
-    // private Model model; //TODO разобраться как
 
 
     @Override
@@ -52,24 +50,23 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(carId, car.carId) && Objects.equals(yearOfRelease, car.yearOfRelease) && Objects.equals(licensePlate, car.licensePlate);
+        return Objects.equals(carId, car.carId) && Objects.equals(yearOfRelease, car.yearOfRelease) && Objects.equals(licensePlate, car.licensePlate) && brand == car.brand;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carId, yearOfRelease, licensePlate);
+        return Objects.hash(carId, yearOfRelease, licensePlate, brand);
     }
 
     @Override
     public String toString() {
         return "Car{" +
-                "id=" + carId +
+                "carId=" + carId +
                 ", yearOfRelease='" + yearOfRelease + '\'' +
                 ", licensePlate='" + licensePlate + '\'' +
-                ", current_location=" + currentLocation +
+                ", currentLocation=" + currentLocation +
                 ", status=" + status +
                 ", brand=" + brand +
-                //        ", model=" + model +
                 '}';
     }
 }
