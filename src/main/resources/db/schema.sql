@@ -1,13 +1,14 @@
+DROP TABLE IF EXISTS user_info_role;
+DROP TABLE IF EXISTS role_authority;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS authorities;
-DROP TABLE IF EXISTS user_info;
-DROP TABLE IF EXISTS cars;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS trips;
 DROP TABLE IF EXISTS payments;
 DROP TABLE IF EXISTS reservations;
-DROP TABLE IF EXISTS user_info_role;
-DROP TABLE IF EXISTS role_authority;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS cars;
+
 
 
 
@@ -29,7 +30,7 @@ CREATE TABLE IF NOT EXISTS user_info (
     email VARCHAR(60) UNIQUE,
     user_password VARCHAR(128) NOT NULL,
     driver_license ENUM('A', 'B', 'C', 'D', 'E'),
-    user_id binary(16) NOT NULL
+    user_id binary(16)  UNIQUE
 );
 
 
