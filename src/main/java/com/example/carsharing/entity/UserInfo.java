@@ -44,7 +44,7 @@ public class UserInfo {
     @Column(name = "driver_license")
     private DriverLicense driverLicense;
 
-    @OneToOne(mappedBy = "userInfo")
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -60,12 +60,12 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && driverLicense == userInfo.driverLicense && Objects.equals(user, userInfo.user);
+        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && driverLicense == userInfo.driverLicense;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, driverLicense, user);
+        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, driverLicense);
     }
 
     @Override
@@ -76,7 +76,6 @@ public class UserInfo {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", driverLicense=" + driverLicense +
-                ", user=" + user +
                 '}';
     }
 }

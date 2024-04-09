@@ -1,8 +1,6 @@
 package com.example.carsharing.entity;
 
 
-import com.example.carsharing.entity.enums.DriverLicense;
-
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
 import jakarta.persistence.*;
 
@@ -10,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -45,7 +41,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(userInfo, user.userInfo) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+        return Objects.equals(userId, user.userId) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(userInfo, user.userInfo);
     }
 
     @Override
