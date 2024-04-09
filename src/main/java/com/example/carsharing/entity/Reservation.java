@@ -26,6 +26,12 @@ public class Reservation {
     @Column(name = "reservation_id")
     private UUID reservationId;
 
+    @Column(name = "start_time")
+    private LocalDateTime startTime;
+
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
+
     @OneToOne
     @JoinColumn(name = "car_id")
     private Car car;
@@ -34,34 +40,28 @@ public class Reservation {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "start_time")
-    private LocalDateTime startTime;
-
-    @Column(name = "end_time")
-    private LocalDateTime endTime;
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return Objects.equals(reservationId, that.reservationId) && Objects.equals(car, that.car) && Objects.equals(user, that.user) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime);
+        return Objects.equals(reservationId, that.reservationId) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime) && Objects.equals(car, that.car) && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reservationId, car, user, startTime, endTime);
+        return Objects.hash(reservationId, startTime, endTime, car, user);
     }
 
     @Override
     public String toString() {
         return "Reservation{" +
                 "reservationId=" + reservationId +
-                ", car=" + car +
-                ", user=" + user +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
+                ", car=" + car +
+                ", user=" + user +
                 '}';
     }
 }

@@ -30,15 +30,15 @@ public class User {
     @Column(name = "user_id")
     private UUID userId;
 
-    @OneToOne(mappedBy = "user")
-    @JoinColumn(name = "user_info_id")
-    private UserInfo userInfo;
-
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
+
+    @OneToOne(mappedBy = "user")
+    @JoinColumn(name = "user_info_id")
+    private UserInfo userInfo;
 
     @Override
     public boolean equals(Object o) {
@@ -50,16 +50,16 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userInfo, firstName, lastName);
+        return Objects.hash(userId, firstName, lastName, userInfo);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", userInfo=" + userInfo +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", userInfo=" + userInfo +
                 '}';
     }
 }

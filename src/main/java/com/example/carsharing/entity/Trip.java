@@ -27,14 +27,6 @@ public class Trip {
     @Column(name = "trip_id")
     private UUID tripId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
-
     @Column(name = "start_time")
     private LocalDateTime startTime;
 
@@ -47,29 +39,37 @@ public class Trip {
     @Column(name = "cost")
     private BigDecimal cost;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trip trip = (Trip) o;
-        return Double.compare(distance, trip.distance) == 0 && Objects.equals(tripId, trip.tripId) && Objects.equals(user, trip.user) && Objects.equals(car, trip.car) && Objects.equals(startTime, trip.startTime) && Objects.equals(endTime, trip.endTime) && Objects.equals(cost, trip.cost);
+        return Double.compare(distance, trip.distance) == 0 && Objects.equals(tripId, trip.tripId) && Objects.equals(startTime, trip.startTime) && Objects.equals(endTime, trip.endTime) && Objects.equals(cost, trip.cost) && Objects.equals(user, trip.user) && Objects.equals(car, trip.car);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tripId, user, car, startTime, endTime, distance, cost);
+        return Objects.hash(tripId, startTime, endTime, distance, cost, user, car);
     }
 
     @Override
     public String toString() {
         return "Trip{" +
                 "tripId=" + tripId +
-                ", user=" + user +
-                ", car=" + car +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", distance=" + distance +
                 ", cost=" + cost +
+                ", user=" + user +
+                ", car=" + car +
                 '}';
     }
 }

@@ -26,10 +26,6 @@ public class Payment {
     @Column(name = "payment_id")
     private UUID paymentId;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @Column(name = "amount")
     private double amount;
 
@@ -43,29 +39,33 @@ public class Payment {
     @Column(name = "payment_status")
     private boolean status;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payment payment = (Payment) o;
-        return Double.compare(amount, payment.amount) == 0 && Objects.equals(paymentId, payment.paymentId) && Objects.equals(user, payment.user) && Objects.equals(paymentDate, payment.paymentDate) && paymentMethod == payment.paymentMethod;
+        return Double.compare(amount, payment.amount) == 0 && status == payment.status && Objects.equals(paymentId, payment.paymentId) && Objects.equals(paymentDate, payment.paymentDate) && paymentMethod == payment.paymentMethod && Objects.equals(user, payment.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paymentId, user, amount, paymentDate, paymentMethod);
+        return Objects.hash(paymentId, amount, paymentDate, paymentMethod, status, user);
     }
 
     @Override
     public String toString() {
         return "Payment{" +
                 "paymentId=" + paymentId +
-                ", user=" + user +
                 ", amount=" + amount +
                 ", paymentDate=" + paymentDate +
                 ", paymentMethod=" + paymentMethod +
                 ", status=" + status +
+                ", user=" + user +
                 '}';
     }
 }

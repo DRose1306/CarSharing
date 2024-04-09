@@ -28,10 +28,6 @@ public class UserInfo {
     @Column(name = "user_info_id")
     private UUID userInfoId;
 
-    @OneToOne(mappedBy = "userInfo")
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
@@ -48,6 +44,10 @@ public class UserInfo {
     @Column(name = "driver_license")
     private DriverLicense driverLicense;
 
+    @OneToOne(mappedBy = "userInfo")
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @ManyToMany
     @JoinTable(name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
@@ -60,25 +60,23 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(user, userInfo.user) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && Objects.equals(password, userInfo.password) && driverLicense == userInfo.driverLicense && Objects.equals(roles, userInfo.roles);
+        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && driverLicense == userInfo.driverLicense && Objects.equals(user, userInfo.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userInfoId, user, dateOfBirth, phoneNumber, email, password, driverLicense, roles);
+        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, driverLicense, user);
     }
 
     @Override
     public String toString() {
         return "UserInfo{" +
                 "userInfoId=" + userInfoId +
-                ", user=" + user +
                 ", dateOfBirth=" + dateOfBirth +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", driverLicense=" + driverLicense +
-                ", roles=" + roles +
+                ", user=" + user +
                 '}';
     }
 }

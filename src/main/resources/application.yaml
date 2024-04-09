@@ -12,8 +12,8 @@ spring:
     init:
       schema-locations:
         classpath:db/schema.sql
-      # data-locations:
-      #  classpath:db/data.sql
+      data-locations:
+        classpath:db/data.sql
       mode: always
 
   logging:
@@ -25,5 +25,5 @@ spring:
     hibernate:
       ddl-auto: none
 
-  #liquibase:
+    #liquibase:
     #change-log: classpath:/db/changelog/changelog-master.xml
