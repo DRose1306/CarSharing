@@ -37,6 +37,9 @@ public class UserInfo {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "user_login")
+    private String login;
+
     @Column(name = "user_password")
     private String password;
 
@@ -44,9 +47,16 @@ public class UserInfo {
     @Column(name = "driver_license")
     private DriverLicense driverLicense;
 
+    @Column(name = "driver_licence_id")
+    private String DriverLicenseIdentifier;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     @ManyToMany
     @JoinTable(name = "user_info_role",
@@ -60,12 +70,12 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && driverLicense == userInfo.driverLicense;
+        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && Objects.equals(login, userInfo.login) && Objects.equals(password, userInfo.password) && driverLicense == userInfo.driverLicense && Objects.equals(DriverLicenseIdentifier, userInfo.DriverLicenseIdentifier) && Objects.equals(user, userInfo.user) && Objects.equals(address, userInfo.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, driverLicense);
+        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, login, password, driverLicense, DriverLicenseIdentifier, user, address);
     }
 
     @Override
@@ -75,7 +85,12 @@ public class UserInfo {
                 ", dateOfBirth=" + dateOfBirth +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 ", driverLicense=" + driverLicense +
+                ", DriverLicenseIdentifier='" + DriverLicenseIdentifier + '\'' +
+                ", user=" + user +
+                ", address=" + address +
                 '}';
     }
 }
