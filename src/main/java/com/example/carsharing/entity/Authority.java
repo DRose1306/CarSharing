@@ -30,7 +30,8 @@ public class Authority {
     @Column(name = "authority")
     private AuthorityName authority;
 
-    @ManyToMany(mappedBy = "authorities")
+    @ManyToMany(mappedBy = "authorities",
+            fetch = FetchType.LAZY)
     private Set<Role> roles;
 
 
