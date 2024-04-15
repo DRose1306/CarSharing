@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/сar")
 public class CarController {
     private final CarService carService;
 

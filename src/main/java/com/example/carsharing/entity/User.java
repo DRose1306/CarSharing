@@ -32,7 +32,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 

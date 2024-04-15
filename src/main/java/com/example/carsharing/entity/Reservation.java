@@ -32,11 +32,11 @@ public class Reservation {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 

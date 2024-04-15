@@ -2,6 +2,7 @@ package com.example.carsharing.entity;
 
 import com.example.carsharing.entity.enums.AuthorityName;
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Authority {
     @Column(name = "authority")
     private AuthorityName authority;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "authorities",
             fetch = FetchType.LAZY)
     private Set<Role> roles;

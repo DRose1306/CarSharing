@@ -1,6 +1,7 @@
 package com.example.carsharing.entity;
 
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,7 +42,8 @@ public class Address {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
     private Set<UserInfo> userInfos;
 
     @Override

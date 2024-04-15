@@ -2,6 +2,7 @@ package com.example.carsharing.entity;
 
 import com.example.carsharing.entity.enums.DriverLicense;
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,11 +51,12 @@ public class UserInfo {
     @Column(name = "driver_licence_id")
     private String DriverLicenseIdentifier;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
 

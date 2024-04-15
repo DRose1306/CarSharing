@@ -39,11 +39,11 @@ public class Trip {
     @Column(name = "cost")
     private BigDecimal cost;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private Car car;
 

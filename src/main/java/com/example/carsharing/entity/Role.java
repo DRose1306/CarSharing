@@ -30,7 +30,7 @@ public class Role {
     @Column(name = "role_name")
     private RoleName roleName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role_authority",
     joinColumns = @JoinColumn(name = "role_id"),
     inverseJoinColumns = @JoinColumn(name = "authority_id"))
