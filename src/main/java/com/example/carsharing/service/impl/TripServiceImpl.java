@@ -1,6 +1,8 @@
 package com.example.carsharing.service.impl;
 
 import com.example.carsharing.entity.Trip;
+import com.example.carsharing.exception.TripNotExistException;
+import com.example.carsharing.exception.message.ErrorMessage;
 import com.example.carsharing.repository.TripRepository;
 import com.example.carsharing.service.TripService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,10 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public Trip getTripById(UUID id) {
-        return tripRepository.getTripByTripId(id);
+        Trip trip = tripRepository.getTripByTripId(id);
+        if (trip == null) {
+            throw new TripNotExistException(ErrorMessage.TRIP_NOT_EXIST);
+        }
+        return trip;
     }
 }

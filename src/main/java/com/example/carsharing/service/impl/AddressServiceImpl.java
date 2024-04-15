@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
-import java.util.logging.ErrorManager;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +18,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public Address getAddressById(UUID id) {
         Address address = addressRepository.getAddressByAddressId(id);
-        if (address == null){
+        if (address == null) {
             throw new AddressNotExistException(ErrorMessage.ADDRESS_NOT_EXIST);
         }
         return address;
