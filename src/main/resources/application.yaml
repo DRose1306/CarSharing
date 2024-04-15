@@ -16,7 +16,7 @@ spring:
         classpath:db/data.sql
       mode: always
 
-  logging:
+  #logging:
   #    level:
   #      root: DEBUG
 

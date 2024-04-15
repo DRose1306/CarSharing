@@ -3,6 +3,7 @@ package com.example.carsharing.entity;
 import com.example.carsharing.entity.enums.CarBrand;
 import com.example.carsharing.entity.enums.CarStatus;
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Car {
     @Column(name = "license_plate")
     private String licensePlate;
 
+    @JsonIgnore
     @Column(name = "current_location")
     private Point currentLocation;
 
