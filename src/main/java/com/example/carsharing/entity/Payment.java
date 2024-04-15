@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -49,12 +48,12 @@ public class Payment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payment payment = (Payment) o;
-        return Double.compare(amount, payment.amount) == 0 && status == payment.status && Objects.equals(paymentId, payment.paymentId) && Objects.equals(paymentDate, payment.paymentDate) && paymentMethod == payment.paymentMethod && Objects.equals(user, payment.user);
+        return Double.compare(amount, payment.amount) == 0 && status == payment.status && Objects.equals(paymentId, payment.paymentId) && Objects.equals(paymentDate, payment.paymentDate) && paymentMethod == payment.paymentMethod;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paymentId, amount, paymentDate, paymentMethod, status, user);
+        return Objects.hash(paymentId, amount, paymentDate, paymentMethod, status);
     }
 
     @Override
@@ -65,7 +64,6 @@ public class Payment {
                 ", paymentDate=" + paymentDate +
                 ", paymentMethod=" + paymentMethod +
                 ", status=" + status +
-                ", user=" + user +
                 '}';
     }
 }

@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -46,12 +44,12 @@ public class Reservation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return Objects.equals(reservationId, that.reservationId) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime) && Objects.equals(car, that.car) && Objects.equals(user, that.user);
+        return Objects.equals(reservationId, that.reservationId) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reservationId, startTime, endTime, car, user);
+        return Objects.hash(reservationId, startTime, endTime);
     }
 
     @Override
@@ -60,8 +58,6 @@ public class Reservation {
                 "reservationId=" + reservationId +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", car=" + car +
-                ", user=" + user +
                 '}';
     }
 }

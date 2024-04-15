@@ -51,12 +51,12 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(addressId, address.addressId) && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber) && Objects.equals(city, address.city) && Objects.equals(zipCode, address.zipCode) && Objects.equals(country, address.country) && Objects.equals(userInfos, address.userInfos);
+        return Objects.equals(addressId, address.addressId) && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber) && Objects.equals(city, address.city) && Objects.equals(zipCode, address.zipCode) && Objects.equals(country, address.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(addressId, street, houseNumber, city, zipCode, country, userInfos);
+        return Objects.hash(addressId, street, houseNumber, city, zipCode, country);
     }
 
     @Override
@@ -68,7 +68,6 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", country='" + country + '\'' +
-                ", userInfos=" + userInfos +
                 '}';
     }
 }

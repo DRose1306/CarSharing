@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -55,7 +53,6 @@ public class Authority {
         return "Authority{" +
                 "authorityId=" + authorityId +
                 ", authority=" + authority +
-                ", roles=" + roles +
                 '}';
     }
 }

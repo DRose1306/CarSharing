@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.awt.*;
 import java.util.Objects;
 import java.util.UUID;
@@ -30,7 +29,7 @@ public class Car {
     @Column(name = "year_of_release")
     private String yearOfRelease;
 
-    @Column(name = "licence_plate")
+    @Column(name = "license_plate")
     private String licensePlate;
 
     @Column(name = "current_location")

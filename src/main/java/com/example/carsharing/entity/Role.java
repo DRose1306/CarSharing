@@ -2,13 +2,13 @@ package com.example.carsharing.entity;
 
 import com.example.carsharing.entity.enums.RoleName;
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -30,10 +30,11 @@ public class Role {
     @Column(name = "role_name")
     private RoleName roleName;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role_authority",
     joinColumns = @JoinColumn(name = "role_id"),
-    inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    inverseJoinColumns = @JoinColumn(name = "auth_id"))
     private Set<Authority> authorities;
 
 
@@ -42,12 +43,12 @@ public class Role {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return Objects.equals(roleId, role.roleId) && roleName == role.roleName && Objects.equals(authorities, role.authorities);
+        return Objects.equals(roleId, role.roleId) && roleName == role.roleName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roleId, roleName, authorities);
+        return Objects.hash(roleId, roleName);
     }
 
     @Override
@@ -55,7 +56,6 @@ public class Role {
         return "Role{" +
                 "roleId=" + roleId +
                 ", roleName=" + roleName +
-                ", authorities=" + authorities +
                 '}';
     }
 }

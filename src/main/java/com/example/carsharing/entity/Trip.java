@@ -6,10 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -52,12 +50,12 @@ public class Trip {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trip trip = (Trip) o;
-        return Double.compare(distance, trip.distance) == 0 && Objects.equals(tripId, trip.tripId) && Objects.equals(startTime, trip.startTime) && Objects.equals(endTime, trip.endTime) && Objects.equals(cost, trip.cost) && Objects.equals(user, trip.user) && Objects.equals(car, trip.car);
+        return Double.compare(distance, trip.distance) == 0 && Objects.equals(tripId, trip.tripId) && Objects.equals(startTime, trip.startTime) && Objects.equals(endTime, trip.endTime) && Objects.equals(cost, trip.cost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tripId, startTime, endTime, distance, cost, user, car);
+        return Objects.hash(tripId, startTime, endTime, distance, cost);
     }
 
     @Override
@@ -68,8 +66,6 @@ public class Trip {
                 ", endTime=" + endTime +
                 ", distance=" + distance +
                 ", cost=" + cost +
-                ", user=" + user +
-                ", car=" + car +
                 '}';
     }
 }

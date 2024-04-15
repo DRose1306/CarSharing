@@ -8,9 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -56,10 +54,12 @@ public class UserInfo {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
@@ -72,12 +72,12 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && Objects.equals(login, userInfo.login) && Objects.equals(password, userInfo.password) && driverLicense == userInfo.driverLicense && Objects.equals(DriverLicenseIdentifier, userInfo.DriverLicenseIdentifier) && Objects.equals(user, userInfo.user) && Objects.equals(address, userInfo.address);
+        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && Objects.equals(login, userInfo.login) && Objects.equals(password, userInfo.password) && driverLicense == userInfo.driverLicense && Objects.equals(DriverLicenseIdentifier, userInfo.DriverLicenseIdentifier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, login, password, driverLicense, DriverLicenseIdentifier, user, address);
+        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, login, password, driverLicense, DriverLicenseIdentifier);
     }
 
     @Override
@@ -91,8 +91,6 @@ public class UserInfo {
                 ", password='" + password + '\'' +
                 ", driverLicense=" + driverLicense +
                 ", DriverLicenseIdentifier='" + DriverLicenseIdentifier + '\'' +
-                ", user=" + user +
-                ", address=" + address +
                 '}';
     }
 }
