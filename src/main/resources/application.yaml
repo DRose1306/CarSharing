@@ -3,10 +3,10 @@ spring:
     banner-mode: off
 
   datasource:
-    url: jdbc:mysql://localhost:3306/carsharing
+    url: ${DATASOURCE_URL}
     hikari:
-      username: root
-      password: 14131103
+      username: ${DATASOURCE_USERNAME}
+      password: ${DATASOURCE_PASSWORD}
 
   sql:
     init:
