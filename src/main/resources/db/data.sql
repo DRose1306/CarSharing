@@ -38,13 +38,13 @@ VALUES
 
 
 -- Вставка данных в таблицу "cars"
-INSERT INTO cars (car_id, year_of_release, license_plate, current_location, car_status, car_brand)
+INSERT INTO cars (car_id, year_of_release, license_plate, car_status, car_brand)
 VALUES
-    (UUID_TO_BIN('ef6869b7-2402-48c7-bff4-141563be2d8c'), '2020', 'B-B1', POINT(52.5200, 13.4050), 'IN_USE', 'AUDI'),
-    (UUID_TO_BIN('3c004a2b-3ff3-4413-8ce3-e72ec557b6fc'), '2023', 'HB-HB2', POINT(53.5511, 9.9937), 'RESERVED', 'FORD'),
-    (UUID_TO_BIN('f80a04a4-8015-41b7-8458-8ca40416b4a3'), '2018', 'K-K3', POINT(50.9375, 6.9603), 'IN_USE', 'KIA'),
-    (UUID_TO_BIN('88a71c7e-d011-40e3-b9b5-78315c983b21'), '2022', 'S-S4', POINT(48.7758, 9.1829), 'IN_USE', 'SKODA'),
-    (UUID_TO_BIN('2e88a78d-b4a7-4a00-b590-4d0f7abe6c04'), '2019', 'OS-OS5', POINT(52.2762, 7.7150), 'IN_USE', 'HONDA');
+    (UUID_TO_BIN('ef6869b7-2402-48c7-bff4-141563be2d8c'), '2020', 'B-B1', 'IN_USE', 'AUDI'),
+    (UUID_TO_BIN('3c004a2b-3ff3-4413-8ce3-e72ec557b6fc'), '2023', 'HB-HB2', 'RESERVED', 'FORD'),
+    (UUID_TO_BIN('f80a04a4-8015-41b7-8458-8ca40416b4a3'), '2018', 'K-K3', 'IN_USE', 'KIA'),
+    (UUID_TO_BIN('88a71c7e-d011-40e3-b9b5-78315c983b21'), '2022', 'S-S4', 'IN_USE', 'SKODA'),
+    (UUID_TO_BIN('2e88a78d-b4a7-4a00-b590-4d0f7abe6c04'), '2019', 'OS-OS5', 'IN_USE', 'HONDA');
 
 -- Вставка в таблицу "users"
 INSERT INTO users (user_id, first_name, last_name, user_info_id)
