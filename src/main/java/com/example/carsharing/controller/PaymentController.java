@@ -2,24 +2,34 @@ package com.example.carsharing.controller;
 
 import com.example.carsharing.entity.Payment;
 import com.example.carsharing.service.PaymentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/payment")
+@RequiredArgsConstructor
 public class PaymentController {
     private final PaymentService paymentService;
 
-    public PaymentController(PaymentService paymentService) {
-        this.paymentService = paymentService;
-    }
-
-    @GetMapping("/get/{id}")
+    @GetMapping("/get_payment/{id}")
     public Payment getPaymentById(@PathVariable("id") UUID id) {
         return paymentService.getPaymentById(id);
+    }
+
+    @DeleteMapping("/delete_payment/{id}")
+    public void deletePaymentById(@PathVariable("id") UUID id) {
+        paymentService.deletePaymentById(id);
+    }
+
+    @PostMapping("/create_payment")
+    public Payment createPayment(@RequestBody Payment payment){
+        return paymentService.createPayment(payment);
+    }
+
+    @PutMapping("/update_payment/{id}")
+    public Payment updatePayment(@PathVariable("id") UUID id, @RequestBody Payment payment){
+        return paymentService.updatePaymentById(id, payment);
     }
 }

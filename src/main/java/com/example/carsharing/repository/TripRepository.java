@@ -7,4 +7,5 @@ import java.util.UUID;
 
 public interface TripRepository extends JpaRepository<Trip, UUID> {
     Trip getTripByTripId(UUID id);
+    void deleteTripByTripId(UUID id);
 }

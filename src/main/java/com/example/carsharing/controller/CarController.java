@@ -2,24 +2,34 @@ package com.example.carsharing.controller;
 
 import com.example.carsharing.entity.Car;
 import com.example.carsharing.service.CarService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/сar")
+@RequiredArgsConstructor
 public class CarController {
     private final CarService carService;
 
-    public CarController(CarService carService) {
-        this.carService = carService;
-    }
-
-    @GetMapping("/get/{id}")
+    @GetMapping("/get_car/{id}")
     public Car getCarById(@PathVariable("id") UUID id) {
         return carService.getCarById(id);
+    }
+
+    @DeleteMapping("/delete_car/{id}")
+    public void deleteCarById(@PathVariable UUID id) {
+        carService.deleteCarById(id);
+    }
+
+    @PostMapping("/create_car")
+    public Car createCar(@RequestBody Car car){
+        return carService.createCar(car);
+    }
+
+    @PutMapping("/update_car/{id}")
+    public Car updateCar(@PathVariable UUID id, @RequestBody Car car){
+        return carService.updateCarById(id, car);
     }
 }

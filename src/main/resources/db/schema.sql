@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS user_info (
     user_login VARCHAR(60) NOT NULL,
     user_password VARCHAR(128) NOT NULL,
     driver_license ENUM('A', 'B', 'C', 'D', 'E'),
-    driver_licence_id VARCHAR(30),
+    driver_licence_id VARCHAR(30) unique,
     user_id binary(16)  UNIQUE,
     address_id binary(16) NOT NULL,
     FOREIGN KEY (address_id)
@@ -125,9 +125,3 @@ CREATE TABLE IF NOT EXISTS role_authority (
     FOREIGN KEY (auth_id)
         REFERENCES authorities (auth_id)
 );
-
-
-
-
-
-

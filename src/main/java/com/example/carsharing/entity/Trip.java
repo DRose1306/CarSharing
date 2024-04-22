@@ -1,7 +1,6 @@
 package com.example.carsharing.entity;
 
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,11 +37,11 @@ public class Trip {
     @Column(name = "cost")
     private BigDecimal cost;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "car_id")
     private Car car;
 
