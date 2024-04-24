@@ -1,5 +1,7 @@
 package com.example.carsharing.controller;
 
+import com.example.carsharing.dto.UserAfterCreationDto;
+import com.example.carsharing.dto.UserCreateDto;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +26,8 @@ public class UserController {
     }
 
     @PostMapping("/create_user")
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
+    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto){
+        return userService.createUser(userCreateDto);
     }
 
     @PutMapping("/update_user/{id}")

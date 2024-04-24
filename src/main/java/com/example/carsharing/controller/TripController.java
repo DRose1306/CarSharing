@@ -1,5 +1,7 @@
 package com.example.carsharing.controller;
 
+import com.example.carsharing.dto.TripAfterCreationDto;
+import com.example.carsharing.dto.TripCreateDto;
 import com.example.carsharing.entity.Trip;
 import com.example.carsharing.service.TripService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +26,8 @@ public class TripController {
     }
 
     @PostMapping("/create_trip")
-    public Trip createTrip(@RequestBody Trip trip){
-        return tripService.createTrip(trip);
+    public TripAfterCreationDto createTrip(@RequestBody TripCreateDto tripCreateDto){
+        return tripService.createTrip(tripCreateDto);
     }
 
     @PutMapping("/update_trip/{id}")

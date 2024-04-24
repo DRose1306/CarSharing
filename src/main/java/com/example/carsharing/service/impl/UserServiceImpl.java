@@ -1,8 +1,12 @@
 package com.example.carsharing.service.impl;
 
+import com.example.carsharing.dto.UserAfterCreationDto;
+import com.example.carsharing.dto.UserCreateDto;
 import com.example.carsharing.entity.User;
+import com.example.carsharing.exception.UserAlreadyExistException;
 import com.example.carsharing.exception.UserNotExistException;
 import com.example.carsharing.exception.message.ErrorMessage;
+import com.example.carsharing.mapper.UserMapper;
 import com.example.carsharing.repository.UserRepository;
 import com.example.carsharing.service.UserService;
 import jakarta.transaction.Transactional;
@@ -15,6 +19,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
     public User getUserById(UUID id) {
@@ -36,8 +41,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.saveAndFlush(user);
+    public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
+        User user = userRepository.findUserByFirstNameAndLastName(userCreateDto.getFirstName(), userCreateDto.getLastName());
+        if (user != null){
+            throw new UserAlreadyExistException(ErrorMessage.USER_ALREADY_EXIST);
+        }
+        User entity = userMapper.toEntity(userCreateDto);
+        User userAfterCreation = userRepository.save(entity);
+        return userMapper.toDto(userAfterCreation);
     }
 
     @Override

@@ -1,8 +1,13 @@
 package com.example.carsharing.service.impl;
 
+import com.example.carsharing.dto.PaymentAfterCreationDto;
+import com.example.carsharing.dto.PaymentCreateDto;
 import com.example.carsharing.entity.Payment;
+import com.example.carsharing.exception.PaymentAlreadyExistsException;
 import com.example.carsharing.exception.PaymentNotExistException;
 import com.example.carsharing.exception.message.ErrorMessage;
+import com.example.carsharing.mapper.PaymentMapper;
+import com.example.carsharing.mapper.UserMapper;
 import com.example.carsharing.repository.PaymentRepository;
 import com.example.carsharing.service.PaymentService;
 import jakarta.transaction.Transactional;
@@ -15,6 +20,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
     private final PaymentRepository paymentRepository;
+    private final PaymentMapper paymentMapper;
+    private final UserMapper userMapper;
 
     @Override
     public Payment getPaymentById(UUID id) {
@@ -35,10 +42,17 @@ public class PaymentServiceImpl implements PaymentService {
         paymentRepository.deletePaymentByPaymentId(id);
     }
 
+    //TODO проверить правильность работы
     @Override
     @Transactional
-    public Payment createPayment(Payment payment) {
-        return paymentRepository.saveAndFlush(payment);
+    public PaymentAfterCreationDto createPayment(PaymentCreateDto paymentCreateDto) {
+        Payment payment = paymentRepository.findByPaymentDateAndUser_UserId(paymentCreateDto.getPaymentDate(), userMapper.toEntity(paymentCreateDto.getUser()).getUserId());
+        if (payment != null) {
+            throw new PaymentAlreadyExistsException(ErrorMessage.PAYMENT_ALREADY_EXISTS);
+        }
+        Payment entity = paymentMapper.toEntity(paymentCreateDto);
+        Payment paymentAfterCreation = paymentRepository.save(entity);
+        return paymentMapper.toDto(paymentAfterCreation);
     }
 
     @Override

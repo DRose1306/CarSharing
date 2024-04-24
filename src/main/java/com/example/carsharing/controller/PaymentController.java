@@ -1,5 +1,7 @@
 package com.example.carsharing.controller;
 
+import com.example.carsharing.dto.PaymentAfterCreationDto;
+import com.example.carsharing.dto.PaymentCreateDto;
 import com.example.carsharing.entity.Payment;
 import com.example.carsharing.service.PaymentService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +26,8 @@ public class PaymentController {
     }
 
     @PostMapping("/create_payment")
-    public Payment createPayment(@RequestBody Payment payment){
-        return paymentService.createPayment(payment);
+    public PaymentAfterCreationDto createPayment(@RequestBody PaymentCreateDto paymentCreateDto){
+        return paymentService.createPayment(paymentCreateDto);
     }
 
     @PutMapping("/update_payment/{id}")

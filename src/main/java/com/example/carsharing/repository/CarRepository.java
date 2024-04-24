@@ -1,11 +1,1 @@
-package com.example.carsharing.repository;
-
-import com.example.carsharing.entity.Car;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.UUID;
-
-public interface CarRepository extends JpaRepository<Car, UUID> {
-    Car getCarByCarId(UUID id);
-    void deleteCarByCarId(UUID id);
-}
+package com.example.carsharing.repository;import com.example.carsharing.entity.Car;import org.springframework.data.jpa.repository.JpaRepository;import org.springframework.stereotype.Repository;import java.util.UUID;@Repositorypublic interface CarRepository extends JpaRepository<Car, UUID> {    Car findByLicensePlate(String licensePlate);    Car getCarByCarId(UUID id);    void deleteCarByCarId(UUID id);}

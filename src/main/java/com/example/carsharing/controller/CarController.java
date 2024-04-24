@@ -1,5 +1,7 @@
 package com.example.carsharing.controller;
 
+import com.example.carsharing.dto.CarAfterCreationDto;
+import com.example.carsharing.dto.CarCreateDto;
 import com.example.carsharing.entity.Car;
 import com.example.carsharing.service.CarService;
 import lombok.RequiredArgsConstructor;
@@ -24,12 +26,12 @@ public class CarController {
     }
 
     @PostMapping("/create_car")
-    public Car createCar(@RequestBody Car car){
-        return carService.createCar(car);
+    public CarAfterCreationDto createCar(@RequestBody CarCreateDto carCreateDto) {
+        return carService.createCar(carCreateDto);
     }
 
     @PutMapping("/update_car/{id}")
-    public Car updateCar(@PathVariable UUID id, @RequestBody Car car){
+    public Car updateCar(@PathVariable UUID id, @RequestBody Car car) {
         return carService.updateCarById(id, car);
     }
 }
