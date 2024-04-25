@@ -4,11 +4,9 @@ import com.example.carsharing.entity.enums.CarBrand;
 import com.example.carsharing.entity.enums.CarStatus;
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
-
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -17,6 +15,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "cars")
 @NoArgsConstructor
+@ToString(includeFieldNames = true)
 public class Car {
 
     @Id
@@ -40,28 +39,19 @@ public class Car {
     @Column(name = "car_brand")
     private CarBrand brand;
 
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(carId, car.carId) && Objects.equals(yearOfRelease, car.yearOfRelease) && Objects.equals(licensePlate, car.licensePlate) && brand == car.brand;
+        return Objects.equals(carId, car.carId) && Objects.equals(yearOfRelease, car.yearOfRelease) && Objects.equals(licensePlate, car.licensePlate) && status == car.status && brand == car.brand && Objects.equals(createdAt, car.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carId, yearOfRelease, licensePlate, brand);
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "carId=" + carId +
-                ", yearOfRelease='" + yearOfRelease + '\'' +
-                ", licensePlate='" + licensePlate + '\'' +
-                ", status=" + status +
-                ", brand=" + brand +
-                '}';
+        return Objects.hash(carId, yearOfRelease, licensePlate, status, brand, createdAt);
     }
 }

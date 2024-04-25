@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "payments")
 @NoArgsConstructor
+@ToString
 public class Payment {
 
     @Id
@@ -38,7 +40,7 @@ public class Payment {
     @Column(name = "payment_status")
     private boolean status;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -54,16 +56,5 @@ public class Payment {
     @Override
     public int hashCode() {
         return Objects.hash(paymentId, amount, paymentDate, paymentMethod, status);
-    }
-
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "paymentId=" + paymentId +
-                ", amount=" + amount +
-                ", paymentDate=" + paymentDate +
-                ", paymentMethod=" + paymentMethod +
-                ", status=" + status +
-                '}';
     }
 }

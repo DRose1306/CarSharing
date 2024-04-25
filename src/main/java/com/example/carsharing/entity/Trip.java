@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "trips")
 @NoArgsConstructor
+@ToString
 public class Trip {
 
     @Id
@@ -37,11 +39,11 @@ public class Trip {
     @Column(name = "cost")
     private BigDecimal cost;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "car_id")
     private Car car;
 
@@ -56,16 +58,5 @@ public class Trip {
     @Override
     public int hashCode() {
         return Objects.hash(tripId, startTime, endTime, distance, cost);
-    }
-
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "tripId=" + tripId +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", distance=" + distance +
-                ", cost=" + cost +
-                '}';
     }
 }

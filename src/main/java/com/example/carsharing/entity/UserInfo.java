@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "user_info")
 @NoArgsConstructor
+@ToString
 public class UserInfo {
 
     @Id
@@ -55,7 +57,7 @@ public class UserInfo {
     private User user;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -64,6 +66,7 @@ public class UserInfo {
     @JoinTable(name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ToString.Exclude
     private Set<Role> roles;
 
 
@@ -78,19 +81,5 @@ public class UserInfo {
     @Override
     public int hashCode() {
         return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, login, password, driverLicense, DriverLicenseIdentifier);
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "userInfoId=" + userInfoId +
-                ", dateOfBirth=" + dateOfBirth +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", driverLicense=" + driverLicense +
-                ", DriverLicenseIdentifier='" + DriverLicenseIdentifier + '\'' +
-                '}';
     }
 }

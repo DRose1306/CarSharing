@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import java.util.Objects;
 import java.util.Set;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "authorities")
 @NoArgsConstructor
+@ToString
 public class Authority {
 
     @Id
@@ -30,8 +32,8 @@ public class Authority {
     private AuthorityName authority;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "authorities",
-            fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Set<Role> roles;
 
 
@@ -46,13 +48,5 @@ public class Authority {
     @Override
     public int hashCode() {
         return Objects.hash(authorityId, authority);
-    }
-
-    @Override
-    public String toString() {
-        return "Authority{" +
-                "authorityId=" + authorityId +
-                ", authority=" + authority +
-                '}';
     }
 }

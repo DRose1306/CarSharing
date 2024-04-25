@@ -8,6 +8,11 @@ spring:
       username: ${DATASOURCE_USERNAME}
       password: ${DATASOURCE_PASSWORD}
 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
   sql:
     init:
       schema-locations:
@@ -16,14 +21,9 @@ spring:
         classpath:db/data.sql
       mode: always
 
-  #logging:
-  #    level:
-  #      root: DEBUG
-
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: none
+logging:
+  level:
+    root: WARN
 
     #liquibase:
     #change-log: classpath:/db/changelog/changelog-master.xml

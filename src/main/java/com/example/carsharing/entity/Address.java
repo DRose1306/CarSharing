@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "addresses")
 @NoArgsConstructor
+@ToString()
 public class Address {
 
     @Id
@@ -43,7 +45,8 @@ public class Address {
     private String country;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ToString.Exclude
     private Set<UserInfo> userInfos;
 
     @Override
@@ -57,17 +60,5 @@ public class Address {
     @Override
     public int hashCode() {
         return Objects.hash(addressId, street, houseNumber, city, zipCode, country);
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", street='" + street + '\'' +
-                ", houseNumber='" + houseNumber + '\'' +
-                ", city='" + city + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", country='" + country + '\'' +
-                '}';
     }
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "roles")
 @NoArgsConstructor
+@ToString
 public class Role {
 
     @Id
@@ -35,6 +37,7 @@ public class Role {
     @JoinTable(name = "role_authority",
     joinColumns = @JoinColumn(name = "role_id"),
     inverseJoinColumns = @JoinColumn(name = "auth_id"))
+    @ToString.Exclude
     private Set<Authority> authorities;
 
 
@@ -49,13 +52,5 @@ public class Role {
     @Override
     public int hashCode() {
         return Objects.hash(roleId, roleName);
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", roleName=" + roleName +
-                '}';
     }
 }
