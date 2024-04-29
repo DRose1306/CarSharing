@@ -37,7 +37,7 @@ public class UuidTimeSequenceGenerator implements IdentifierGenerator {
     }
 
 
-    private Long getSequenceValue() {
+    /*private Long getSequenceValue() {
         return jdbcTemplate.queryForObject(NEXT_VAL_QUERY, (rs, rowNum) -> rs.getLong(1));
     }
 
@@ -62,7 +62,7 @@ public class UuidTimeSequenceGenerator implements IdentifierGenerator {
             }
         }
         return new String(uuid);
-    }
+    }*/
 
     private boolean isDashPosition(int pos) {
         return pos == 8 || pos == 13 || pos == 18 || pos == 23;

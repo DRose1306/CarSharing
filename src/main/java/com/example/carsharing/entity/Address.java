@@ -45,7 +45,7 @@ public class Address {
     private String country;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @ToString.Exclude
     private Set<UserInfo> userInfos;
 

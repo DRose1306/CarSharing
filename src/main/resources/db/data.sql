@@ -27,13 +27,13 @@ VALUES
 
 
 -- Вставка персональных данных в таблицу "user_info"
-INSERT INTO user_info (user_info_id, date_of_birth, phone_number, email, user_login, user_password, driver_license, driver_licence_id, user_id, address_id)
+INSERT INTO user_info (user_info_id, date_of_birth, phone_number, email, user_login, user_password, card_number, driver_license, driver_licence_id, user_id, address_id)
 VALUES
-    (UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3'), '1992-06-30', '111-222-333', 'michael@example.com', 'MJ' ,'d2ecce31ab3f5a11d0f6d389f68686c75c80ead1857c7f38d21fecd4da1209b5', 'B', 'DE123456789012' ,UUID_TO_BIN('7270910c-cc71-4634-97a0-a242eb5b6064'), UUID_TO_BIN('665714b8-d6d8-4e33-99ce-38e0560faaa6')),
-    (UUID_TO_BIN('09ff1f4c-1d5c-4168-ab86-f1651e9bab69'), '1987-09-25', '444-555-666', 'emily@example.com', 'Emmy' ,'8dce5f0012304c06d98cfb0cd11bc7eaaafaf32c4da26df424bcdd59ccfe0a5d', 'B', 'DE987654321098' ,UUID_TO_BIN('dfb0689f-5f69-4825-a154-33c897fa1b38'), UUID_TO_BIN('8efaced0-9f0a-427c-86a9-0545abda1e8c')),
-    (UUID_TO_BIN('d2ed9087-38fb-4789-806a-7a4c07deb7de'), '1980-12-10', '777-888-999', 'daniel@example.com', 'Di_Brown' ,'15acd26889bccf5865c22aa472ec069cf0a31512f9a53dadc0bc8f2aea3f84cd', 'B', 'DE654321098765' ,UUID_TO_BIN('55035fe9-37e3-466f-ba4a-197f23fc5700'), UUID_TO_BIN('08c994be-1712-411e-887a-ac52f109f919')),
-    (UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad'), '1995-04-05', '123-456-789', 'olivia@example.com', 'Oli' ,'c7b702284ddd187ddb240fa0ee6d77019e280eedbec7290c886a7dd193fb0e99', 'B', 'DE321098765432' ,UUID_TO_BIN('cd8edecd-0d27-4228-8fe6-911c1cf7fd7c'), UUID_TO_BIN('eef03e06-b85b-4c01-ae76-fd227a6bd849')),
-    (UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'), '1990-10-20', '987-654-321', 'william@example.com', 'WillWilson' ,'37c60d066e0fc140a4751f274112a25d5b263f4f0dec1e6c555ee2178387b1c8', 'B', 'DE789012345678' ,UUID_TO_BIN('7881bf3e-73a9-47da-8bae-e2e253a30ddd'), UUID_TO_BIN('3d4a0065-0e7e-434e-ab10-735a964a2dfd'));
+    (UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3'), '1992-06-30', '111-222-333', 'michael@example.com', 'MJ' ,'d2ecce31ab3f5a11d0f6d389f68686c75c80ead1857c7f38d21fecd4da1209b5', '1234 5678 9012 3456','B', 'DE123456789012' ,UUID_TO_BIN('7270910c-cc71-4634-97a0-a242eb5b6064'), UUID_TO_BIN('665714b8-d6d8-4e33-99ce-38e0560faaa6')),
+    (UUID_TO_BIN('09ff1f4c-1d5c-4168-ab86-f1651e9bab69'), '1987-09-25', '444-555-666', 'emily@example.com', 'Emmy' ,'8dce5f0012304c06d98cfb0cd11bc7eaaafaf32c4da26df424bcdd59ccfe0a5d', '9876 5432 1098 7654','B', 'DE987654321098' ,UUID_TO_BIN('dfb0689f-5f69-4825-a154-33c897fa1b38'), UUID_TO_BIN('8efaced0-9f0a-427c-86a9-0545abda1e8c')),
+    (UUID_TO_BIN('d2ed9087-38fb-4789-806a-7a4c07deb7de'), '1980-12-10', '777-888-999', 'daniel@example.com', 'Di_Brown' ,'15acd26889bccf5865c22aa472ec069cf0a31512f9a53dadc0bc8f2aea3f84cd', '2468 1357 8024 6813','B', 'DE654321098765' ,UUID_TO_BIN('55035fe9-37e3-466f-ba4a-197f23fc5700'), UUID_TO_BIN('08c994be-1712-411e-887a-ac52f109f919')),
+    (UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad'), '1995-04-05', '123-456-789', 'olivia@example.com', 'Oli' ,'c7b702284ddd187ddb240fa0ee6d77019e280eedbec7290c886a7dd193fb0e99', '8642 9753 2106 4832','B', 'DE321098765432' ,UUID_TO_BIN('cd8edecd-0d27-4228-8fe6-911c1cf7fd7c'), UUID_TO_BIN('eef03e06-b85b-4c01-ae76-fd227a6bd849')),
+    (UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'), '1990-10-20', '987-654-321', 'william@example.com', 'WillWilson' ,'37c60d066e0fc140a4751f274112a25d5b263f4f0dec1e6c555ee2178387b1c8', '7531 8642 3069 1752','B', 'DE789012345678' ,UUID_TO_BIN('7881bf3e-73a9-47da-8bae-e2e253a30ddd'), UUID_TO_BIN('3d4a0065-0e7e-434e-ab10-735a964a2dfd'));
 
 
 

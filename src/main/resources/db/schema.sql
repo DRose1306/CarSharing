@@ -40,12 +40,14 @@ CREATE TABLE IF NOT EXISTS user_info (
     email VARCHAR(60) UNIQUE,
     user_login VARCHAR(60) NOT NULL,
     user_password VARCHAR(128) NOT NULL,
+    card_number VARCHAR(60),
     driver_license ENUM('A', 'B', 'C', 'D', 'E'),
     driver_licence_id VARCHAR(30) unique,
     user_id binary(16)  UNIQUE,
-    address_id binary(16) NOT NULL,
+    address_id binary(16),
     FOREIGN KEY (address_id)
         REFERENCES addresses(address_id)
+        ON DELETE SET NULL
 );
 
 
@@ -66,6 +68,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_info_id BINARY(16) NOT NULL,
     FOREIGN KEY (user_info_id)
         REFERENCES user_info (user_info_id)
+        ON DELETE CASCADE
 );
 
 
@@ -74,13 +77,15 @@ CREATE TABLE IF NOT EXISTS trips (
     start_time DATETIME DEFAULT NULL,
     end_time DATETIME DEFAULT NULL,
     distance DOUBLE DEFAULT 0.0,
-    cost DECIMAL(10 , 2 ) NOT NULL,
-    user_id BINARY(16) NOT NULL,
-    car_id BINARY(16) NOT NULL,
+    cost DECIMAL(10 , 2 ) DEFAULT 0.0,
+    user_id BINARY(16),
+    car_id BINARY(16),
     FOREIGN KEY (user_id)
-        REFERENCES users (user_id),
+        REFERENCES users (user_id)
+        ON DELETE SET NULL,
     FOREIGN KEY (car_id)
         REFERENCES cars (car_id)
+        ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS payments (
@@ -89,9 +94,10 @@ CREATE TABLE IF NOT EXISTS payments (
     payment_date DATETIME DEFAULT NULL,
     payment_method ENUM('VISA', 'MASTERCARD', 'AMERICAN_EXPRESS', 'SEPA_DIRECT_DEBIT', 'PAYPAL', 'APPLE_PAY', 'GOOGLE_PAY'),
     payment_status BOOLEAN,
-    user_id BINARY(16) NOT NULL,
+    user_id BINARY(16),
     FOREIGN KEY (user_id)
         REFERENCES users (user_id)
+        ON DELETE SET NULL
 );
 
 
@@ -102,9 +108,11 @@ CREATE TABLE IF NOT EXISTS reservations (
     car_id BINARY(16) NOT NULL,
     user_id BINARY(16) NOT NULL,
     FOREIGN KEY (car_id)
-        REFERENCES cars (car_id),
+        REFERENCES cars (car_id)
+        ON DELETE CASCADE,
     FOREIGN KEY (user_id)
         REFERENCES users (user_id)
+        ON DELETE CASCADE
 );
 
 

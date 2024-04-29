@@ -44,6 +44,9 @@ public class UserInfo {
     @Column(name = "user_password")
     private String password;
 
+    @Column(name = "card_number")
+    private String cardNumber;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "driver_license")
     private DriverLicense driverLicense;
@@ -57,12 +60,12 @@ public class UserInfo {
     private User user;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

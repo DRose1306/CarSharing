@@ -2,6 +2,7 @@ package com.example.carsharing.entity;
 
 
 import com.example.carsharing.generator.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -33,6 +34,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @JsonIgnore
     @Column(name = "created_at")
     private Timestamp createdAt;
 
