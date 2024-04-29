@@ -1,5 +1,6 @@
 package com.example.carsharing.dto;
 
+import com.example.carsharing.entity.User;
 import com.example.carsharing.entity.enums.PaymentMethod;
 import lombok.Value;
 
@@ -11,5 +12,5 @@ public class PaymentCreateDto implements Serializable {
     double amount;
     LocalDateTime paymentDate;
     PaymentMethod paymentMethod;
-    UserCreateDto user;
+    String userId;
 }
