@@ -65,7 +65,7 @@ public class UserInfo {
     private Address address;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

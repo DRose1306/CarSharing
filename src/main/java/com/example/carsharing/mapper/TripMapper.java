@@ -7,8 +7,6 @@ import com.example.carsharing.mapper.util.GetCarIdFromTripUtil;
 import com.example.carsharing.mapper.util.GetNameFromUserUtil;
 import org.mapstruct.*;
 
-import java.sql.Timestamp;
-
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         imports = {GetNameFromUserUtil.class, GetCarIdFromTripUtil.class},
         unmappedTargetPolicy = ReportingPolicy.IGNORE)

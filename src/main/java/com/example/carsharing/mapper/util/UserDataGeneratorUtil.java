@@ -3,8 +3,6 @@ package com.example.carsharing.mapper.util;
 import com.example.carsharing.entity.Address;
 import com.github.javafaker.Faker;
 
-import java.util.UUID;
-
 public class UserDataGeneratorUtil {
     private static final Faker FAKER = new Faker();
     public static Address genAddress() {

@@ -15,7 +15,6 @@ import java.util.UUID;
 @Setter
 @Table(name = "cars")
 @NoArgsConstructor
-@ToString(includeFieldNames = true)
 public class Car {
 
     @Id
@@ -53,5 +52,17 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(carId, yearOfRelease, licensePlate, status, brand, createdAt);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carId=" + carId +
+                ", yearOfRelease='" + yearOfRelease + '\'' +
+                ", licensePlate='" + licensePlate + '\'' +
+                ", status=" + status +
+                ", brand=" + brand +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }
