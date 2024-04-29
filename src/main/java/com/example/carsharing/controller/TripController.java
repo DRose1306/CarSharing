@@ -3,8 +3,9 @@ package com.example.carsharing.controller;
 import com.example.carsharing.dto.TripAfterCreationDto;
 import com.example.carsharing.dto.TripCreateDto;
 import com.example.carsharing.entity.Trip;
-import com.example.carsharing.service.TripService;
+import com.example.carsharing.service.interfaces.TripService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -20,7 +21,9 @@ public class TripController {
         return tripService.getTripById(id);
     }
 
+    //TODO никак не хочет работать
     @DeleteMapping("/delete_trip/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteTripById(@PathVariable UUID id) {
         tripService.deleteTripById(id);
     }
@@ -31,7 +34,7 @@ public class TripController {
     }
 
     @PutMapping("/update_trip/{id}")
-    public Trip updateTrip(@PathVariable UUID id, @RequestBody Trip trip){
-        return tripService.updateTripById(id, trip);
+    public Trip updateTrip(@PathVariable UUID id, @RequestBody TripCreateDto tripCreateDto){
+        return tripService.updateTripById(id, tripCreateDto);
     }
 }

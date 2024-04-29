@@ -3,8 +3,9 @@ package com.example.carsharing.controller;
 import com.example.carsharing.dto.PaymentAfterCreationDto;
 import com.example.carsharing.dto.PaymentCreateDto;
 import com.example.carsharing.entity.Payment;
-import com.example.carsharing.service.PaymentService;
+import com.example.carsharing.service.interfaces.PaymentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -20,7 +21,9 @@ public class PaymentController {
         return paymentService.getPaymentById(id);
     }
 
+    //TODO никак не хочет работать
     @DeleteMapping("/delete_payment/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deletePaymentById(@PathVariable("id") UUID id) {
         paymentService.deletePaymentById(id);
     }
@@ -31,7 +34,7 @@ public class PaymentController {
     }
 
     @PutMapping("/update_payment/{id}")
-    public Payment updatePayment(@PathVariable("id") UUID id, @RequestBody Payment payment){
-        return paymentService.updatePaymentById(id, payment);
+    public Payment updatePayment(@PathVariable("id") UUID id, @RequestBody PaymentCreateDto paymentCreateDto){
+        return paymentService.updatePaymentById(id, paymentCreateDto);
     }
 }

@@ -1,10 +1,11 @@
 package com.example.carsharing.controller;
 
-import com.example.carsharing.dto.UserAfterCreationDto;
-import com.example.carsharing.dto.UserCreateDto;
+import com.example.carsharing.dto.UserAfterRegistrationDto;
+import com.example.carsharing.dto.UserRegistrationDto;
 import com.example.carsharing.entity.User;
-import com.example.carsharing.service.UserService;
+import com.example.carsharing.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -20,19 +21,21 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    //TODO не работает
     @DeleteMapping("/delete_user/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteUserById(@PathVariable UUID id) {
         userService.deleteUserById(id);
     }
 
     @PostMapping("/create_user")
-    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto){
-        return userService.createUser(userCreateDto);
+    public UserAfterRegistrationDto createUser(@RequestBody UserRegistrationDto userRegistrationDto){
+        return userService.createUser(userRegistrationDto);
     }
 
     @PutMapping("/update_user/{id}")
-    public User updateUser(@PathVariable UUID id, @RequestBody User user){
-        return userService.updateUserById(id, user);
+    public User updateUser(@PathVariable UUID id, @RequestBody UserRegistrationDto userRegistrationDto){
+        return userService.updateUserById(id, userRegistrationDto);
     }
 }
 

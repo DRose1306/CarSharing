@@ -1,4 +1,4 @@
-package com.example.carsharing.service;
+package com.example.carsharing.service.interfaces;
 
 import com.example.carsharing.dto.PaymentAfterCreationDto;
 import com.example.carsharing.dto.PaymentCreateDto;
@@ -10,5 +10,5 @@ public interface PaymentService {
     Payment getPaymentById(UUID id);
     void deletePaymentById(UUID id);
     PaymentAfterCreationDto createPayment(PaymentCreateDto paymentCreateDto);
-    Payment updatePaymentById(UUID id, Payment updatedPayment);
+    Payment updatePaymentById(UUID id, PaymentCreateDto paymentCreateDto);
 }

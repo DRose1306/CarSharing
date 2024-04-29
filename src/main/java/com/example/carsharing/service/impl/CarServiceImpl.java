@@ -8,10 +8,11 @@ import com.example.carsharing.exception.CarNotExistException;
 import com.example.carsharing.exception.message.ErrorMessage;
 import com.example.carsharing.mapper.CarMapper;
 import com.example.carsharing.repository.CarRepository;
-import com.example.carsharing.service.CarService;
-import jakarta.transaction.Transactional;
+import com.example.carsharing.service.interfaces.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -22,6 +23,7 @@ public class CarServiceImpl implements CarService {
     private final CarMapper carMapper;
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Car getCarById(UUID id) {
         Car car = carRepository.getCarByCarId(id);
         if (car == null) {
@@ -31,17 +33,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteCarById(UUID id) {
-        Car car = carRepository.findById(id).orElse(null);
-        if (car == null) {
-            throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
-        }
+        carRepository.findById(id).orElseThrow(() -> new CarNotExistException(ErrorMessage.CAR_NOT_EXIST));
         carRepository.deleteCarByCarId(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public CarAfterCreationDto createCar(CarCreateDto carCreateDto) {
         Car car = carRepository.findByLicensePlate(carCreateDto.getLicensePlate());
         if (car != null) {
@@ -53,16 +52,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @Transactional
-    public Car updateCarById(UUID id, Car updatedCar) {
-        Car car = carRepository.findById(id).orElse(null);
-        if (car == null) {
-            throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
-        }
-        car.setYearOfRelease(updatedCar.getYearOfRelease());
-        car.setLicensePlate(updatedCar.getLicensePlate());
-        car.setStatus(updatedCar.getStatus());
-        car.setBrand(updatedCar.getBrand());
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public Car updateCarById(UUID id, CarCreateDto carCreateDto) {
+        Car car = carRepository.findById(id).orElseThrow(() -> new CarNotExistException(ErrorMessage.CAR_NOT_EXIST));
+        car.setYearOfRelease(carCreateDto.getYearOfRelease());
+        car.setLicensePlate(carCreateDto.getLicensePlate());
+        car.setBrand(carCreateDto.getBrand());
 
         return carRepository.saveAndFlush(car);
     }
