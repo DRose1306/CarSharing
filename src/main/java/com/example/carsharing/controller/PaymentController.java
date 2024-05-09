@@ -16,24 +16,23 @@ import java.util.UUID;
 public class PaymentController {
     private final PaymentService paymentService;
 
-    @GetMapping("/get_payment/{id}")
+    @GetMapping("/get/{id}")
     public Payment getPaymentById(@PathVariable("id") UUID id) {
         return paymentService.getPaymentById(id);
     }
 
-    //TODO никак не хочет работать
-    @DeleteMapping("/delete_payment/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deletePaymentById(@PathVariable("id") UUID id) {
-        paymentService.deletePaymentById(id);
+    public String deletePaymentById(@PathVariable("id") UUID id) {
+        return paymentService.deletePaymentById(id);
     }
 
-    @PostMapping("/create_payment")
+    @PostMapping("/create")
     public PaymentAfterCreationDto createPayment(@RequestBody PaymentCreateDto paymentCreateDto){
         return paymentService.createPayment(paymentCreateDto);
     }
 
-    @PutMapping("/update_payment/{id}")
+    @PutMapping("/update/{id}")
     public Payment updatePayment(@PathVariable("id") UUID id, @RequestBody PaymentCreateDto paymentCreateDto){
         return paymentService.updatePaymentById(id, paymentCreateDto);
     }

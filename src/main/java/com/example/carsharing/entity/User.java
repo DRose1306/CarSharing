@@ -38,10 +38,11 @@ public class User {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "user_info_id")
     @ToString.Exclude
     private UserInfo userInfo;
+
 
     @Override
     public boolean equals(Object o) {

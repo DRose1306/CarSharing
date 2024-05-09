@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS cars;
 
 CREATE TABLE IF NOT EXISTS roles (
     role_id BINARY(16) PRIMARY KEY,
-    role_name ENUM('ADMIN', 'MANAGER', 'USER', 'GUEST') DEFAULT 'GUEST'
+    role_name ENUM('ADMIN', 'MANAGER', 'USER', 'GUEST') DEFAULT 'USER'
 );
 
 CREATE TABLE IF NOT EXISTS authorities (
@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS user_info (
     card_number VARCHAR(60),
     driver_license ENUM('A', 'B', 'C', 'D', 'E'),
     driver_licence_id VARCHAR(30) unique,
-    user_id binary(16)  UNIQUE,
     address_id binary(16),
     FOREIGN KEY (address_id)
         REFERENCES addresses(address_id)
@@ -97,7 +96,7 @@ CREATE TABLE IF NOT EXISTS payments (
     user_id BINARY(16),
     FOREIGN KEY (user_id)
         REFERENCES users (user_id)
-        ON DELETE SET NULL
+        ON DELETE CASCADE
 );
 
 

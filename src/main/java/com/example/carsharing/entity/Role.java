@@ -29,6 +29,7 @@ public class Role {
     @Column(name = "role_id")
     private UUID roleId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
     private RoleName roleName;
 

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface PaymentService {
     Payment getPaymentById(UUID id);
-    void deletePaymentById(UUID id);
+    String deletePaymentById(UUID id);
     PaymentAfterCreationDto createPayment(PaymentCreateDto paymentCreateDto);
     Payment updatePaymentById(UUID id, PaymentCreateDto paymentCreateDto);
 }

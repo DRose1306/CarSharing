@@ -21,19 +21,18 @@ public class TripController {
         return tripService.getTripById(id);
     }
 
-    //TODO никак не хочет работать
-    @DeleteMapping("/delete_trip/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteTripById(@PathVariable UUID id) {
-        tripService.deleteTripById(id);
+    public String deleteTripById(@PathVariable UUID id) {
+        return tripService.deleteTripById(id);
     }
 
-    @PostMapping("/create_trip")
+    @PostMapping("/create")
     public TripAfterCreationDto createTrip(@RequestBody TripCreateDto tripCreateDto){
         return tripService.createTrip(tripCreateDto);
     }
 
-    @PutMapping("/update_trip/{id}")
+    @PutMapping("/update/{id}")
     public Trip updateTrip(@PathVariable UUID id, @RequestBody TripCreateDto tripCreateDto){
         return tripService.updateTripById(id, tripCreateDto);
     }

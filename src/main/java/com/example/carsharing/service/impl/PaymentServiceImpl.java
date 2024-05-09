@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -38,9 +39,14 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public void deletePaymentById(UUID id) {
-        paymentRepository.findById(id).orElseThrow(() -> new PaymentNotExistException(ErrorMessage.PAYMENT_NOT_EXIST));
-        paymentRepository.deleteByPaymentId(id);
+    public String deletePaymentById(UUID id) {
+        Payment payment = paymentRepository.getPaymentByPaymentId(id);
+        if (payment != null){
+            paymentRepository.deleteById(id);
+            return "Payment with this ID was deleted SUCCESSFULLY";
+        }else {
+            throw new PaymentNotExistException(ErrorMessage.PAYMENT_NOT_EXIST);
+        }
     }
 
     @Override
@@ -55,7 +61,9 @@ public class PaymentServiceImpl implements PaymentService {
             throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
         }
         Payment entity = paymentMapper.toEntity(paymentCreateDto);
+
         entity.setUser(user);
+
         Payment paymentAfterCreation = paymentRepository.save(entity);
         return paymentMapper.toDto(paymentAfterCreation);
     }
@@ -63,17 +71,19 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public Payment updatePaymentById(UUID id, PaymentCreateDto paymentCreateDto) {
-        Payment payment = paymentRepository.findById(id).orElseThrow(() ->
-                new PaymentNotExistException(ErrorMessage.PAYMENT_NOT_EXIST));
+        Payment payment = getPaymentById(id);
+
+        if (payment != null){
+            payment.setAmount(Objects.equals(payment.getAmount(), paymentCreateDto.getAmount()) ? payment.getAmount() : paymentCreateDto.getAmount());
+            payment.setPaymentDate(Objects.equals(payment.getPaymentDate(), paymentCreateDto.getPaymentDate()) ? payment.getPaymentDate() : paymentCreateDto.getPaymentDate());
+            payment.setPaymentMethod(Objects.equals(payment.getPaymentMethod(), paymentCreateDto.getPaymentMethod()) ? payment.getPaymentMethod() : paymentCreateDto.getPaymentMethod());
+        }
 
         User user = userRepository.findById(UUID.fromString(paymentCreateDto.getUserId())).orElse(null);
         if (user == null) {
             throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
         }
 
-        payment.setAmount(paymentCreateDto.getAmount());
-        payment.setPaymentDate(paymentCreateDto.getPaymentDate());
-        payment.setPaymentMethod(paymentCreateDto.getPaymentMethod());
         payment.setUser(user);
 
         return paymentRepository.saveAndFlush(payment);

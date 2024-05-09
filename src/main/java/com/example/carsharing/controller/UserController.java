@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -21,21 +22,24 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    //TODO не работает
-    @DeleteMapping("/delete_user/{id}")
+    @GetMapping("/get_all")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteUserById(@PathVariable UUID id) {
-        userService.deleteUserById(id);
+    public String deleteUserById(@PathVariable UUID id) {
+        return userService.deleteUserById(id);
     }
 
-    @PostMapping("/create_user")
+    @PostMapping("/registration/create")
     public UserAfterRegistrationDto createUser(@RequestBody UserRegistrationDto userRegistrationDto){
         return userService.createUser(userRegistrationDto);
     }
 
-    @PutMapping("/update_user/{id}")
-    public User updateUser(@PathVariable UUID id, @RequestBody UserRegistrationDto userRegistrationDto){
-        return userService.updateUserById(id, userRegistrationDto);
+    @PutMapping("/update/{id}")
+    public User updateUser(@PathVariable UUID id, @RequestBody User user){
+        return userService.updateUserById(id, user);
     }
 }
 

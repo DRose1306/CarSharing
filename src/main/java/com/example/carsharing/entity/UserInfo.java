@@ -52,13 +52,7 @@ public class UserInfo {
     private DriverLicense driverLicense;
 
     @Column(name = "driver_licence_id")
-    private String DriverLicenseIdentifier;
-
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
+    private String driverLicenseIdentifier;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
@@ -78,11 +72,11 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && Objects.equals(login, userInfo.login) && Objects.equals(password, userInfo.password) && driverLicense == userInfo.driverLicense && Objects.equals(DriverLicenseIdentifier, userInfo.DriverLicenseIdentifier);
+        return Objects.equals(userInfoId, userInfo.userInfoId) && Objects.equals(dateOfBirth, userInfo.dateOfBirth) && Objects.equals(phoneNumber, userInfo.phoneNumber) && Objects.equals(email, userInfo.email) && Objects.equals(login, userInfo.login) && Objects.equals(password, userInfo.password) && driverLicense == userInfo.driverLicense && Objects.equals(driverLicenseIdentifier, userInfo.driverLicenseIdentifier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, login, password, driverLicense, DriverLicenseIdentifier);
+        return Objects.hash(userInfoId, dateOfBirth, phoneNumber, email, login, password, driverLicense, driverLicenseIdentifier);
     }
 }

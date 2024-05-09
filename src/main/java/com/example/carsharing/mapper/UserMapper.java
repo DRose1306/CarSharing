@@ -31,13 +31,15 @@ public interface UserMapper {
     @AfterMapping
     default void generateUserInfo(@MappingTarget User user, UserRegistrationDto userRegistrationDto) {
         UserInfo userInfo = new UserInfo();
-        userInfo.setLogin(generateLogin(userRegistrationDto.getFirstName()));
+        userInfo.setLogin(generateUsername(userRegistrationDto.getFirstName()));
         userInfo.setPassword(generatePassword());
         userInfo.setEmail(userRegistrationDto.getEmail());
         userInfo.setDateOfBirth(LocalDate.parse(userRegistrationDto.getDateOfBirth()));
         userInfo.setAddress(UserDataGeneratorUtil.genAddress());
         userInfo.setPhoneNumber(UserDataGeneratorUtil.genPhoneNumber());
         userInfo.setCardNumber(CardGeneratorUtil.generateCreditCardDetails());
+        userInfo.setDriverLicense(userRegistrationDto.getDriverLicense());
+        userInfo.setDriverLicenseIdentifier(userRegistrationDto.getDriverLicenseIdentifier());
         user.setUserInfo(userInfo);
     }
 
@@ -45,9 +47,8 @@ public interface UserMapper {
             @Mapping(target = "operation", constant = "CREATING"),
             @Mapping(target = "status", constant = "SUCCESSFUL"),
             @Mapping(target = "login", source = "userInfo.login"),
-            @Mapping(target = "password", source = "userInfo.password")
-            //TODO как вытащить страну?
-            //@Mapping(target = "createdAt", expression = "java(DateFormatterUtil.formatDataByCountry(user.getCreatedAt(), userInfo.getAddress.getCountry))")
+            @Mapping(target = "password", source = "userInfo.password"),
+            @Mapping(target = "createdAt", expression = "java(DateFormatterUtil.formatDataByCountry(user.getCreatedAt(), user.getUserInfo().getAddress().getCountry()))")
     })
     UserAfterRegistrationDto toDto(User user);
 
@@ -55,7 +56,7 @@ public interface UserMapper {
         return UUID.randomUUID().toString().substring(1, 10);
     }
 
-    static String generateLogin(String name) {
+    static String generateUsername(String name) {
         return name + "_" + UUID.randomUUID().toString().charAt(1);
     }
 }

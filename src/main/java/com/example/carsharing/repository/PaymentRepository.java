@@ -12,5 +12,4 @@ import java.util.UUID;
 public interface PaymentRepository extends JpaRepository<Payment, UUID> {
     Payment findByPaymentDateAndUser_UserId(LocalDateTime paymentDate, UUID userId);
     Payment getPaymentByPaymentId(@Nonnull UUID id);
-    void deleteByPaymentId(@Nonnull UUID id);
 }

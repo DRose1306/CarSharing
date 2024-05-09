@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -30,6 +31,7 @@ public class TripServiceImpl implements TripService {
     private final TripMapper tripMapper;
     private final UserRepository userRepository;
     private final CarRepository carRepository;
+
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public Trip getTripById(UUID id) {
@@ -42,9 +44,14 @@ public class TripServiceImpl implements TripService {
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public void deleteTripById(UUID id) {
-        tripRepository.findById(id).orElseThrow(() -> new TripNotExistException(ErrorMessage.TRIP_NOT_EXIST));
-        tripRepository.deleteTripByTripId(id);
+    public String deleteTripById(UUID id) {
+        Trip trip = tripRepository.getTripByTripId(id);
+        if (trip != null) {
+            tripRepository.deleteById(id);
+            return "Trip with this ID was deleted SUCCESSFULLY";
+        } else {
+            throw new TripNotExistException(ErrorMessage.TRIP_NOT_EXIST);
+        }
     }
 
 
@@ -52,7 +59,7 @@ public class TripServiceImpl implements TripService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public TripAfterCreationDto createTrip(TripCreateDto tripCreateDto) {
         Trip trip = tripRepository.findByStartTimeAndUser_UserId(LocalDateTime.parse(tripCreateDto.getStartTime()), UUID.fromString(tripCreateDto.getUserId()));
-        if (trip != null){
+        if (trip != null) {
             throw new TripAlreadyExistException(ErrorMessage.TRIP_ALREADY_EXIST);
         }
 
@@ -67,16 +74,23 @@ public class TripServiceImpl implements TripService {
         }
 
         Trip entity = tripMapper.toEntity(tripCreateDto);
-        Trip tripAfterCreation = tripRepository.save(entity);
+
         entity.setUser(user);
         entity.setCar(car);
+
+        Trip tripAfterCreation = tripRepository.save(entity);
         return tripMapper.toDto(tripAfterCreation);
     }
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public Trip updateTripById(UUID id, TripCreateDto tripCreateDto) {
-        Trip trip = tripRepository.findById(id).orElseThrow(() -> new TripNotExistException(ErrorMessage.TRIP_NOT_EXIST));
+        Trip trip = getTripById(id);
+
+        if (trip != null) {
+            trip.setStartTime(!Objects.equals(trip.getStartTime(), tripCreateDto.getStartTime()) ? trip.getStartTime() : LocalDateTime.parse(tripCreateDto.getStartTime()));
+            trip.setEndTime(!Objects.equals(trip.getEndTime(), tripCreateDto.getEndTime()) ? trip.getEndTime() : LocalDateTime.parse(tripCreateDto.getEndTime()));
+        }
 
         User user = userRepository.findById(UUID.fromString(tripCreateDto.getUserId())).orElse(null);
         if (user == null) {
@@ -88,10 +102,9 @@ public class TripServiceImpl implements TripService {
             throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
         }
 
-        trip.setStartTime(LocalDateTime.parse(tripCreateDto.getStartTime()));
-        trip.setEndTime(LocalDateTime.parse(tripCreateDto.getEndTime()));
         trip.setUser(user);
         trip.setCar(car);
 
-        return tripRepository.saveAndFlush(trip);    }
+        return tripRepository.saveAndFlush(trip);
+    }
 }

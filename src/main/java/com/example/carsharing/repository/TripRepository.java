@@ -12,5 +12,4 @@ import java.util.UUID;
 public interface TripRepository extends JpaRepository<Trip, UUID> {
     Trip findByStartTimeAndUser_UserId(LocalDateTime startTime, UUID userID);
     Trip getTripByTripId(@Nonnull UUID id);
-    void deleteTripByTripId(@Nonnull UUID id);
 }

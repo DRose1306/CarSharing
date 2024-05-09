@@ -7,8 +7,8 @@ import com.example.carsharing.entity.Car;
 import java.util.UUID;
 
 public interface CarService {
-    Car getCarById(UUID id);
-    void deleteCarById(UUID id);
-    CarAfterCreationDto createCar(CarCreateDto carCreateDto);
+    Car showCar(UUID id);
+    String deleteCarById(UUID id);
+    CarAfterCreationDto addCar(CarCreateDto carCreateDto);
     Car updateCarById(UUID id, CarCreateDto carCreateDto);
 }

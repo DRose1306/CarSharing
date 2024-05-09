@@ -16,21 +16,21 @@ import java.util.UUID;
 public class CarController {
     private final CarService carService;
 
-    @GetMapping("/get_car/{id}")
-    public Car getCarById(@PathVariable("id") UUID id) {
-        return carService.getCarById(id);
+    @GetMapping("/show_car/{id}")
+    public Car showCarById(@PathVariable("id") UUID id) {
+        return carService.showCar(id);
     }
 
     @DeleteMapping("/delete_car/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteCarById(@PathVariable("id") UUID id) {
-        carService.deleteCarById(id);
+    public String deleteCarById(@PathVariable("id") UUID id) {
+        return carService.deleteCarById(id);
     }
 
-    @PostMapping("/create_car")
+    @PostMapping("/add_car")
     @ResponseStatus(HttpStatus.CREATED)
     public CarAfterCreationDto createCar(@RequestBody CarCreateDto carCreateDto) {
-        return carService.createCar(carCreateDto);
+        return carService.addCar(carCreateDto);
     }
 
     @PutMapping("/update_car/{id}")
