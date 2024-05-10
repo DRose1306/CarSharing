@@ -79,13 +79,6 @@ public class PaymentServiceImpl implements PaymentService {
             payment.setPaymentMethod(Objects.equals(payment.getPaymentMethod(), paymentCreateDto.getPaymentMethod()) ? payment.getPaymentMethod() : paymentCreateDto.getPaymentMethod());
         }
 
-        User user = userRepository.findById(UUID.fromString(paymentCreateDto.getUserId())).orElse(null);
-        if (user == null) {
-            throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
-        }
-
-        payment.setUser(user);
-
         return paymentRepository.saveAndFlush(payment);
     }
 }

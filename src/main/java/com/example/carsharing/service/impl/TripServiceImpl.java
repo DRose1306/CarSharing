@@ -92,19 +92,6 @@ public class TripServiceImpl implements TripService {
             trip.setEndTime(!Objects.equals(trip.getEndTime(), tripCreateDto.getEndTime()) ? trip.getEndTime() : LocalDateTime.parse(tripCreateDto.getEndTime()));
         }
 
-        User user = userRepository.findById(UUID.fromString(tripCreateDto.getUserId())).orElse(null);
-        if (user == null) {
-            throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
-        }
-
-        Car car = carRepository.findById(UUID.fromString(tripCreateDto.getCarId())).orElse(null);
-        if (car == null) {
-            throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
-        }
-
-        trip.setUser(user);
-        trip.setCar(car);
-
         return tripRepository.saveAndFlush(trip);
     }
 }

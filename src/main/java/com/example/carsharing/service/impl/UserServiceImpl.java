@@ -97,7 +97,6 @@ public class UserServiceImpl implements UserService {
     public User compareUsers(User updated, User updating) {
         User comparedUser = new User();
 
-        comparedUser.setUserId(Objects.equals(updated.getUserId(), updating.getUserId()) ? updated.getUserId() : updating.getUserId());
         comparedUser.setFirstName(Objects.equals(updated.getFirstName(), updating.getFirstName()) ? updated.getFirstName() : updating.getFirstName());
         comparedUser.setLastName(Objects.equals(updated.getLastName(), updating.getLastName()) ? updated.getLastName() : updating.getLastName());
 

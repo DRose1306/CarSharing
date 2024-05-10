@@ -1,5 +1,9 @@
 package com.example.carsharing.controller;
 
+import com.example.carsharing.annotation.AddCar;
+import com.example.carsharing.annotation.DeleteCar;
+import com.example.carsharing.annotation.ShowCar;
+import com.example.carsharing.annotation.UpdateCar;
 import com.example.carsharing.dto.CarAfterCreationDto;
 import com.example.carsharing.dto.CarCreateDto;
 import com.example.carsharing.entity.Car;
@@ -16,24 +20,24 @@ import java.util.UUID;
 public class CarController {
     private final CarService carService;
 
-    @GetMapping("/show_car/{id}")
+    @ShowCar(path = "/show_car/{id}")
     public Car showCarById(@PathVariable("id") UUID id) {
         return carService.showCar(id);
     }
 
-    @DeleteMapping("/delete_car/{id}")
+    @DeleteCar(path = "/delete_car/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteCarById(@PathVariable("id") UUID id) {
         return carService.deleteCarById(id);
     }
 
-    @PostMapping("/add_car")
+    @AddCar(path = "/add_car")
     @ResponseStatus(HttpStatus.CREATED)
     public CarAfterCreationDto createCar(@RequestBody CarCreateDto carCreateDto) {
         return carService.addCar(carCreateDto);
     }
 
-    @PutMapping("/update_car/{id}")
+    @UpdateCar(path = "/update_car/{id}")
     public Car updateCar(@PathVariable("id") UUID id, @RequestBody CarCreateDto carCreateDto) {
         return carService.updateCarById(id, carCreateDto);
     }
