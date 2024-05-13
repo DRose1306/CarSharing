@@ -5,13 +5,16 @@ import com.example.carsharing.dto.UserAfterRegistrationDto;
 import com.example.carsharing.dto.UserRegistrationDto;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.service.interfaces.UserService;
+import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+@Validated
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -19,18 +22,19 @@ public class UserController {
     private final UserService userService;
 
     @GetUserById(path = "/get/{id}")
-    public User getUserById(@PathVariable("id") UUID id) {
-        return userService.getUserById(id);
+    public User getUserById(@PathVariable("id") @UuidFormatChecker String id) {
+        return userService.getUserById(UUID.fromString(id));
     }
 
     @GetAllUsers(path = "/get_all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
     @DeleteUser(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteUserById(@PathVariable UUID id) {
-        return userService.deleteUserById(id);
+    public String deleteUserById(@PathVariable @UuidFormatChecker String id) {
+        return userService.deleteUserById(UUID.fromString(id));
     }
 
     @CreateUser(path = "/registration/create")
@@ -40,8 +44,8 @@ public class UserController {
     }
 
     @UpdateUser(path = "/update/{id}")
-    public User updateUser(@PathVariable UUID id, @RequestBody User user){
-        return userService.updateUserById(id, user);
+    public User updateUser(@PathVariable @UuidFormatChecker String id, @RequestBody User user){
+        return userService.updateUserById(UUID.fromString(id), user);
     }
 }
 

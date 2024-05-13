@@ -1,13 +1,12 @@
 package com.example.carsharing.dto;
 
 import com.example.carsharing.entity.enums.PaymentMethod;
-import lombok.Value;
-import java.time.LocalDateTime;
+import lombok.Data;
 
-@Value
+@Data
 public class PaymentCreateDto  {
     double amount;
-    LocalDateTime paymentDate;
+    String paymentDate;
     PaymentMethod paymentMethod;
     String userId;
 }

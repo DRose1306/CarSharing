@@ -1,10 +1,9 @@
 package com.example.carsharing.dto;
 
+import lombok.Data;
 
-import lombok.Value;
 
-
-@Value
+@Data
 public class TripCreateDto {
     String startTime;
     String endTime;

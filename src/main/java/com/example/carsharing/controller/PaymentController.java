@@ -8,12 +8,15 @@ import com.example.carsharing.dto.PaymentAfterCreationDto;
 import com.example.carsharing.dto.PaymentCreateDto;
 import com.example.carsharing.entity.Payment;
 import com.example.carsharing.service.interfaces.PaymentService;
+import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@Validated
 @RestController
 @RequestMapping("/payment")
 @RequiredArgsConstructor
@@ -21,14 +24,14 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @GetPayment(path = "/get/{id}")
-    public Payment getPaymentById(@PathVariable("id") UUID id) {
-        return paymentService.getPaymentById(id);
+    public Payment getPaymentById(@PathVariable("id") @UuidFormatChecker String id) {
+        return paymentService.getPaymentById(UUID.fromString(id));
     }
 
     @DeleteTrip(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deletePaymentById(@PathVariable("id") UUID id) {
-        return paymentService.deletePaymentById(id);
+    public String deletePaymentById(@PathVariable("id") @UuidFormatChecker String id) {
+        return paymentService.deletePaymentById(UUID.fromString(id));
     }
 
     @CreatePayment(path = "/create")
@@ -38,7 +41,7 @@ public class PaymentController {
     }
 
     @UpdateTrip(path = "/update/{id}")
-    public Payment updatePayment(@PathVariable("id") UUID id, @RequestBody PaymentCreateDto paymentCreateDto){
-        return paymentService.updatePaymentById(id, paymentCreateDto);
+    public Payment updatePayment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody PaymentCreateDto paymentCreateDto){
+        return paymentService.updatePaymentById(UUID.fromString(id), paymentCreateDto);
     }
 }

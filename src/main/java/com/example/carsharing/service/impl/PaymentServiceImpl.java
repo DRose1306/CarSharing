@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -52,7 +53,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public PaymentAfterCreationDto createPayment(PaymentCreateDto paymentCreateDto) {
-        Payment payment = paymentRepository.findByPaymentDateAndUser_UserId(paymentCreateDto.getPaymentDate(), UUID.fromString(paymentCreateDto.getUserId()));
+        Payment payment = paymentRepository.findByPaymentDateAndUser_UserId(LocalDateTime.parse(paymentCreateDto.getPaymentDate()), UUID.fromString(paymentCreateDto.getUserId()));
         if (payment != null) {
             throw new PaymentAlreadyExistsException(ErrorMessage.PAYMENT_ALREADY_EXISTS);
         }
@@ -75,7 +76,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         if (payment != null){
             payment.setAmount(Objects.equals(payment.getAmount(), paymentCreateDto.getAmount()) ? payment.getAmount() : paymentCreateDto.getAmount());
-            payment.setPaymentDate(Objects.equals(payment.getPaymentDate(), paymentCreateDto.getPaymentDate()) ? payment.getPaymentDate() : paymentCreateDto.getPaymentDate());
+            payment.setPaymentDate(Objects.equals(payment.getPaymentDate(), paymentCreateDto.getPaymentDate()) ? payment.getPaymentDate() : LocalDateTime.parse(paymentCreateDto.getPaymentDate()));
             payment.setPaymentMethod(Objects.equals(payment.getPaymentMethod(), paymentCreateDto.getPaymentMethod()) ? payment.getPaymentMethod() : paymentCreateDto.getPaymentMethod());
         }
 

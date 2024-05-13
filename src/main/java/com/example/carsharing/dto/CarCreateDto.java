@@ -1,9 +1,9 @@
 package com.example.carsharing.dto;
 
 import com.example.carsharing.entity.enums.CarBrand;
-import lombok.Value;
+import lombok.Data;
 
-@Value
+@Data
 public class CarCreateDto {
     String yearOfRelease;
     String licensePlate;
