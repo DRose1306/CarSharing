@@ -6,6 +6,7 @@ import com.example.carsharing.dto.UserRegistrationDto;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.service.interfaces.UserService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -33,7 +34,7 @@ public class UserController {
 
     @DeleteUser(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteUserById(@PathVariable @UuidFormatChecker String id) {
+    public String deleteUserById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.deleteUserById(UUID.fromString(id));
     }
 
@@ -44,7 +45,7 @@ public class UserController {
     }
 
     @UpdateUser(path = "/update/{id}")
-    public User updateUser(@PathVariable @UuidFormatChecker String id, @RequestBody User user){
+    public User updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid User user){
         return userService.updateUserById(UUID.fromString(id), user);
     }
 }

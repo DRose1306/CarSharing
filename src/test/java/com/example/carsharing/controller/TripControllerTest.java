@@ -63,7 +63,7 @@ class TripControllerTest {
     void getTripByIdTestWithException() throws Exception {
 
         mockMvc.perform(get("/trip/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
@@ -81,7 +81,7 @@ class TripControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/trip/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("{\"message\":\"EMPLOYEE_NOT_EXIST\",\"errorCode\":\"NOT_FOUND\"}"))
+                .andExpect(content().json("{\"message\":\"TRIP_NOT_EXIST_EXCEPTION\",\"errorCode\":\"NOT_FOUND\"}"))
                 .andReturn();
     }
 
@@ -101,7 +101,7 @@ class TripControllerTest {
         TripAfterCreationDto tripAfterCreationDto = objectMapper.readValue(jsonResult, TripAfterCreationDto.class);
 
         Assertions.assertEquals(201, createTripResult.getResponse().getStatus());
-        Assertions.assertNotNull(tripAfterCreationDto.getCost());
+        Assertions.assertNotNull(tripAfterCreationDto.getUser());
 
         System.out.println(jsonResult);
     }
@@ -109,7 +109,7 @@ class TripControllerTest {
     @Test
     void updateTripByIdTest() throws Exception{
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/trip/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
+                .perform(MockMvcRequestBuilders.get("/trip/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String tripJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -138,7 +138,7 @@ class TripControllerTest {
     @Test
     void updateUserByIdWithException() throws Exception{
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
-        String requestBody = "{\"end_time\": 2024-08-25 17:30:00}";
+        String requestBody = "{\"end_time\": 2024-08-25T17:30:00}";
 
         mockMvc.perform(MockMvcRequestBuilders.put("/trip/update/" + nonExistId)
                         .contentType(MediaType.APPLICATION_JSON)

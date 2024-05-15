@@ -1,9 +1,6 @@
 package com.example.carsharing.controller;
 
-import com.example.carsharing.annotation.CreatePayment;
-import com.example.carsharing.annotation.DeleteTrip;
-import com.example.carsharing.annotation.GetPayment;
-import com.example.carsharing.annotation.UpdateTrip;
+import com.example.carsharing.annotation.*;
 import com.example.carsharing.dto.PaymentAfterCreationDto;
 import com.example.carsharing.dto.PaymentCreateDto;
 import com.example.carsharing.entity.Payment;
@@ -28,7 +25,7 @@ public class PaymentController {
         return paymentService.getPaymentById(UUID.fromString(id));
     }
 
-    @DeleteTrip(path = "/delete/{id}")
+    @DeletePayment(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deletePaymentById(@PathVariable("id") @UuidFormatChecker String id) {
         return paymentService.deletePaymentById(UUID.fromString(id));
@@ -40,7 +37,7 @@ public class PaymentController {
         return paymentService.createPayment(paymentCreateDto);
     }
 
-    @UpdateTrip(path = "/update/{id}")
+    @UpdatePayment(path = "/update/{id}")
     public Payment updatePayment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody PaymentCreateDto paymentCreateDto){
         return paymentService.updatePaymentById(UUID.fromString(id), paymentCreateDto);
     }

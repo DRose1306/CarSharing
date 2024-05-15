@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
                         description = "The unique identifier of the car",
                         required = true,
                         in = ParameterIn.PATH,
-                        schema = @Schema(format = "uuid"),
+                        schema = @Schema(format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Good Id",
@@ -69,6 +69,14 @@ import java.lang.annotation.Target;
                         content = @Content(
                                 mediaType = "application/json",
                                 schema = @Schema(implementation = Car.class)
+                        )
+                ),
+                @ApiResponse(
+                        responseCode = "400",
+                        description = "Invalid ID",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ResponseExceptionHandler.class)
                         )
                 ),
                 @ApiResponse(

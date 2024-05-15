@@ -26,10 +26,10 @@ import java.lang.annotation.Target;
         parameters = {
                 @Parameter(
                         name = "id",
-                        description = "The unique identifier of the employee",
+                        description = "The unique identifier of the user",
                         required = true,
                         in = ParameterIn.PATH,
-                        schema = @Schema(type = "string", format = "uuid"),
+                        schema = @Schema(type = "string", format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example existing Id",

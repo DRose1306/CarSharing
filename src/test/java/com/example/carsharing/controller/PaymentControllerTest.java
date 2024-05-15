@@ -64,7 +64,7 @@ class PaymentControllerTest {
     void getPaymentByIdTestWithException() throws Exception {
 
         mockMvc.perform(get("/payment/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
@@ -79,10 +79,10 @@ class PaymentControllerTest {
 
     @Test
     void deletePaymentByIdTestWithException() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/payment/delete/92683b96-579e-4fee-9329-b442639582e7"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/payment/delete/93683b96-579e-4fee-9329-b442639582e7"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("{\"message\":\"EMPLOYEE_NOT_EXIST\",\"errorCode\":\"NOT_FOUND\"}"))
+                .andExpect(content().json("{\"message\":\"PAYMENT_NOT_EXIST_EXCEPTION\",\"errorCode\":\"NOT_FOUND\"}"))
                 .andReturn();
     }
 
@@ -110,7 +110,7 @@ class PaymentControllerTest {
     @Test
     void updatePaymentByIdTest() throws Exception{
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/payment/update/92683b96-579e-4fee-9329-b442639582e7")
+                .perform(MockMvcRequestBuilders.get("/payment/get/92683b96-579e-4fee-9329-b442639582e7")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String paymentJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -118,7 +118,7 @@ class PaymentControllerTest {
         System.out.println("Payment Before Update: " + paymentBeforeUpdate);
 
         Payment payment = ExpectedData.returnPaymentById();
-        payment.setPaymentDate(LocalDateTime.parse("2024-04-10 19:00:00"));
+        payment.setPaymentDate(LocalDateTime.parse("2024-04-10T19:00:00"));
 
         String updatedPaymentJSON = objectMapper.writeValueAsString(payment);
 

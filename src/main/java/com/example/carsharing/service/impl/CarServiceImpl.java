@@ -11,12 +11,15 @@ import com.example.carsharing.mapper.CarMapper;
 import com.example.carsharing.repository.CarRepository;
 import com.example.carsharing.service.interfaces.CarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Objects;
-import java.util.UUID;
+import java.beans.PropertyDescriptor;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -38,10 +41,10 @@ public class CarServiceImpl implements CarService {
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public String deleteCarById(UUID id) {
         Car car = carRepository.getCarByCarId(id);
-        if (car != null){
+        if (car != null) {
             carRepository.deleteById(id);
             return "Car with this ID was deleted SUCCESSFULLY";
-        }else {
+        } else {
             throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
         }
     }
@@ -60,16 +63,35 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public Car updateCarById(UUID id, CarCreateDto carCreateDto) {
+    public Car updateCarById(UUID id, Car updatingCar) {
         Car car = showCar(id);
-
-        if (car != null){
-            car.setYearOfRelease(Objects.equals(car.getYearOfRelease(), carCreateDto.getYearOfRelease()) ? car.getYearOfRelease() : carCreateDto.getYearOfRelease());
-            car.setLicensePlate(Objects.equals(car.getLicensePlate(), carCreateDto.getLicensePlate()) ? car.getLicensePlate() : carCreateDto.getLicensePlate());
-            car.setBrand(Objects.equals(car.getBrand(), carCreateDto.getBrand()) ? car.getBrand() : carCreateDto.getBrand());
-            car.setStatus(CarStatus.AVAILABLE);
+        if (car == null) {
+            throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
         }
 
+        // Получаем список имен свойств, которые имеют значение null в объекте updatingCar
+        Set<String> nullProperties = getNullPropertyNames(updatingCar);
+        // Копируем только не null значения из объекта updatingCar в существующий объект car
+        BeanUtils.copyProperties(updatingCar, car, nullProperties.toArray(new String[0]));
+        // Устанавливаем статус автомобиля как AVAILABLE
+        car.setStatus(CarStatus.AVAILABLE);
+
+        // Сохраняем обновленный автомобиль в базе данных
         return carRepository.saveAndFlush(car);
+    }
+
+    // Метод для получения списка имен свойств, значения которых равны null
+    private Set<String> getNullPropertyNames(Object object) {
+        final BeanWrapper src = new BeanWrapperImpl(object);
+        PropertyDescriptor[] descriptors = src.getPropertyDescriptors();
+
+        Set<String> nullProperties = new HashSet<>();
+        Arrays.stream(descriptors).forEach(descriptor -> {
+            Object propertyValue = src.getPropertyValue(descriptor.getName());
+            if (propertyValue == null) {
+                nullProperties.add(descriptor.getName());
+            }
+        });
+        return nullProperties;
     }
 }

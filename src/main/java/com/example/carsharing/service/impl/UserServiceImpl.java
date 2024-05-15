@@ -2,7 +2,6 @@ package com.example.carsharing.service.impl;
 
 import com.example.carsharing.dto.UserAfterRegistrationDto;
 import com.example.carsharing.dto.UserRegistrationDto;
-import com.example.carsharing.entity.Address;
 import com.example.carsharing.entity.Role;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.entity.UserInfo;
@@ -17,14 +16,13 @@ import com.example.carsharing.repository.UserInfoRepository;
 import com.example.carsharing.repository.UserRepository;
 import com.example.carsharing.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.beans.*;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -42,6 +40,12 @@ public class UserServiceImpl implements UserService {
             throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
         }
         return user;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @Override
@@ -78,61 +82,34 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public User updateUserById(UUID id, User user) {
-        User getUser = getUserById(id);
-        if (getUser != null) {
-            User comparedUser = compareUsers(getUser, user);
-
-            return userRepository.save(comparedUser);
+    public User updateUserById(UUID id, User updating) {
+        User updated = userRepository.getUserByUserId(id);
+        if (updated == null) {
+            throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
         }
-        return null;
+
+        // Получаем список имен свойств, которые имеют значение null в обновленном объекте
+        Set<String> nullProperties = getNullPropertyNames(updating);
+        // Копируем только не null значения из обновленного объекта в существующий объект
+        BeanUtils.copyProperties(updating, updated, nullProperties.toArray(new String[0]));
+        // Сохраняем обновленного пользователя в базе данных
+        updated = userRepository.save(updated);
+
+        return updated;
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+    // Метод для получения списка имен свойств, значения которых равны null
+    private Set<String> getNullPropertyNames(Object object) {
+        final BeanWrapper src = new BeanWrapperImpl(object);
+        PropertyDescriptor[] descriptors = src.getPropertyDescriptors();
 
-    public User compareUsers(User updated, User updating) {
-        User comparedUser = new User();
-
-        comparedUser.setFirstName(Objects.equals(updated.getFirstName(), updating.getFirstName()) ? updated.getFirstName() : updating.getFirstName());
-        comparedUser.setLastName(Objects.equals(updated.getLastName(), updating.getLastName()) ? updated.getLastName() : updating.getLastName());
-
-        UserInfo comparedUserInfo = compareUserInfo(updated.getUserInfo(), updating.getUserInfo());
-        comparedUser.setUserInfo(comparedUserInfo);
-
-        return comparedUser;
-    }
-
-    public UserInfo compareUserInfo(UserInfo updated, UserInfo updating) {
-        UserInfo comparedUserInfo = new UserInfo();
-
-        comparedUserInfo.setDateOfBirth(Objects.equals(updated.getDateOfBirth(), updating.getDateOfBirth()) ? updated.getDateOfBirth() : updating.getDateOfBirth());
-        comparedUserInfo.setPhoneNumber(Objects.equals(updated.getPhoneNumber(), updating.getPhoneNumber()) ? updated.getPhoneNumber() : updating.getPhoneNumber());
-        comparedUserInfo.setEmail(Objects.equals(updated.getEmail(), updating.getEmail()) ? updated.getEmail() : updating.getEmail());
-        comparedUserInfo.setLogin(Objects.equals(updated.getLogin(), updating.getLogin()) ? updated.getLogin() : updating.getLogin());
-        comparedUserInfo.setPassword(Objects.equals(updated.getPassword(), updating.getPassword()) ? updated.getPassword() : updating.getPassword());
-        comparedUserInfo.setCardNumber(Objects.equals(updated.getCardNumber(), updating.getCardNumber()) ? updated.getCardNumber() : updating.getCardNumber());
-        comparedUserInfo.setDriverLicense(Objects.equals(updated.getDriverLicense(), updating.getDriverLicense()) ? updated.getDriverLicense() : updating.getDriverLicense());
-        comparedUserInfo.setDriverLicenseIdentifier(Objects.equals(updated.getDriverLicenseIdentifier(), updating.getDriverLicenseIdentifier()) ? updated.getDriverLicenseIdentifier() : updating.getDriverLicenseIdentifier());
-
-        Address comparedAddress = compareAddress(updated.getAddress(), updating.getAddress());
-        comparedUserInfo.setAddress(comparedAddress);
-
-        return comparedUserInfo;
-    }
-
-    private Address compareAddress(Address updated, Address updating) {
-        Address comparedAddress = new Address();
-
-        comparedAddress.setStreet(Objects.equals(updated.getStreet(), updating.getStreet()) ? updated.getStreet() : updating.getStreet());
-        comparedAddress.setHouseNumber(Objects.equals(updated.getHouseNumber(), updating.getHouseNumber()) ? updated.getHouseNumber() : updating.getHouseNumber());
-        comparedAddress.setCity(Objects.equals(updated.getCity(), updating.getCity()) ? updated.getCity() : updating.getCity());
-        comparedAddress.setZipCode(Objects.equals(updated.getZipCode(), updating.getZipCode()) ? updated.getZipCode() : updating.getZipCode());
-        comparedAddress.setCountry(Objects.equals(updated.getCountry(), updating.getCountry()) ? updated.getCountry() : updating.getCountry());
-
-        return comparedAddress;
+        Set<String> nullProperties = new HashSet<>();
+        Arrays.stream(descriptors).forEach(descriptor -> {
+            Object propertyValue = src.getPropertyValue(descriptor.getName());
+            if (propertyValue == null) {
+                nullProperties.add(descriptor.getName());
+            }
+        });
+        return nullProperties;
     }
 }

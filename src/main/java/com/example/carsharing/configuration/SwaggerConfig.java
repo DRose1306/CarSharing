@@ -33,6 +33,7 @@ public class SwaggerConfig {
         public static final String CAR = "car service";
         public static final String PAYMENT = "payment service";
         public static final String TRIP = "trip service";
+
         public static final String USER = "user service";
 
         @Bean

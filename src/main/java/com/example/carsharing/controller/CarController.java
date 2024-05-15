@@ -9,6 +9,7 @@ import com.example.carsharing.dto.CarCreateDto;
 import com.example.carsharing.entity.Car;
 import com.example.carsharing.service.interfaces.CarService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -41,7 +42,7 @@ public class CarController {
     }
 
     @UpdateCar(path = "/update_car/{id}")
-    public Car updateCar(@PathVariable("id") @UuidFormatChecker String id, @RequestBody CarCreateDto carCreateDto) {
-        return carService.updateCarById(UUID.fromString(id), carCreateDto);
+    public Car updateCar(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid Car car) {
+        return carService.updateCarById(UUID.fromString(id), car);
     }
 }

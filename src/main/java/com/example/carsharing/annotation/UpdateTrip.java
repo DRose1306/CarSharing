@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
                         description = "The unique identifier of the trip",
                         required = true,
                         in = ParameterIn.PATH,
-                        schema = @Schema(format = "uuid"),
+                        schema = @Schema(format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Good Id",
