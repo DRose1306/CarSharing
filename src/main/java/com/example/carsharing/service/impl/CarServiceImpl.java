@@ -73,8 +73,6 @@ public class CarServiceImpl implements CarService {
         Set<String> nullProperties = getNullPropertyNames(updatingCar);
         // Копируем только не null значения из объекта updatingCar в существующий объект car
         BeanUtils.copyProperties(updatingCar, car, nullProperties.toArray(new String[0]));
-        // Устанавливаем статус автомобиля как AVAILABLE
-        car.setStatus(CarStatus.AVAILABLE);
 
         // Сохраняем обновленный автомобиль в базе данных
         return carRepository.saveAndFlush(car);

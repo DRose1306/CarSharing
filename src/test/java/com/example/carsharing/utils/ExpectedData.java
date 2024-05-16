@@ -8,6 +8,7 @@ import com.example.carsharing.entity.*;
 import com.example.carsharing.entity.enums.*;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -84,6 +85,8 @@ public class ExpectedData {
         car.setLicensePlate("OS-OS5");
         car.setStatus(CarStatus.IN_USE);
         car.setBrand(CarBrand.HONDA);
+        car.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+
 
         return car;
     }

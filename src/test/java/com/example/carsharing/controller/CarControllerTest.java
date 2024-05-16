@@ -112,11 +112,10 @@ class CarControllerTest {
         System.out.println(jsonResult);
     }
 
-    //TODO проблема при десериализации CarStatus
     @Test
     void updateCarByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/car/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
+                .perform(MockMvcRequestBuilders.get("/сar/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String carJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -124,12 +123,12 @@ class CarControllerTest {
         System.out.println("Car Before Update: " + carBeforeUpdate);
 
         Car car = ExpectedData.returnCarById();
-        carBeforeUpdate.setYearOfRelease("2007");
+        car.setYearOfRelease("2007");
 
         String updatedCarJSON = objectMapper.writeValueAsString(car);
 
         MvcResult updateResult = mockMvc
-                .perform(MockMvcRequestBuilders.put("/car/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
+                .perform(MockMvcRequestBuilders.put("/сar/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(updatedCarJSON))
                 .andExpect(status().isOk())
@@ -142,8 +141,6 @@ class CarControllerTest {
 
         Assertions.assertEquals(car, carAfterUpdate);
     }
-
-
 
     @Test
     void updateUserByIdWithException() throws Exception {

@@ -106,7 +106,7 @@ class UserControllerTest {
     @Test
     void updateUserByIdTest() throws Exception{
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/user/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
+                .perform(MockMvcRequestBuilders.get("/user/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String userJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -114,7 +114,7 @@ class UserControllerTest {
         System.out.println("User Before Update: " + userBeforeUpdate);
 
         User user = ExpectedData.returnUserById();
-        user.setFirstName("Mike");
+        user.setFirstName("Oli");
 
         String updatedUserJSON = objectMapper.writeValueAsString(user);
 
