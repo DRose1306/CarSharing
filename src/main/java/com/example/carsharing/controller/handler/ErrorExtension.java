@@ -1,4 +1,4 @@
-package com.example.carsharing.handler;
+package com.example.carsharing.controller.handler;
 
 import lombok.Value;
 import org.springframework.http.HttpStatus;

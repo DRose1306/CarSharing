@@ -1,4 +1,4 @@
-package com.example.carsharing.handler;
+package com.example.carsharing.controller.handler;
 
 import com.example.carsharing.exception.*;
 import jakarta.validation.ConstraintViolationException;

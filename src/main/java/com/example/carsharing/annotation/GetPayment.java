@@ -1,7 +1,7 @@
 package com.example.carsharing.annotation;
 
 import com.example.carsharing.entity.Payment;
-import com.example.carsharing.handler.ResponseExceptionHandler;
+import com.example.carsharing.controller.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
