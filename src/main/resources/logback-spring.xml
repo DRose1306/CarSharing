@@ -26,36 +26,44 @@
 <!--        <property name="bufferSize" value="256" />-->
 <!--    </appender>-->
 
-    <appender name="FILE"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>
-            logback.log
-        </file>
+<!--    <appender name="FILE"-->
+<!--              class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>-->
+<!--            logback.log-->
+<!--        </file>-->
 
-        <rollingPolicy
-                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                logback.%d{yyyy-MM-dd}.log
-            </fileNamePattern>
+<!--        <rollingPolicy-->
+<!--                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>-->
+<!--                logback.%d{yyyy-MM-dd}.log-->
+<!--            </fileNamePattern>-->
 
-            <maxHistory>10</maxHistory>
+<!--            <maxHistory>10</maxHistory>-->
 
-            <totalSizeCap>1GB</totalSizeCap>
+<!--            <totalSizeCap>1GB</totalSizeCap>-->
 
-        </rollingPolicy>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} -%msg%n
-            </Pattern>
-        </layout>
-        <encoder>
-            <pattern>
-                %d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n
-            </pattern>
+<!--        </rollingPolicy>-->
+<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--            <Pattern>-->
+<!--                %d{yyyy-MM-dd HH:mm:ss} -%msg%n-->
+<!--            </Pattern>-->
+<!--        </layout>-->
+<!--        <encoder>-->
+<!--            <pattern>-->
+<!--                %d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n-->
+<!--            </pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>testFile.log</file>
+        ...
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
 <!--        <appender-ref ref="dbAppender"/>-->
