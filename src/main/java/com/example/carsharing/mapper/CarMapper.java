@@ -8,7 +8,7 @@ import org.mapstruct.*;
 import java.sql.Timestamp;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
-        imports = Timestamp.class ,unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        imports = Timestamp.class, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CarMapper {
     @Mappings({
             @Mapping(target = "yearOfRelease", source = "yearOfRelease"),

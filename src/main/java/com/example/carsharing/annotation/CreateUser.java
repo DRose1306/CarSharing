@@ -33,14 +33,14 @@ import java.lang.annotation.Target;
                         examples = {
                                 @ExampleObject(name = "Good request",
                                         value = """
-                                        {
-                                            "firstName" : "Max",
-                                            "lastName" : "Mustermann",
-                                            "dateOfBirth" : "2000-01-01",
-                                            "email" : "maxmustermann@gmail.com",
-                                            "driverLicense" : "DE789012345680",
-                                            "driverLicenseIdentifier" : "B",
-                                        }"""),
+                                                {
+                                                    "firstName" : "Max",
+                                                    "lastName" : "Mustermann",
+                                                    "dateOfBirth" : "2000-01-01",
+                                                    "email" : "maxmustermann@gmail.com",
+                                                    "driverLicense" : "DE789012345680",
+                                                    "driverLicenseIdentifier" : "B",
+                                                }"""),
                                 @ExampleObject(name = "Request with existing email",
                                         value = """
                                                 {

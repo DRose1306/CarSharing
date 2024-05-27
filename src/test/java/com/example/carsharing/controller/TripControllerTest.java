@@ -107,7 +107,7 @@ class TripControllerTest {
     }
 
     @Test
-    void updateTripByIdTest() throws Exception{
+    void updateTripByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
                 .perform(MockMvcRequestBuilders.get("/trip/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -136,7 +136,7 @@ class TripControllerTest {
     }
 
     @Test
-    void updateUserByIdWithException() throws Exception{
+    void updateUserByIdWithException() throws Exception {
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"end_time\": 2024-08-25T17:30:00}";
 

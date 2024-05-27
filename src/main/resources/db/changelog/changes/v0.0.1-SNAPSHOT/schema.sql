@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS user_info (
         ON DELETE SET NULL
 );
 
-
 CREATE TABLE IF NOT EXISTS cars (
     car_id BINARY(16) PRIMARY KEY,
     year_of_release VARCHAR(10) NOT NULL,
@@ -69,7 +68,6 @@ CREATE TABLE IF NOT EXISTS users (
         REFERENCES user_info (user_info_id)
         ON DELETE CASCADE
 );
-
 
 CREATE TABLE IF NOT EXISTS trips (
     trip_id BINARY(16) PRIMARY KEY,
@@ -99,7 +97,6 @@ CREATE TABLE IF NOT EXISTS payments (
         ON DELETE CASCADE
 );
 
-
 CREATE TABLE IF NOT EXISTS reservations (
     reservation_id BINARY(16) PRIMARY KEY,
     start_time DATETIME DEFAULT NULL,
@@ -113,7 +110,6 @@ CREATE TABLE IF NOT EXISTS reservations (
         REFERENCES users (user_id)
         ON DELETE CASCADE
 );
-
 
 CREATE TABLE IF NOT EXISTS user_info_role (
     user_info_id BINARY(16) NOT NULL,

@@ -81,7 +81,7 @@ import java.lang.annotation.Target;
 )
 
 public @interface ShowCar {
-        @AliasFor(annotation = RequestMapping.class, attribute = "path")
-        String[] path() default {};
+    @AliasFor(annotation = RequestMapping.class, attribute = "path")
+    String[] path() default {};
 
 }

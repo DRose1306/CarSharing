@@ -8,7 +8,10 @@ import java.util.UUID;
 
 public interface CarService {
     Car showCar(UUID id);
+
     String deleteCarById(UUID id);
+
     CarAfterCreationDto addCar(CarCreateDto carCreateDto);
+
     Car updateCarById(UUID id, Car car);
 }

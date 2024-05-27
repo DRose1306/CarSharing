@@ -29,42 +29,42 @@ import java.lang.annotation.Target;
                 content = @Content(
                         mediaType = "application/json",
                         schema = @Schema(implementation = Car.class),
-                        examples= {
-                        @ExampleObject(name = "Good request",
-                                value = """
-                                        {
-                                            "yearOfRelease": "2022",
-                                            "licensePlate": "B B1",
-                                            "brand": "HONDA",
-                                        }"""),
-                        @ExampleObject(name = "Request with existing license plate",
-                                value = """
-                                        {
-                                            "yearOfRelease": "2020",
-                                            "licensePlate": "B B1",
-                                            "brand": "AUDI",
-                                        }"""),
-                       }
+                        examples = {
+                                @ExampleObject(name = "Good request",
+                                        value = """
+                                                {
+                                                    "yearOfRelease": "2022",
+                                                    "licensePlate": "B B1",
+                                                    "brand": "HONDA",
+                                                }"""),
+                                @ExampleObject(name = "Request with existing license plate",
+                                        value = """
+                                                {
+                                                    "yearOfRelease": "2020",
+                                                    "licensePlate": "B B1",
+                                                    "brand": "AUDI",
+                                                }"""),
+                        }
                 )
         ),
-        responses={
-        @ApiResponse(
-                responseCode = "201",
-                description = "The car created",
-                content = @Content(
-                        mediaType = "application/json",
-                        schema = @Schema(implementation = Car.class)
+        responses = {
+                @ApiResponse(
+                        responseCode = "201",
+                        description = "The car created",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = Car.class)
+                        )
+                ),
+                @ApiResponse(
+                        responseCode = "400",
+                        description = "The car already exist",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ResponseExceptionHandler.class)
+                        )
                 )
-        ),
-        @ApiResponse(
-                responseCode = "400",
-                description = "The car already exist",
-                content = @Content(
-                        mediaType = "application/json",
-                        schema = @Schema(implementation = ResponseExceptionHandler.class)
-                )
-        )
-}
+        }
 )
 public @interface AddCar {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")

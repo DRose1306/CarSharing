@@ -4,7 +4,7 @@ import com.example.carsharing.entity.enums.PaymentMethod;
 import lombok.Data;
 
 @Data
-public class PaymentCreateDto  {
+public class PaymentCreateDto {
     double amount;
     String paymentDate;
     PaymentMethod paymentMethod;

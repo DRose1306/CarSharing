@@ -42,10 +42,10 @@ public class PaymentServiceImpl implements PaymentService {
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public String deletePaymentById(UUID id) {
         Payment payment = paymentRepository.getPaymentByPaymentId(id);
-        if (payment != null){
+        if (payment != null) {
             paymentRepository.deleteById(id);
             return "Payment with this ID was deleted SUCCESSFULLY";
-        }else {
+        } else {
             throw new PaymentNotExistException(ErrorMessage.PAYMENT_NOT_EXIST);
         }
     }
@@ -74,7 +74,7 @@ public class PaymentServiceImpl implements PaymentService {
     public Payment updatePaymentById(UUID id, PaymentCreateDto paymentCreateDto) {
         Payment payment = getPaymentById(id);
 
-        if (payment != null){
+        if (payment != null) {
             payment.setAmount(Objects.equals(payment.getAmount(), paymentCreateDto.getAmount()) ? payment.getAmount() : paymentCreateDto.getAmount());
             payment.setPaymentDate(Objects.equals(payment.getPaymentDate(), paymentCreateDto.getPaymentDate()) ? payment.getPaymentDate() : LocalDateTime.parse(paymentCreateDto.getPaymentDate()));
             payment.setPaymentMethod(Objects.equals(payment.getPaymentMethod(), paymentCreateDto.getPaymentMethod()) ? payment.getPaymentMethod() : paymentCreateDto.getPaymentMethod());

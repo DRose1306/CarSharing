@@ -88,17 +88,14 @@ public class UserServiceImpl implements UserService {
             throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
         }
 
-        // Получаем список имен свойств, которые имеют значение null в обновленном объекте
         Set<String> nullProperties = getNullPropertyNames(updating);
-        // Копируем только не null значения из обновленного объекта в существующий объект
         BeanUtils.copyProperties(updating, updated, nullProperties.toArray(new String[0]));
-        // Сохраняем обновленного пользователя в базе данных
+
         updated = userRepository.save(updated);
 
         return updated;
     }
 
-    // Метод для получения списка имен свойств, значения которых равны null
     private Set<String> getNullPropertyNames(Object object) {
         final BeanWrapper src = new BeanWrapperImpl(object);
         PropertyDescriptor[] descriptors = src.getPropertyDescriptors();

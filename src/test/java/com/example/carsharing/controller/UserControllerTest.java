@@ -4,6 +4,7 @@ import com.example.carsharing.dto.UserAfterRegistrationDto;
 import com.example.carsharing.dto.UserRegistrationDto;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.utils.ExpectedData;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -65,6 +70,17 @@ class UserControllerTest {
     }
 
     @Test
+    void getAllUsersTest() throws Exception {
+        User user = ExpectedData.returnUserById();
+        List<User> userListExtend = Arrays.asList(user, user, user, user, user);
+        MvcResult userResult = gelAllUsers();
+        String userResultJSON = userResult.getResponse().getContentAsString();
+        List<User> userList = objectMapper.readValue(userResultJSON, new TypeReference<>() {
+        });
+        assertEquals(userListExtend.size(), userList.size());
+    }
+
+    @Test
     void deleteUserByIdTestPositive() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/delete/55035fe9-37e3-466f-ba4a-197f23fc5700"))
                 .andExpect(status().isOk())
@@ -104,7 +120,7 @@ class UserControllerTest {
     }
 
     @Test
-    void updateUserByIdTest() throws Exception{
+    void updateUserByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
                 .perform(MockMvcRequestBuilders.get("/user/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -129,11 +145,11 @@ class UserControllerTest {
         User userAfterUpdate = objectMapper.readValue(updatedUserFromDB, User.class);
         System.out.println("User After Update: " + userAfterUpdate);
 
-        Assertions.assertEquals(user,userAfterUpdate);
+        Assertions.assertEquals(user, userAfterUpdate);
     }
 
     @Test
-    void updateUserByIdWithException() throws Exception{
+    void updateUserByIdWithException() throws Exception {
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"first_name\": Mike}";
 
@@ -142,5 +158,11 @@ class UserControllerTest {
                         .content(requestBody))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PROBLEM_JSON));
+    }
+
+    private MvcResult gelAllUsers() throws Exception {
+        return mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/user/get_all")).andExpect(status().isOk()).andReturn();
     }
 }

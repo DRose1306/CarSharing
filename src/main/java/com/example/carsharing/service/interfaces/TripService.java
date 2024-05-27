@@ -8,7 +8,10 @@ import java.util.UUID;
 
 public interface TripService {
     Trip getTripById(UUID id);
+
     String deleteTripById(UUID id);
+
     TripAfterCreationDto createTrip(TripCreateDto tripCreateDto);
+
     Trip updateTripById(UUID id, TripCreateDto tripCreateDto);
 }

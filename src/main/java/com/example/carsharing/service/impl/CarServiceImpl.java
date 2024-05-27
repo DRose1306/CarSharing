@@ -3,7 +3,6 @@ package com.example.carsharing.service.impl;
 import com.example.carsharing.dto.CarAfterCreationDto;
 import com.example.carsharing.dto.CarCreateDto;
 import com.example.carsharing.entity.Car;
-import com.example.carsharing.entity.enums.CarStatus;
 import com.example.carsharing.exception.CarAlreadyExistException;
 import com.example.carsharing.exception.CarNotExistException;
 import com.example.carsharing.exception.message.ErrorMessage;
@@ -69,16 +68,12 @@ public class CarServiceImpl implements CarService {
             throw new CarNotExistException(ErrorMessage.CAR_NOT_EXIST);
         }
 
-        // Получаем список имен свойств, которые имеют значение null в объекте updatingCar
         Set<String> nullProperties = getNullPropertyNames(updatingCar);
-        // Копируем только не null значения из объекта updatingCar в существующий объект car
         BeanUtils.copyProperties(updatingCar, car, nullProperties.toArray(new String[0]));
 
-        // Сохраняем обновленный автомобиль в базе данных
         return carRepository.saveAndFlush(car);
     }
 
-    // Метод для получения списка имен свойств, значения которых равны null
     private Set<String> getNullPropertyNames(Object object) {
         final BeanWrapper src = new BeanWrapperImpl(object);
         PropertyDescriptor[] descriptors = src.getPropertyDescriptors();

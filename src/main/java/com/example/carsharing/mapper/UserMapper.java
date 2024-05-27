@@ -21,7 +21,7 @@ public interface UserMapper {
             @Mapping(target = "firstName", source = "firstName"),
             @Mapping(target = "lastName", source = "lastName"),
             @Mapping(target = "createdAt", expression = "java(new Timestamp(System.currentTimeMillis()))"),
-            @Mapping(target = "userInfo", source = "userRegistrationDto"), //TODO не видит
+            @Mapping(target = "userInfo", source = "userRegistrationDto"),
             @Mapping(target = "userInfo.login", ignore = true),
             @Mapping(target = "userInfo.password", ignore = true),
             @Mapping(target = "userId", ignore = true)

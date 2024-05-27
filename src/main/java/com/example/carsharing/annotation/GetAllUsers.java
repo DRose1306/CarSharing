@@ -3,7 +3,6 @@ package com.example.carsharing.annotation;
 
 import com.example.carsharing.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.StringToClassMapItem;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -27,7 +26,7 @@ import java.lang.annotation.Target;
                         description = "users received and returned",
                         content = @Content(
                                 mediaType = "application/json",
-                                array = @ArraySchema(schema = @Schema(implementation = User.class),minItems = 2)
+                                array = @ArraySchema(schema = @Schema(implementation = User.class), minItems = 2)
                         )
                 ),
                 @ApiResponse(

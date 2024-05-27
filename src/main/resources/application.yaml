@@ -1,8 +1,9 @@
+server:
+  port: 8080
 spring:
   main:
     banner-mode: off
 
-  # Конфигурация базы данных
   datasource:
     url: jdbc:mysql://localhost:3306/carsharing
     username: root
@@ -17,24 +18,17 @@ spring:
       ddl-auto: none
     open-in-view: false
 
-  # Конфигурация инициализации базы данных
-  sql:
-    init:
-      schema-locations:
-        classpath:db/schema.sql
-      data-locations:
-        classpath:db/data.sql
-      mode: always
+#  sql:
+#    init:
+#      schema-locations:
+#        classpath:db/changelog/changes/v0.0.1-SNAPSHOT/schema.sql
+#      data-locations:
+#        classpath:db/changelog/changes/v0.0.1-SNAPSHOT/data.sql
+#      mode: always
 
-#logging:
-#  level:
-#    root: INFO
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
 
-  # Конфигурация базы данных для логгов
-  datasource2:
-    url: jdbc:mysql://localhost:3306/carsharing_log_db
-    username: root
-    password: 14131103
-    hikari:
-      username: root
-      password: 14131103
+  logging:
+    level:
+      root: info

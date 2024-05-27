@@ -33,12 +33,12 @@ public class PaymentController {
 
     @CreatePayment(path = "/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public PaymentAfterCreationDto createPayment(@RequestBody PaymentCreateDto paymentCreateDto){
+    public PaymentAfterCreationDto createPayment(@RequestBody PaymentCreateDto paymentCreateDto) {
         return paymentService.createPayment(paymentCreateDto);
     }
 
     @UpdatePayment(path = "/update/{id}")
-    public Payment updatePayment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody PaymentCreateDto paymentCreateDto){
+    public Payment updatePayment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody PaymentCreateDto paymentCreateDto) {
         return paymentService.updatePaymentById(UUID.fromString(id), paymentCreateDto);
     }
 }

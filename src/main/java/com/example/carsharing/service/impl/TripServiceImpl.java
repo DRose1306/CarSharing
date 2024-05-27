@@ -33,7 +33,7 @@ public class TripServiceImpl implements TripService {
     private final CarRepository carRepository;
 
     @Override
-    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Trip getTripById(UUID id) {
         Trip trip = tripRepository.getTripByTripId(id);
         if (trip == null) {

@@ -1,4 +1,3 @@
--- Вставка ролей в таблицу "roles"
 INSERT INTO roles (role_id, role_name)
 VALUES
     (UUID_TO_BIN('a91521fa-1254-4467-bfc1-543adb21a1a1'), 'ADMIN'),
@@ -6,7 +5,6 @@ VALUES
     (UUID_TO_BIN('b3143434-372f-4793-833c-b85fc6fa9352'), 'USER'),
     (UUID_TO_BIN('9056be05-6f66-4a05-8459-ce9df8b13bc8'), 'GUEST');
 
--- Вставка прав в таблицу "authorities"
 INSERT INTO authorities (auth_id, authority)
 VALUES
     (UUID_TO_BIN('d43f3c7d-510f-43ac-9b5c-6d36645729cc'), 'CREATE'),
@@ -14,7 +12,6 @@ VALUES
     (UUID_TO_BIN('199a7c89-0ea8-4418-9b6d-9c47cb75e6fc'), 'UPDATE'),
     (UUID_TO_BIN('8f32c432-a132-42b7-8f60-be099e2f41f0'), 'DELETE');
 
--- Вставка данных в таблицу "addresses"
 INSERT INTO addresses (address_id, street, house_number, city, zip_code, country)
 VALUES
     (UUID_TO_BIN('665714b8-d6d8-4e33-99ce-38e0560faaa6'), 'Alexanderplatz', '10', 'Berlin', '10178', 'Germany'),
@@ -23,8 +20,6 @@ VALUES
     (UUID_TO_BIN('eef03e06-b85b-4c01-ae76-fd227a6bd849'), 'Königstraße', '40', 'Stuttgart', '70173', 'Germany'),
     (UUID_TO_BIN('3d4a0065-0e7e-434e-ab10-735a964a2dfd'), 'Neumarkt', '50', 'Osnabrück', '49074', 'Germany');
 
-
--- Вставка персональных данных в таблицу "user_info"
 INSERT INTO user_info (user_info_id, date_of_birth, phone_number, email, user_login, user_password, card_number, driver_license, driver_licence_id, address_id)
 VALUES
     (UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3'), '1992-06-30', '111-222-333', 'michael@example.com', 'MJ' ,'d2ecce31ab3f5a11d0f6d389f68686c75c80ead1857c7f38d21fecd4da1209b5', '1234 5678 9012 3456','B', 'DE123456789012', UUID_TO_BIN('665714b8-d6d8-4e33-99ce-38e0560faaa6')),
@@ -33,9 +28,6 @@ VALUES
     (UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad'), '1995-04-05', '123-456-789', 'olivia@example.com', 'Oli' ,'c7b702284ddd187ddb240fa0ee6d77019e280eedbec7290c886a7dd193fb0e99', '8642 9753 2106 4832','B', 'DE321098765432' , UUID_TO_BIN('eef03e06-b85b-4c01-ae76-fd227a6bd849')),
     (UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'), '1990-10-20', '987-654-321', 'william@example.com', 'WillWilson' ,'37c60d066e0fc140a4751f274112a25d5b263f4f0dec1e6c555ee2178387b1c8', '7531 8642 3069 1752','B', 'DE789012345678' , UUID_TO_BIN('3d4a0065-0e7e-434e-ab10-735a964a2dfd'));
 
-
-
--- Вставка данных в таблицу "cars"
 INSERT INTO cars (car_id, year_of_release, license_plate, car_status, car_brand)
 VALUES
     (UUID_TO_BIN('ef6869b7-2402-48c7-bff4-141563be2d8c'), '2020', 'B-B1', 'IN_USE', 'AUDI'),
@@ -44,7 +36,6 @@ VALUES
     (UUID_TO_BIN('88a71c7e-d011-40e3-b9b5-78315c983b21'), '2022', 'S-S4', 'IN_USE', 'SKODA'),
     (UUID_TO_BIN('2e88a78d-b4a7-4a00-b590-4d0f7abe6c04'), '2019', 'OS-OS5', 'IN_USE', 'HONDA');
 
--- Вставка в таблицу "users"
 INSERT INTO users (user_id, first_name, last_name, user_info_id)
 VALUES
     (UUID_TO_BIN('7270910c-cc71-4634-97a0-a242eb5b6064'), 'Michael', 'Johnson', UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3')),
@@ -53,8 +44,6 @@ VALUES
     (UUID_TO_BIN('cd8edecd-0d27-4228-8fe6-911c1cf7fd7c'),'Olivia', 'Martinez', UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad')),
     (UUID_TO_BIN('7881bf3e-73a9-47da-8bae-e2e253a30ddd'),'William', 'Wilson', UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'));
 
-
--- Вставка данных таблицу "trips"
 INSERT INTO trips (trip_id, start_time, end_time, distance, cost, user_id, car_id)
 VALUES
     (UUID_TO_BIN('99b46424-5a60-45a0-b378-cbe9f8a49c73'), '2024-04-20 09:00:00', '2024-04-10 19:00:00', 100.0, 100.00, UUID_TO_BIN('7270910c-cc71-4634-97a0-a242eb5b6064'), UUID_TO_BIN('ef6869b7-2402-48c7-bff4-141563be2d8c')),
@@ -63,8 +52,6 @@ VALUES
     (UUID_TO_BIN('7df490a2-08a9-4c44-8fa0-476c904cd4d5'), '2024-07-15 10:00:00', '2024-07-10 23:00:00', 400.0, 400.00, UUID_TO_BIN('cd8edecd-0d27-4228-8fe6-911c1cf7fd7c'), UUID_TO_BIN('88a71c7e-d011-40e3-b9b5-78315c983b21')),
     (UUID_TO_BIN('0628ad72-9f21-4dd4-98ea-ee08bcfbd36e'), '2024-08-10 00:00:00', '2024-08-25 17:30:00', 500.0, 500.00, UUID_TO_BIN('7881bf3e-73a9-47da-8bae-e2e253a30ddd'), UUID_TO_BIN('2e88a78d-b4a7-4a00-b590-4d0f7abe6c04'));
 
-
--- Вставка данных в таблицу "payments". Связывание событий и сотрудников
 INSERT INTO payments (payment_id, amount, payment_date, payment_method,payment_status, user_id)
 VALUES
     (UUID_TO_BIN('92683b96-579e-4fee-9329-b442639582e7'), 100.00, '2024-04-10 19:00:00', 'VISA', 1, UUID_TO_BIN('7270910c-cc71-4634-97a0-a242eb5b6064')), -- Michael Johnson
@@ -73,8 +60,6 @@ VALUES
     (UUID_TO_BIN('e4931cb9-2dea-4a75-bdf2-262d7361f343'), 400.00, '2024-07-10 23:00:00', 'PAYPAL', 0, UUID_TO_BIN('cd8edecd-0d27-4228-8fe6-911c1cf7fd7c')), -- Olivia Martinez
     (UUID_TO_BIN('ced886c7-61fd-4d5e-9be3-edcfb2efa0c8'), 500.00, '2024-08-25 17:30:00', 'GOOGLE_PAY', 1, UUID_TO_BIN('7881bf3e-73a9-47da-8bae-e2e253a30ddd')); -- William Wilson
 
-
--- Вставка данных о событиях компании в таблицу "reservations"
 INSERT INTO reservations (reservation_id, start_time, end_time, car_id, user_id)
 VALUES
     (UUID_TO_BIN('25203a16-193a-41e8-8a2d-d0ef66738d54'), '2024-04-20 09:00:00', '2024-04-10 19:00:00', UUID_TO_BIN('ef6869b7-2402-48c7-bff4-141563be2d8c'), UUID_TO_BIN('7270910c-cc71-4634-97a0-a242eb5b6064')),
@@ -83,9 +68,6 @@ VALUES
     (UUID_TO_BIN('f1f461ce-b791-415e-a2e8-91cda67feb02'), '2024-07-15 10:00:00', '2024-07-10 23:00:00', UUID_TO_BIN('88a71c7e-d011-40e3-b9b5-78315c983b21'), UUID_TO_BIN('cd8edecd-0d27-4228-8fe6-911c1cf7fd7c')),
     (UUID_TO_BIN('4e6656f5-ebc2-45a2-a181-4253819e2040'), '2024-08-10 00:00:00', '2024-08-25 17:30:00', UUID_TO_BIN('2e88a78d-b4a7-4a00-b590-4d0f7abe6c04'), UUID_TO_BIN('7881bf3e-73a9-47da-8bae-e2e253a30ddd'));
 
-
-
--- Вставка данных в таблицу "user_info_role". Связывание пользователей и ролей
 INSERT INTO user_info_role (user_info_id, role_id)
 VALUES
     (UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3'), UUID_TO_BIN('a91521fa-1254-4467-bfc1-543adb21a1a1')),
@@ -94,7 +76,6 @@ VALUES
     (UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad'), UUID_TO_BIN('b3143434-372f-4793-833c-b85fc6fa9352')),
     (UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'), UUID_TO_BIN('b3143434-372f-4793-833c-b85fc6fa9352'));
 
--- Вставка данных в таблицу "role_authority". Связывание ролей и прав
 INSERT INTO role_authority (role_id, auth_id)
 VALUES
     (UUID_TO_BIN('a91521fa-1254-4467-bfc1-543adb21a1a1'), UUID_TO_BIN('d43f3c7d-510f-43ac-9b5c-6d36645729cc')),

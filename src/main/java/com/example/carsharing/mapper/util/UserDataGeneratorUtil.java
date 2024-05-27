@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 
 public class UserDataGeneratorUtil {
     private static final Faker FAKER = new Faker();
+
     public static Address genAddress() {
         Address address = new Address();
         address.setStreet(FAKER.address().streetName());

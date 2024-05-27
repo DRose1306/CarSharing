@@ -60,7 +60,6 @@ class CarControllerTest {
         Assertions.assertEquals(expectedCar.getStatus(), actualCar.getStatus());
         Assertions.assertEquals(expectedCar.getBrand(), actualCar.getBrand());
 
-        // Проверяем, что поле created_at также присутствует и не является null
         Assertions.assertNotNull(actualCar.getCreatedAt());
     }
 
@@ -134,7 +133,6 @@ class CarControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        // Проверка данных после обновления машины
         String updatedCarFromDB = updateResult.getResponse().getContentAsString();
         Car carAfterUpdate = objectMapper.readValue(updatedCarFromDB, Car.class);
         System.out.println("Car After Update: " + carAfterUpdate);
