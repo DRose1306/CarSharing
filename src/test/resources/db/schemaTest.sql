@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS addresses (
 CREATE TABLE IF NOT EXISTS user_info (
     user_info_id BINARY(16) PRIMARY KEY,
     date_of_birth DATE,
-    phone_number VARCHAR(20) UNIQUE,
+    phone_number VARCHAR(30) UNIQUE,
     email VARCHAR(60) UNIQUE,
     user_login VARCHAR(60) NOT NULL,
     user_password VARCHAR(128) NOT NULL,

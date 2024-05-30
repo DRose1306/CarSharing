@@ -147,6 +147,12 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>4.24.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
@@ -216,6 +222,19 @@
 
                 </executions>
 
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.8.0</version>
+                <configuration>
+                    <changeLogFile>src/main/resources/db/changelog/changes/changelog-master.xml</changeLogFile>
+                    <url>jdbc:mysql://localhost:3306/carsharing</url>
+                    <username>root</username>
+                    <password>14131103</password>
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                </configuration>
             </plugin>
 
         </plugins>

@@ -5,12 +5,12 @@ spring:
     banner-mode: off
 
   datasource:
-    url: jdbc:mysql://localhost:3306/carsharing
+    url: jdbc:mysql://localhost:3306/carsharing?allowMultiQueries=true
     username: root
     password: 14131103
-    hikari:
-      username: root
-      password: 14131103
+#    hikari:
+#      username: root
+#      password: 14131103
 
   jpa:
     show-sql: true
@@ -18,17 +18,14 @@ spring:
       ddl-auto: none
     open-in-view: false
 
-#  sql:
-#    init:
-#      schema-locations:
-#        classpath:db/changelog/changes/v0.0.1-SNAPSHOT/schema.sql
-#      data-locations:
-#        classpath:db/changelog/changes/v0.0.1-SNAPSHOT/data.sql
-#      mode: always
+  #  sql:
+  #    init:
+  #      schema-locations:
+  #        classpath:db/changelog/changes/v0.0.1-SNAPSHOT/schema.sql
+  #      data-locations:
+  #        classpath:db/changelog/changes/v0.0.1-SNAPSHOT/data.sql
+  #      mode: always
 
   liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.xml
-
-  logging:
-    level:
-      root: info
+    change-log: classpath:/db/changelog/changes/changelog-master.xml
+    enabled: true
