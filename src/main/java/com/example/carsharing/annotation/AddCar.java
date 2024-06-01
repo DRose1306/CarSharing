@@ -50,7 +50,7 @@ import java.lang.annotation.Target;
         responses = {
                 @ApiResponse(
                         responseCode = "201",
-                        description = "The car created",
+                        description = "The car added",
                         content = @Content(
                                 mediaType = "application/json",
                                 schema = @Schema(implementation = Car.class)
