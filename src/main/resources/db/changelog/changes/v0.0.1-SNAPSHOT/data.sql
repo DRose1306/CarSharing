@@ -1,9 +1,9 @@
 INSERT INTO roles (role_id, role_name)
 VALUES
-    (UUID_TO_BIN('a91521fa-1254-4467-bfc1-543adb21a1a1'), 'ADMIN'),
-    (UUID_TO_BIN('c4f44897-2aca-4bf1-9d40-c002d18bad39'), 'MANAGER'),
-    (UUID_TO_BIN('b3143434-372f-4793-833c-b85fc6fa9352'), 'USER'),
-    (UUID_TO_BIN('9056be05-6f66-4a05-8459-ce9df8b13bc8'), 'GUEST');
+    (UUID_TO_BIN('a91521fa-1254-4467-bfc1-543adb21a1a1'), 'ROLE_ADMIN'),
+    (UUID_TO_BIN('c4f44897-2aca-4bf1-9d40-c002d18bad39'), 'ROLE_MANAGER'),
+    (UUID_TO_BIN('b3143434-372f-4793-833c-b85fc6fa9352'), 'ROLE_USER'),
+    (UUID_TO_BIN('9056be05-6f66-4a05-8459-ce9df8b13bc8'), 'ROLE_GUEST');
 
 INSERT INTO authorities (auth_id, authority)
 VALUES
@@ -22,11 +22,11 @@ VALUES
 
 INSERT INTO user_info (user_info_id, date_of_birth, phone_number, email, user_login, user_password, card_number, driver_license, driver_licence_id, address_id)
 VALUES
-    (UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3'), '1992-06-30', '111-222-333', 'michael@example.com', 'MJ' ,'d2ecce31ab3f5a11d0f6d389f68686c75c80ead1857c7f38d21fecd4da1209b5', '1234 5678 9012 3456','B', 'DE123456789012', UUID_TO_BIN('665714b8-d6d8-4e33-99ce-38e0560faaa6')),
-    (UUID_TO_BIN('09ff1f4c-1d5c-4168-ab86-f1651e9bab69'), '1987-09-25', '444-555-666', 'emily@example.com', 'Emmy' ,'8dce5f0012304c06d98cfb0cd11bc7eaaafaf32c4da26df424bcdd59ccfe0a5d', '9876 5432 1098 7654','B', 'DE987654321098' , UUID_TO_BIN('8efaced0-9f0a-427c-86a9-0545abda1e8c')),
-    (UUID_TO_BIN('d2ed9087-38fb-4789-806a-7a4c07deb7de'), '1980-12-10', '777-888-999', 'daniel@example.com', 'Di_Brown' ,'15acd26889bccf5865c22aa472ec069cf0a31512f9a53dadc0bc8f2aea3f84cd', '2468 1357 8024 6813','B', 'DE654321098765' , UUID_TO_BIN('08c994be-1712-411e-887a-ac52f109f919')),
-    (UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad'), '1995-04-05', '123-456-789', 'olivia@example.com', 'Oli' ,'c7b702284ddd187ddb240fa0ee6d77019e280eedbec7290c886a7dd193fb0e99', '8642 9753 2106 4832','B', 'DE321098765432' , UUID_TO_BIN('eef03e06-b85b-4c01-ae76-fd227a6bd849')),
-    (UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'), '1990-10-20', '987-654-321', 'william@example.com', 'WillWilson' ,'37c60d066e0fc140a4751f274112a25d5b263f4f0dec1e6c555ee2178387b1c8', '7531 8642 3069 1752','B', 'DE789012345678' , UUID_TO_BIN('3d4a0065-0e7e-434e-ab10-735a964a2dfd'));
+    (UUID_TO_BIN('9faef735-c925-4161-ae15-8a0dda166bf3'), '1992-06-30', '111-222-333', 'michael@example.com', 'MJ' ,'$2y$10$LJ/.uDhBhec1htk6TSnh3.dL1zMJr2yCLn2kWsPXS3jEmWQpM/jUe', '1234 5678 9012 3456','B', 'DE123456789012', UUID_TO_BIN('665714b8-d6d8-4e33-99ce-38e0560faaa6')),
+    (UUID_TO_BIN('09ff1f4c-1d5c-4168-ab86-f1651e9bab69'), '1987-09-25', '444-555-666', 'emily@example.com', 'Emmy' ,'$2y$10$PD5ROkjigdUOVA4MH6tK2OX2isRBK9F8kPC8I8T0mbNZqYiPGKXx.', '9876 5432 1098 7654','B', 'DE987654321098' , UUID_TO_BIN('8efaced0-9f0a-427c-86a9-0545abda1e8c')),
+    (UUID_TO_BIN('d2ed9087-38fb-4789-806a-7a4c07deb7de'), '1980-12-10', '777-888-999', 'daniel@example.com', 'Di_Brown' ,'$2y$10$rG/0Yq2WgDyVYuGpfzCMYOIT8ssyF.l20DF6lA1iwwBjXSLRq611C', '2468 1357 8024 6813','B', 'DE654321098765' , UUID_TO_BIN('08c994be-1712-411e-887a-ac52f109f919')),
+    (UUID_TO_BIN('97daabac-610d-4578-a4af-e95e1e07d1ad'), '1995-04-05', '123-456-789', 'olivia@example.com', 'Oli' ,'$2y$10$L4eo73DJDbTtzRLH1IoS.uC9IqU0doSwBXVO9cbUIM/.PuOmudIa2', '8642 9753 2106 4832','B', 'DE321098765432' , UUID_TO_BIN('eef03e06-b85b-4c01-ae76-fd227a6bd849')),
+    (UUID_TO_BIN('6e4d3bb6-6f11-4634-bca1-f9d90e1574da'), '1990-10-20', '987-654-321', 'william@example.com', 'WillWilson' ,'$2y$10$q8GEmrbSGZkgHGvcNchLi.w2cAMjOJeUcDtfJ91VVMzipOT0oHN1O', '7531 8642 3069 1752','B', 'DE789012345678' , UUID_TO_BIN('3d4a0065-0e7e-434e-ab10-735a964a2dfd'));
 
 INSERT INTO cars (car_id, year_of_release, license_plate, car_status, car_brand)
 VALUES
