@@ -27,7 +27,7 @@ public class CarServiceImpl implements CarService {
     private final CarMapper carMapper;
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public Car showCar(UUID id) {
         Car car = carRepository.getCarByCarId(id);
         if (car == null) {
@@ -49,7 +49,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public CarAfterCreationDto addCar(CarCreateDto carCreateDto) {
         Car car = carRepository.findByLicensePlate(carCreateDto.getLicensePlate());
         if (car != null) {
@@ -61,7 +61,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public Car updateCarById(UUID id, Car updatingCar) {
         Car car = showCar(id);
         if (car == null) {

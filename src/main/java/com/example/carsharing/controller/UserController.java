@@ -9,6 +9,7 @@ import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,35 +18,40 @@ import java.util.UUID;
 
 @Validated
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
     @GetUserById(path = "/get/{id}")
     public User getUserById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.getUserById(UUID.fromString(id));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @GetAllUsers(path = "/get_all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteUser(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteUserById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.deleteUserById(UUID.fromString(id));
     }
 
+    @PreAuthorize("hasRole('GUEST')")
     @CreateUser(path = "/registration/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserAfterRegistrationDto createUser(@RequestBody UserRegistrationDto userRegistrationDto){
+    public UserAfterRegistrationDto createUser(@RequestBody UserRegistrationDto userRegistrationDto) {
         return userService.createUser(userRegistrationDto);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @UpdateUser(path = "/update/{id}")
-    public User updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid User user){
+    public User updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid User user) {
         return userService.updateUserById(UUID.fromString(id), user);
     }
 }

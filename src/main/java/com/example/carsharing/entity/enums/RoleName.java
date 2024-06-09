@@ -1,8 +1,8 @@
 package com.example.carsharing.entity.enums;
 
 public enum RoleName {
-    ADMIN,
-    MANAGER,
-    USER,
-    GUEST;
+    ROLE_ADMIN,
+    ROLE_MANAGER,
+    ROLE_USER,
+    ROLE_GUEST
 }

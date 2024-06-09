@@ -11,11 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -24,17 +22,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserInfoRepository userInfoRepository;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-
         Optional<UserInfo> userInfo = userInfoRepository.findByLogin(login);
 
         if (userInfo.isEmpty()) {
-            throw new UsernameNotFoundException(login);
+            throw new UsernameNotFoundException("User with login '" + login + "' not found");
         }
-//        else {
-//            String password = userInfo.get().getPassword();
-//            user=userRepository.findByUserInfo(userInfo.get());
-//        }
 
         return User.withUsername(login)
                 .username(userInfo.get().getLogin())

@@ -33,7 +33,7 @@ public class TripServiceImpl implements TripService {
     private final CarRepository carRepository;
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public Trip getTripById(UUID id) {
         Trip trip = tripRepository.getTripByTripId(id);
         if (trip == null) {
@@ -56,7 +56,7 @@ public class TripServiceImpl implements TripService {
 
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public TripAfterCreationDto createTrip(TripCreateDto tripCreateDto) {
         Trip trip = tripRepository.findByStartTimeAndUser_UserId(LocalDateTime.parse(tripCreateDto.getStartTime()), UUID.fromString(tripCreateDto.getUserId()));
         if (trip != null) {
@@ -83,7 +83,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public Trip updateTripById(UUID id, TripCreateDto tripCreateDto) {
         Trip trip = getTripById(id);
 

@@ -29,6 +29,7 @@ public class Authority {
     @Column(name = "auth_id")
     private UUID authorityId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "authority")
     private AuthorityName authority;
 

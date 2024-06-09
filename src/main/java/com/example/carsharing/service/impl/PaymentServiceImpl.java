@@ -29,7 +29,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final UserRepository userRepository;
 
     @Override
-    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
+    @Transactional
     public Payment getPaymentById(UUID id) {
         Payment payment = paymentRepository.getPaymentByPaymentId(id);
         if (payment == null) {
@@ -51,7 +51,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public PaymentAfterCreationDto createPayment(PaymentCreateDto paymentCreateDto) {
         Payment payment = paymentRepository.findByPaymentDateAndUser_UserId(LocalDateTime.parse(paymentCreateDto.getPaymentDate()), UUID.fromString(paymentCreateDto.getUserId()));
         if (payment != null) {
@@ -70,7 +70,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public Payment updatePaymentById(UUID id, PaymentCreateDto paymentCreateDto) {
         Payment payment = getPaymentById(id);
 

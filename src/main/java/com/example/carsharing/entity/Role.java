@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -34,12 +35,17 @@ public class Role {
     private RoleName roleName;
 
     @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
+    @ToString.Exclude
+    private Set<UserInfo> userInfos;
+
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role_authority",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_id"))
     @ToString.Exclude
-    private Set<Authority> authorities;
+    private Set<Authority> authorities = new HashSet<>();
 
 
     @Override

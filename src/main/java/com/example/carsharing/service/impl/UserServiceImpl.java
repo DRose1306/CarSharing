@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
 
     @Override
-    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
+    @Transactional
     public User getUserById(UUID id) {
         User user = userRepository.getUserByUserId(id);
         if (user == null) {
@@ -61,12 +61,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public UserAfterRegistrationDto createUser(UserRegistrationDto userRegistrationDto) {
         if (userInfoRepository.existsByEmail(userRegistrationDto.getEmail())) {
             throw new UserAlreadyExistException(ErrorMessage.USER_ALREADY_EXIST);
         }
-        Role role = roleRepository.findByRoleName(RoleName.USER);
+        Role role = roleRepository.findByRoleName(RoleName.ROLE_USER);
         if (role == null) {
             throw new RoleNotFoundException(ErrorMessage.ROLE_NOT_FOUND);
         }
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional
     public User updateUserById(UUID id, User updating) {
         User updated = userRepository.getUserByUserId(id);
         if (updated == null) {
