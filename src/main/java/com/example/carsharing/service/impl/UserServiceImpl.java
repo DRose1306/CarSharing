@@ -16,12 +16,14 @@ import com.example.carsharing.repository.UserInfoRepository;
 import com.example.carsharing.repository.UserRepository;
 import com.example.carsharing.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.*;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.*;
+import java.beans.PropertyDescriptor;
 import java.util.*;
 
 @Service
@@ -32,6 +34,13 @@ public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
     private final RoleRepository roleRepository;
 
+    /**
+     * Retrieves a user by its identifier.
+     *
+     * @param id User identifier.
+     * @return User object.
+     * @throws UserNotExistException if the user does not exist.
+     */
     @Override
     @Transactional
     public User getUserById(UUID id) {
@@ -42,12 +51,24 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Retrieves all users.
+     *
+     * @return List of all users.
+     */
     @Override
     @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    /**
+     * Deletes a user by its identifier.
+     *
+     * @param id User identifier.
+     * @return A message about the successful deletion of the user.
+     * @throws UserNotExistException if the user does not exist.
+     */
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public String deleteUserById(UUID id) {
@@ -60,6 +81,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Creates a new user.
+     *
+     * @param userRegistrationDto Data about the user to be created.
+     * @return Data about the created user.
+     * @throws UserAlreadyExistException if the user already exists.
+     * @throws RoleNotFoundException     if the role does not exist.
+     */
     @Override
     @Transactional
     public UserAfterRegistrationDto createUser(UserRegistrationDto userRegistrationDto) {
@@ -80,6 +109,14 @@ public class UserServiceImpl implements UserService {
         return userMapper.toDto(userAfterCreation);
     }
 
+    /**
+     * Updates user information by its identifier.
+     *
+     * @param id       User identifier.
+     * @param updating Updated user data.
+     * @return Updated user object.
+     * @throws UserNotExistException if the user does not exist.
+     */
     @Override
     @Transactional
     public User updateUserById(UUID id, User updating) {

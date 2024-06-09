@@ -17,6 +17,7 @@ class PhoneNumberConstraintTest {
         Assertions.assertEquals(expected, phoneNumberConstraint.isValid(
                 phoneNumber, null));
     }
+
     private static Stream<Arguments> getPhoneNumber() {
         return Stream.of(
                 Arguments.of("+38-050-111-22-33", true),

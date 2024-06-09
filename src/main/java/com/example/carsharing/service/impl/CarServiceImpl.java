@@ -26,6 +26,13 @@ public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
     private final CarMapper carMapper;
 
+    /**
+     * Shows car information by its identifier.
+     *
+     * @param id Car identifier.
+     * @return Car object.
+     * @throws CarNotExistException if the car does not exist.
+     */
     @Override
     @Transactional
     public Car showCar(UUID id) {
@@ -36,6 +43,13 @@ public class CarServiceImpl implements CarService {
         return car;
     }
 
+    /**
+     * Deletes a car by its identifier.
+     *
+     * @param id Car identifier.
+     * @return A message about the successful deletion of the car.
+     * @throws CarNotExistException if the car does not exist.
+     */
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public String deleteCarById(UUID id) {
@@ -48,6 +62,13 @@ public class CarServiceImpl implements CarService {
         }
     }
 
+    /**
+     * Adds a new car.
+     *
+     * @param carCreateDto Data about the car to be created.
+     * @return Data about the created car.
+     * @throws CarAlreadyExistException if the car already exists.
+     */
     @Override
     @Transactional
     public CarAfterCreationDto addCar(CarCreateDto carCreateDto) {
@@ -60,6 +81,14 @@ public class CarServiceImpl implements CarService {
         return carMapper.toDto(carAfterCreation);
     }
 
+    /**
+     * Updates car information by its identifier.
+     *
+     * @param id          Car identifier.
+     * @param updatingCar Updated car data.
+     * @return Updated car object.
+     * @throws CarNotExistException if the car does not exist.
+     */
     @Override
     @Transactional
     public Car updateCarById(UUID id, Car updatingCar) {
@@ -74,6 +103,12 @@ public class CarServiceImpl implements CarService {
         return carRepository.saveAndFlush(car);
     }
 
+    /**
+     * Gets the names of properties of an object that have a null value.
+     *
+     * @param object Object.
+     * @return Set of property names with null value.
+     */
     private Set<String> getNullPropertyNames(Object object) {
         final BeanWrapper src = new BeanWrapperImpl(object);
         PropertyDescriptor[] descriptors = src.getPropertyDescriptors();

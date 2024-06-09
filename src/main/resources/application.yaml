@@ -17,10 +17,15 @@ spring:
 
   liquibase:
     change-log: classpath:/db/changelog/changes/changelog-master.xml
-    enabled: true
 
-  springdoc:
-    api-docs:
-      path: /v3/api-docs
-    swagger-ui:
-      path: /swagger-ui.html
+logging:
+  level:
+    root: info
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: alpha
+    tagsSorter: alpha

@@ -7,9 +7,20 @@ import org.mapstruct.*;
 
 import java.sql.Timestamp;
 
+/**
+ * Mapper interface for converting between Car and its DTOs.
+ */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
-        imports = Timestamp.class, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+        imports = Timestamp.class,
+        unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CarMapper {
+
+    /**
+     * Maps CarCreateDto to Car entity.
+     *
+     * @param carCreateDto The DTO containing car creation data.
+     * @return The mapped Car entity.
+     */
     @Mappings({
             @Mapping(target = "yearOfRelease", source = "yearOfRelease"),
             @Mapping(target = "licensePlate", source = "licensePlate"),
@@ -19,6 +30,12 @@ public interface CarMapper {
     })
     Car toEntity(CarCreateDto carCreateDto);
 
+    /**
+     * Maps Car entity to CarAfterCreationDto.
+     *
+     * @param carAfterCreation The Car entity after creation.
+     * @return The mapped CarAfterCreationDto.
+     */
     @Mappings({
             @Mapping(target = "message", constant = "Car added"),
             @Mapping(target = "licensePlate", source = "licensePlate"),

@@ -17,6 +17,12 @@ import java.util.UUID;
         imports = {Timestamp.class, CardGeneratorUtil.class, DateFormatterUtil.class, UserDataGeneratorUtil.class},
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
+    /**
+     * Maps UserRegistrationDto to User entity.
+     *
+     * @param userRegistrationDto The UserRegistrationDto object.
+     * @return The mapped User object.
+     */
     @Mappings({
             @Mapping(target = "firstName", source = "firstName"),
             @Mapping(target = "lastName", source = "lastName"),
@@ -28,6 +34,12 @@ public interface UserMapper {
     })
     User toEntity(UserRegistrationDto userRegistrationDto);
 
+    /**
+     * Generates additional user information after mapping.
+     *
+     * @param user                The mapped User object.
+     * @param userRegistrationDto The UserRegistrationDto object.
+     */
     @AfterMapping
     default void generateUserInfo(@MappingTarget User user, UserRegistrationDto userRegistrationDto) {
         UserInfo userInfo = new UserInfo();
@@ -43,6 +55,12 @@ public interface UserMapper {
         user.setUserInfo(userInfo);
     }
 
+    /**
+     * Maps User entity to UserAfterRegistrationDto.
+     *
+     * @param user The User object.
+     * @return The mapped UserAfterRegistrationDto object.
+     */
     @Mappings({
             @Mapping(target = "operation", constant = "CREATING"),
             @Mapping(target = "status", constant = "SUCCESSFUL"),

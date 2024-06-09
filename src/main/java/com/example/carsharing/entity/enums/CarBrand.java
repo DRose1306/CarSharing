@@ -1,5 +1,13 @@
 package com.example.carsharing.entity.enums;
 
+import lombok.*;
+
+/**
+ * Enum representing different car brands.
+ * Each brand corresponds to a specific car manufacturer.
+ */
+@Getter
+@AllArgsConstructor
 public enum CarBrand {
     AUDI,
     FORD,

@@ -1,7 +1,6 @@
 package com.example.carsharing.controller;
 
 
-
 import com.example.carsharing.dto.PaymentAfterCreationDto;
 import com.example.carsharing.dto.PaymentCreateDto;
 import com.example.carsharing.entity.Payment;
@@ -108,7 +107,7 @@ class PaymentControllerTest {
     }
 
     @Test
-    void updatePaymentByIdTest() throws Exception{
+    void updatePaymentByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
                 .perform(MockMvcRequestBuilders.get("/payment/get/92683b96-579e-4fee-9329-b442639582e7")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -137,7 +136,7 @@ class PaymentControllerTest {
     }
 
     @Test
-    void updatePaymentByIdWithException() throws Exception{
+    void updatePaymentByIdWithException() throws Exception {
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"payment_date\": 2024-04-212 17:30:00}";
 

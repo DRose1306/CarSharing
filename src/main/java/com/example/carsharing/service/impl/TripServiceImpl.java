@@ -32,6 +32,13 @@ public class TripServiceImpl implements TripService {
     private final UserRepository userRepository;
     private final CarRepository carRepository;
 
+    /**
+     * Retrieves a trip by its identifier.
+     *
+     * @param id Trip identifier.
+     * @return Trip object.
+     * @throws TripNotExistException if the trip does not exist.
+     */
     @Override
     @Transactional
     public Trip getTripById(UUID id) {
@@ -42,6 +49,13 @@ public class TripServiceImpl implements TripService {
         return trip;
     }
 
+    /**
+     * Deletes a trip by its identifier.
+     *
+     * @param id Trip identifier.
+     * @return A message about the successful deletion of the trip.
+     * @throws TripNotExistException if the trip does not exist.
+     */
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public String deleteTripById(UUID id) {
@@ -55,6 +69,15 @@ public class TripServiceImpl implements TripService {
     }
 
 
+    /**
+     * Creates a new trip.
+     *
+     * @param tripCreateDto Data about the trip to be created.
+     * @return Data about the created trip.
+     * @throws TripAlreadyExistException if the trip already exists.
+     * @throws UserNotExistException     if the user does not exist.
+     * @throws CarNotExistException      if the car does not exist.
+     */
     @Override
     @Transactional
     public TripAfterCreationDto createTrip(TripCreateDto tripCreateDto) {
@@ -82,6 +105,14 @@ public class TripServiceImpl implements TripService {
         return tripMapper.toDto(tripAfterCreation);
     }
 
+    /**
+     * Updates trip information by its identifier.
+     *
+     * @param id            Trip identifier.
+     * @param tripCreateDto Updated trip data.
+     * @return Updated trip object.
+     * @throws TripNotExistException if the trip does not exist.
+     */
     @Override
     @Transactional
     public Trip updateTripById(UUID id, TripCreateDto tripCreateDto) {

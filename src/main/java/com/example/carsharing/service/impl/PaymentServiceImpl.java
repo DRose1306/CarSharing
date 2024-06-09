@@ -28,6 +28,13 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentMapper paymentMapper;
     private final UserRepository userRepository;
 
+    /**
+     * Retrieves a payment by its identifier.
+     *
+     * @param id Payment identifier.
+     * @return Payment object.
+     * @throws PaymentNotExistException if the payment does not exist.
+     */
     @Override
     @Transactional
     public Payment getPaymentById(UUID id) {
@@ -38,6 +45,13 @@ public class PaymentServiceImpl implements PaymentService {
         return payment;
     }
 
+    /**
+     * Deletes a payment by its identifier.
+     *
+     * @param id Payment identifier.
+     * @return A message about the successful deletion of the payment.
+     * @throws PaymentNotExistException if the payment does not exist.
+     */
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public String deletePaymentById(UUID id) {
@@ -50,6 +64,14 @@ public class PaymentServiceImpl implements PaymentService {
         }
     }
 
+    /**
+     * Creates a new payment.
+     *
+     * @param paymentCreateDto Data about the payment to be created.
+     * @return Data about the created payment.
+     * @throws PaymentAlreadyExistsException if the payment already exists.
+     * @throws UserNotExistException         if the user does not exist.
+     */
     @Override
     @Transactional
     public PaymentAfterCreationDto createPayment(PaymentCreateDto paymentCreateDto) {
@@ -62,13 +84,19 @@ public class PaymentServiceImpl implements PaymentService {
             throw new UserNotExistException(ErrorMessage.USER_NOT_EXIST);
         }
         Payment entity = paymentMapper.toEntity(paymentCreateDto);
-
         entity.setUser(user);
-
         Payment paymentAfterCreation = paymentRepository.save(entity);
         return paymentMapper.toDto(paymentAfterCreation);
     }
 
+    /**
+     * Updates payment information by its identifier.
+     *
+     * @param id               Payment identifier.
+     * @param paymentCreateDto Updated payment data.
+     * @return Updated payment object.
+     * @throws PaymentNotExistException if the payment does not exist.
+     */
     @Override
     @Transactional
     public Payment updatePaymentById(UUID id, PaymentCreateDto paymentCreateDto) {

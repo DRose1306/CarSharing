@@ -11,6 +11,12 @@ import org.mapstruct.*;
         imports = {GetNameFromUserUtil.class, GetCarIdFromTripUtil.class},
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface TripMapper {
+    /**
+     * Maps TripCreateDto to Trip entity.
+     *
+     * @param tripCreateDto The TripCreateDto object.
+     * @return The mapped Trip object.
+     */
     @Mappings({
             @Mapping(target = "startTime", source = "startTime"),
             @Mapping(target = "endTime", source = "endTime"),
@@ -20,6 +26,12 @@ public interface TripMapper {
     })
     Trip toEntity(TripCreateDto tripCreateDto);
 
+    /**
+     * Maps Trip entity to TripAfterCreationDto.
+     *
+     * @param tripAfterCreation The Trip object.
+     * @return The mapped TripAfterCreationDto object.
+     */
     @Mappings({
             @Mapping(target = "cost", source = "cost"),
             @Mapping(target = "distance", source = "distance"),

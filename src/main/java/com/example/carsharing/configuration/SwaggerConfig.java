@@ -3,14 +3,14 @@ package com.example.carsharing.configuration;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.tags.Tag;
+import io.swagger.v3.oas.models.OpenAPI;
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.Tag;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
         info = @Info(
@@ -25,9 +25,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                 )
         )
 )
-@EnableSwagger2
+@Configuration
 public class SwaggerConfig {
-
     @Value("${swagger.packageName:com.example.carsharing}")
     private String PACKAGE_NAME;
     public static final String CAR = "car service";
@@ -37,15 +36,26 @@ public class SwaggerConfig {
     public static final String USER = "user service";
 
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage(PACKAGE_NAME))
-                .paths(PathSelectors.any())
-                .build()
-                .tags(new Tag(CAR, "API for working with cars"))
-                .tags(new Tag(PAYMENT, "API for working with payments"))
-                .tags(new Tag(TRIP, "API for working with promo trips"))
-                .tags(new Tag(USER, "API for working with users"));
+    public GroupedOpenApi publicApi() {
+        return GroupedOpenApi.builder()
+                .group("public")
+                .packagesToScan(PACKAGE_NAME)
+                .addOpenApiCustomiser(openApi -> {
+                    openApi.addTagsItem(new Tag().name(CAR).description("API for working with cars service"));
+                    openApi.addTagsItem(new Tag().name(PAYMENT).description("API for working with payments service"));
+                    openApi.addTagsItem(new Tag().name(TRIP).description("API for working with trips service"));
+                    openApi.addTagsItem(new Tag().name(USER).description("API for working with users service"));
+                })
+                .build();
+    }
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .addSecurityItem(new SecurityRequirement().addList("basicAuth"))
+                .components(new io.swagger.v3.oas.models.Components()
+                        .addSecuritySchemes("basicAuth", new SecurityScheme()
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("basic")));
     }
 }

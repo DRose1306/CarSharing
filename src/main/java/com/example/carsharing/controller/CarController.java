@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+/**
+ * Controller class responsible for managing car-related HTTP requests.
+ */
 @Validated
 @RestController
 @RequestMapping("/cars")
@@ -25,12 +28,24 @@ import java.util.UUID;
 public class CarController {
     private final CarService carService;
 
+    /**
+     * Retrieves information about a car by its ID.
+     *
+     * @param id The ID of the car to retrieve.
+     * @return The car object.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
     @ShowCar(path = "/show_car/{id}")
     public Car showCarById(@PathVariable("id") @UuidFormatChecker String id) {
         return carService.showCar(UUID.fromString(id));
     }
 
+    /**
+     * Deletes a car by its ID.
+     *
+     * @param id The ID of the car to delete.
+     * @return A message indicating the success of the operation.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @DeleteCar(path = "/delete_car/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -38,6 +53,12 @@ public class CarController {
         return carService.deleteCarById(UUID.fromString(id));
     }
 
+    /**
+     * Adds a new car.
+     *
+     * @param carCreateDto The DTO containing the information for creating the new car.
+     * @return The DTO containing information about the newly created car.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @AddCar(path = "/add_car")
     @ResponseStatus(HttpStatus.CREATED)
@@ -45,6 +66,13 @@ public class CarController {
         return carService.addCar(carCreateDto);
     }
 
+    /**
+     * Updates information about a car.
+     *
+     * @param id  The ID of the car to update.
+     * @param car The updated car object.
+     * @return The updated car object.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @UpdateCar(path = "/update_car/{id}")
     public Car updateCar(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid Car car) {

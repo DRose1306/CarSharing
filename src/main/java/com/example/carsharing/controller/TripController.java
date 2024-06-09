@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+/**
+ * Controller class responsible for managing trip-related HTTP requests.
+ */
 @Validated
 @RestController
 @RequestMapping("/trips")
@@ -24,12 +27,24 @@ import java.util.UUID;
 public class TripController {
     private final TripService tripService;
 
+    /**
+     * Retrieves trip information by its ID.
+     *
+     * @param id The ID of the trip to retrieve.
+     * @return The trip object.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
     @GetTrip(path = "/get/{id}")
     public Trip getTripById(@PathVariable("id") @UuidFormatChecker String id) {
         return tripService.getTripById(UUID.fromString(id));
     }
 
+    /**
+     * Deletes a trip by its ID.
+     *
+     * @param id The ID of the trip to delete.
+     * @return A message indicating the success of the operation.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @DeleteTrip(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -37,16 +52,29 @@ public class TripController {
         return tripService.deleteTripById(UUID.fromString(id));
     }
 
+    /**
+     * Creates a new trip.
+     *
+     * @param tripCreateDto The DTO containing the information for creating the new trip.
+     * @return The DTO containing information about the newly created trip.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @CreateTrip(path = "/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public TripAfterCreationDto createTrip(@RequestBody TripCreateDto tripCreateDto){
+    public TripAfterCreationDto createTrip(@RequestBody TripCreateDto tripCreateDto) {
         return tripService.createTrip(tripCreateDto);
     }
 
+    /**
+     * Updates trip information.
+     *
+     * @param id            The ID of the trip to update.
+     * @param tripCreateDto The DTO containing the updated trip information.
+     * @return The updated trip object.
+     */
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @UpdateTrip(path = "/update/{id}")
-    public Trip updateTrip(@PathVariable @UuidFormatChecker String id, @RequestBody TripCreateDto tripCreateDto){
+    public Trip updateTrip(@PathVariable @UuidFormatChecker String id, @RequestBody TripCreateDto tripCreateDto) {
         return tripService.updateTripById(UUID.fromString(id), tripCreateDto);
     }
 }

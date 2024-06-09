@@ -10,6 +10,12 @@ import org.mapstruct.*;
         imports = {GetNameFromUserUtil.class},
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PaymentMapper {
+    /**
+     * Maps PaymentCreateDto to Payment entity.
+     *
+     * @param paymentCreateDto The PaymentCreateDto object.
+     * @return The mapped Payment object.
+     */
     @Mappings({
             @Mapping(target = "amount", source = "amount"),
             @Mapping(target = "paymentDate", source = "paymentDate"),
@@ -18,6 +24,12 @@ public interface PaymentMapper {
     })
     Payment toEntity(PaymentCreateDto paymentCreateDto);
 
+    /**
+     * Maps Payment entity to PaymentAfterCreationDto.
+     *
+     * @param paymentAfterCreation The Payment object.
+     * @return The mapped PaymentAfterCreationDto object.
+     */
     @Mappings({
             @Mapping(target = "amount", source = "amount"),
             @Mapping(target = "paymentDate", source = "paymentDate"),

@@ -16,6 +16,7 @@ class EmailConstraintTest {
 
         Assertions.assertEquals(expected, emailConstraint.isValid(email, null));
     }
+
     private static Stream<Arguments> getEmail() {
         return Stream.of(
                 Arguments.of("olivia@example.com", true),

@@ -1,5 +1,13 @@
 package com.example.carsharing.entity.enums;
 
+import lombok.*;
+
+/**
+ * Enum representing different payment methods.
+ * Each method corresponds to a specific way of making payments.
+ */
+@Getter
+@AllArgsConstructor
 public enum PaymentMethod {
     VISA,
     MASTERCARD,
