@@ -26,19 +26,27 @@ git clone https://github.com/DRose1306/CarSharing/tree/main/src/main/java/com/ex
 
 cd carsharing
 
-### Class Diagram EmployeeOffice
+### Class Diagram CarSharing
 
-![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/blob/master/Diagram.jpg)
+![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/Diagram.jpg)
 
 ### Database Structure Diagram
 
-![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/blob/master/Database_Diagram.png)
+![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/Database_Diagram.png)
 
 # Database structure
 
 The database includes:
 
 ### Table Users (Service users)
+
+| Column name  | Type        | Description                                |
+|--------------|-------------|--------------------------------------------|
+| user_id      | binary(16)  | Primary key Unique user ID                 |
+| first_name   | varchar(50) | First name of the user                     |
+| last_name    | varchar(50) | Last name of the user                      |
+| created_at   | timestamp   | Timestamp of user creation                 |
+| user_info_id | binary(16)  | FOREIGN KEY (user_info_id) REFERENCES Personal_Info(personal_info_id)                     |
 
 ### Table Roles (Service users roles)
 
@@ -56,6 +64,19 @@ The database includes:
 
 ### Table User Info (Service users personal information)
 
+| Column name       | Type         | Description                                      |
+|-------------------|--------------|--------------------------------------------------|
+| user_info_id      | BINARY(16)   | PRIMARY KEY Unique identifier of user information |
+| date_of_birth     | DATE         | Date of birth of the user                        |
+| phone_number      | VARCHAR(20)  | Phone number of the user                         |
+| email             | VARCHAR(60)  | Email address of the user                        |
+| user_login        | VARCHAR(60)  | Login of the User                                |
+| user_password     | VARCHAR(128) | User's password                                  |
+| card_number       | VARCHAR(60)  | User's card number                               |
+| driver_license    | ENUM         | Driver license class                             |
+| driver_licence_id | VARCHAR(30)  | Driver license number                            |
+| user_id           | BINARY(16)   | User(user_id), to the User table                 |
+
 ### Table Address (Address information)
 
 | Column name  | Type                  | Description                                                                   |
@@ -69,11 +90,47 @@ The database includes:
 
 ### Table Cars (Service cars table)
 
+| Column name     | Type        | Description                          |
+|-----------------|-------------|--------------------------------------|
+| car_id          | BINARY(16)  | PRIMARY KEY Unique identifier of car |
+| year_of_release | VARCHAR(10) | Release date                         |
+| license_plate   | VARCHAR(20) | License plate of car                 |
+| car_status      | ENUM        | Car status                           |
+| car_brand       | ENUM        | Car brand                            |
+| created_at      | TIMESTAMP   | Timestamp of car creation            |
+
 ### Table Trips (Trips table)
+
+| db name     | db type        | Description                        |
+|-------------|----------------|------------------------------------|
+| trip_id     | BINARY(16)     | PRIMARY KEY Unique identifier of trip |
+| start_time  | DATETIME       | Start of trip                      |
+| end_time    | DATETIME       | End of trip                        |
+| distance    | DOUBLE         | Distance of trip                   |
+| cost        | DECIMAL(10, 2) | Cost of trip                       |
+| user_id     | BINARY(16)     | FOREIGN KEY Unique user identifier |
+| car_id      | BINARY(16)     | FOREIGN KEY Unique car identifier  |
 
 ### Table Payments (Payments table)
 
+| Column name    | Type            | Description                             |
+|----------------|-----------------|-----------------------------------------|
+| payment_id     | BINARY(16)      | PRIMARY KEY Unique identifier of payment|
+| amount         | DECIMAL(10, 2)  | Amount                                  |
+| payment_date   | DATETIME        | Payment date                            |
+| payment_method | ENUM            | Payment method                          |
+| payment_status | BOOLEAN         | Status of payment                       |
+| user_id        | BINARY(16)      | Unique user identifier (FOREIGN KEY)    |
+
 ### Table Reservation (Reservations table)
+
+| Column name   | db_type     | Description                               |
+|---------------|-------------|-------------------------------------------|
+| reservation_id| BINARY(16)  | Unique identifier of reservation (PRIMARY KEY) |
+| start_time    | DATETIME    | Start of reservation                      |
+| end_time      | DATETIME    | End of reservation                        |
+| car_id        | BINARY(16)  | Unique car identifier (FOREIGN KEY)       |
+| user_id       | BINARY(16)  | Unique user identifier (FOREIGN KEY)      |
 
 ### Link Table User_info<->Role
 
