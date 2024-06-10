@@ -28,11 +28,11 @@ cd carsharing
 
 ### Class Diagram CarSharing
 
-![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/Diagram.jpg)
+![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/blob/readme/Diagram.jpg)
 
 ### Database Structure Diagram
 
-![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/Database_Diagram.png)
+![PhotoDependencyClasses](https://github.com/DRose1306/CarSharing/blob/readme/Database_Diagram.png)
 
 # Database structure
 
