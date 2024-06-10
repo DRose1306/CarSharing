@@ -9,6 +9,7 @@ import com.example.carsharing.dto.CarCreateDto;
 import com.example.carsharing.entity.Car;
 import com.example.carsharing.service.interfaces.CarService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
+import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class CarController {
      * @param id The ID of the car to retrieve.
      * @return The car object.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
+    @PermitAll
     @ShowCar(path = "/show_car/{id}")
     public Car showCarById(@PathVariable("id") @UuidFormatChecker String id) {
         return carService.showCar(UUID.fromString(id));
