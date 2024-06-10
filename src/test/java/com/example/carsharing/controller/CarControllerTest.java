@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username = "user3", password = "user3", roles = "USER")
 @Sql("/db/drop_tables_test.sql")
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
@@ -41,7 +43,7 @@ class CarControllerTest {
 
         MvcResult mvcResult =
                 mockMvc.perform(MockMvcRequestBuilders
-                                .get("/сar/show_car/{id}", expectedCar.getCarId())
+                                .get("/cars/show_car/{id}", expectedCar.getCarId())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(carJson))
                         .andExpect(status().isOk())
@@ -66,14 +68,14 @@ class CarControllerTest {
     @Test
     void showCarByIdTestWithException() throws Exception {
 
-        mockMvc.perform(get("/сar/show_car/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
+        mockMvc.perform(get("/cars/show_car/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void deleteCarByIdTestPositive() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/сar/delete_car/ef6869b7-2402-48c7-bff4-141563be2d8c"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cars/delete_car/ef6869b7-2402-48c7-bff4-141563be2d8c"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("Car with this ID was deleted SUCCESSFULLY"))
@@ -82,7 +84,7 @@ class CarControllerTest {
 
     @Test
     void deleteUserByIdTestWithException() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/сar/delete_car/8988bf3e-73a9-47da-8bae-e2e253a30ddd"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cars/delete_car/8988bf3e-73a9-47da-8bae-e2e253a30ddd"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\"message\":\"CAR_NOT_EXIST_EXCEPTION\",\"errorCode\":\"NOT_FOUND\"}"))
@@ -96,7 +98,7 @@ class CarControllerTest {
         String carWrite = objectMapper.writeValueAsString(carCreateDto);
 
         MvcResult createCarResult = mockMvc
-                .perform(MockMvcRequestBuilders.post("/сar/add_car")
+                .perform(MockMvcRequestBuilders.post("/cars/add_car")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(carWrite))
                 .andReturn();
@@ -113,7 +115,7 @@ class CarControllerTest {
     @Test
     void updateCarByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/сar/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
+                .perform(MockMvcRequestBuilders.get("/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String carJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -126,7 +128,7 @@ class CarControllerTest {
         String updatedCarJSON = objectMapper.writeValueAsString(car);
 
         MvcResult updateResult = mockMvc
-                .perform(MockMvcRequestBuilders.put("/сar/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
+                .perform(MockMvcRequestBuilders.put("/cars/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(updatedCarJSON))
                 .andExpect(status().isOk())
@@ -140,14 +142,14 @@ class CarControllerTest {
     }
 
     @Test
-    void updateUserByIdWithException() throws Exception {
+    void updateCarByIdWithException() throws Exception {
         String nonExistId = "1f48645-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"car_status\": UNDER_REPAIR}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/car/update_car/" + nonExistId)
+        mockMvc.perform(MockMvcRequestBuilders.put("/cars/update_car/" + nonExistId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
-                .andExpect(status().isNotFound())
+                .andExpect(status().isBadRequest())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PROBLEM_JSON));
     }
 }

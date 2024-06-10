@@ -68,7 +68,6 @@ public class Role {
      * Set of authorities associated with this role.
      * This relationship is bidirectional and managed by the authority entity.
      */
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role_authority",
             joinColumns = @JoinColumn(name = "role_id"),

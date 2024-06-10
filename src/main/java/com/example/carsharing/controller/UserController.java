@@ -6,6 +6,7 @@ import com.example.carsharing.dto.UserRegistrationDto;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.service.interfaces.UserService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
+import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -68,7 +69,7 @@ public class UserController {
      * @param userRegistrationDto The DTO containing the information for creating the new user.
      * @return The DTO containing information about the newly created user.
      */
-    @PreAuthorize("hasRole('GUEST')")
+    @PermitAll
     @CreateUser(path = "/registration/create")
     @ResponseStatus(HttpStatus.CREATED)
     public UserAfterRegistrationDto createUser(@RequestBody UserRegistrationDto userRegistrationDto) {
