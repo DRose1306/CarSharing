@@ -6,11 +6,9 @@ import com.example.carsharing.dto.UserRegistrationDto;
 import com.example.carsharing.entity.User;
 import com.example.carsharing.service.interfaces.UserService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
-import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +31,6 @@ public class UserController {
      * @param id The ID of the user to retrieve.
      * @return The user object.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
     @GetUserById(path = "/get/{id}")
     public User getUserById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.getUserById(UUID.fromString(id));
@@ -44,7 +41,6 @@ public class UserController {
      *
      * @return A list of user objects.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @GetAllUsers(path = "/get_all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -56,7 +52,6 @@ public class UserController {
      * @param id The ID of the user to delete.
      * @return A message indicating the success of the operation.
      */
-    @PreAuthorize("hasRole('USER')")
     @DeleteUser(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteUserById(@PathVariable("id") @UuidFormatChecker String id) {
@@ -69,7 +64,6 @@ public class UserController {
      * @param userRegistrationDto The DTO containing the information for creating the new user.
      * @return The DTO containing information about the newly created user.
      */
-    @PermitAll
     @CreateUser(path = "/registration/create")
     @ResponseStatus(HttpStatus.CREATED)
     public UserAfterRegistrationDto createUser(@RequestBody UserRegistrationDto userRegistrationDto) {
@@ -83,7 +77,6 @@ public class UserController {
      * @param user The updated user object.
      * @return The updated user object.
      */
-    @PreAuthorize("hasRole('USER')")
     @UpdateUser(path = "/update/{id}")
     public User updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid User user) {
         return userService.updateUserById(UUID.fromString(id), user);

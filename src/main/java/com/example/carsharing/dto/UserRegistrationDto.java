@@ -38,6 +38,11 @@ public class UserRegistrationDto {
     String email;
 
     /**
+     * Password of the user.
+     */
+    String password;
+
+    /**
      * The driver's license type of the user.
      */
     DriverLicense driverLicense;

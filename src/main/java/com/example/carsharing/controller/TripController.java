@@ -11,7 +11,6 @@ import com.example.carsharing.service.interfaces.TripService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +32,6 @@ public class TripController {
      * @param id The ID of the trip to retrieve.
      * @return The trip object.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
     @GetTrip(path = "/get/{id}")
     public Trip getTripById(@PathVariable("id") @UuidFormatChecker String id) {
         return tripService.getTripById(UUID.fromString(id));
@@ -45,7 +43,6 @@ public class TripController {
      * @param id The ID of the trip to delete.
      * @return A message indicating the success of the operation.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @DeleteTrip(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteTripById(@PathVariable @UuidFormatChecker String id) {
@@ -58,7 +55,6 @@ public class TripController {
      * @param tripCreateDto The DTO containing the information for creating the new trip.
      * @return The DTO containing information about the newly created trip.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @CreateTrip(path = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     public TripAfterCreationDto createTrip(@RequestBody TripCreateDto tripCreateDto) {
@@ -72,7 +68,6 @@ public class TripController {
      * @param tripCreateDto The DTO containing the updated trip information.
      * @return The updated trip object.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @UpdateTrip(path = "/update/{id}")
     public Trip updateTrip(@PathVariable @UuidFormatChecker String id, @RequestBody TripCreateDto tripCreateDto) {
         return tripService.updateTripById(UUID.fromString(id), tripCreateDto);

@@ -8,6 +8,7 @@ import com.example.carsharing.mapper.util.CardGeneratorUtil;
 import com.example.carsharing.mapper.util.DateFormatterUtil;
 import com.example.carsharing.mapper.util.UserDataGeneratorUtil;
 import org.mapstruct.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.util.UUID;
         imports = {Timestamp.class, CardGeneratorUtil.class, DateFormatterUtil.class, UserDataGeneratorUtil.class},
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     /**
      * Maps UserRegistrationDto to User entity.
      *
@@ -44,7 +46,7 @@ public interface UserMapper {
     default void generateUserInfo(@MappingTarget User user, UserRegistrationDto userRegistrationDto) {
         UserInfo userInfo = new UserInfo();
         userInfo.setLogin(generateUsername(userRegistrationDto.getFirstName()));
-        userInfo.setPassword(generatePassword());
+        userInfo.setPassword(encoder.encode(userRegistrationDto.getPassword()));
         userInfo.setEmail(userRegistrationDto.getEmail());
         userInfo.setDateOfBirth(LocalDate.parse(userRegistrationDto.getDateOfBirth()));
         userInfo.setAddress(UserDataGeneratorUtil.genAddress());
@@ -69,10 +71,6 @@ public interface UserMapper {
             @Mapping(target = "createdAt", expression = "java(DateFormatterUtil.formatDataByCountry(user.getCreatedAt(), user.getUserInfo().getAddress().getCountry()))")
     })
     UserAfterRegistrationDto toDto(User user);
-
-    static String generatePassword() {
-        return UUID.randomUUID().toString().substring(1, 10);
-    }
 
     static String generateUsername(String name) {
         return name + "_" + UUID.randomUUID().toString().charAt(1);

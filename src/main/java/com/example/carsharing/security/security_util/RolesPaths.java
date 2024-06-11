@@ -4,13 +4,35 @@ public class RolesPaths {
     public static final String USER = "USER";
     public static final String ADMIN = "ADMIN";
     public static final String MANAGER = "MANAGER";
-    public static final String GUEST = "GUEST";
+
+    public static final String[] ADMIN_LIST = {
+            "/v2/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui/",
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/configuration/**",
+            "/public",
+            "/favicon.ico",
+            "/swagger-ui/**",
+            "/users/**",
+            "/payments/**",
+            "/trips/**",
+            "/cars/**"
+    };
 
     public static final String[] USER_LIST = {
+            "/v2/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui/",
+            "/webjars/**",
+            "/favicon.ico",
+            "/swagger-ui/**",
             "/configuration/**",
             "/h2-console/**",
-            "/cars/**",
-//            "/cars/show_car/{id}",
+            "/cars/show_car/{id}",
             "/payments/get/{id}**",
             "/trips/get/{id}",
             "/users/get/{id}",
@@ -19,29 +41,36 @@ public class RolesPaths {
             "/users/registration/create"
     };
 
-    public static final String[] ADMIN_LIST = {
-            "/configuration/**",
-            "/h2-console/**",
-            "/cars/**",
-            "/payments/**",
-            "/trips/**",
-            "/users/get/{id}",
-            "/users/get_all",
-            "/users/registration/create"
-    };
-
     public static final String[] MANAGER_LIST = {
+            "/v2/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui/",
+            "/swagger-ui.html",
+            "/webjars/**",
             "/configuration/**",
-            "/h2-console/**",
-            "/cars/**",
+            "/favicon.ico",
+            "/swagger-ui/**",
+            "/users/**",
             "/payments/**",
             "/trips/**",
-            "/users/get/{id}",
-            "/users/get_all",
-            "/users/registration/create"
+            "/cars/**"
     };
 
-    public static final String[] GUEST_LIST = {
-            "/users/registration/create"
+    public static final String[] SWAGGER_LIST = {
+            "/v2/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-resources",
+            "/swagger-ui/",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/configuration/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/public",
+            "/favicon.ico",
+            "/h2-console/**"
     };
 }

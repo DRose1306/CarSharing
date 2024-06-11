@@ -1,7 +1,6 @@
 package com.example.carsharing.configuration;
 
 import com.example.carsharing.security.UserDetailsServiceImpl;
-import com.example.carsharing.security.security_util.RolesPaths;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static com.example.carsharing.security.security_util.RolesPaths.*;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
@@ -38,18 +38,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers(RolesPaths.USER_LIST).hasRole(RolesPaths.USER)
-                        .requestMatchers(RolesPaths.ADMIN_LIST).hasRole(RolesPaths.ADMIN)
-                        .requestMatchers(RolesPaths.MANAGER_LIST).hasRole(RolesPaths.MANAGER)
-                        .requestMatchers(RolesPaths.GUEST_LIST).hasRole(RolesPaths.GUEST)
+                        .requestMatchers(SWAGGER_LIST).permitAll()
+                        .requestMatchers("users/registration/").permitAll()
+                        .requestMatchers(USER_LIST).hasRole(USER)
+                        .requestMatchers(ADMIN_LIST).hasRole(ADMIN)
+                        .requestMatchers(MANAGER_LIST).hasRole(MANAGER)
                         .anyRequest().authenticated())
+
                 .httpBasic(withDefaults())
-                .logout(logoutPage -> logoutPage.logoutSuccessUrl("/"))
-                .formLogin(withDefaults());
+                .formLogin(withDefaults())
+                .logout(logoutPage -> logoutPage.logoutSuccessUrl("/")
+                        .deleteCookies("JSESSIONID"));
         return http.build();
     }
 }
