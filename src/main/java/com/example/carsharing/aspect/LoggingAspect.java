@@ -15,7 +15,7 @@ import java.util.Arrays;
  */
 @Aspect
 @Component
-@Slf4j //Slf4j is a logging facade for Java
+@Slf4j
 public class LoggingAspect {
 
     /**
