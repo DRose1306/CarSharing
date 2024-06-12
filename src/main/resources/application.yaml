@@ -33,3 +33,7 @@ springdoc:
     path: /swagger-ui.html
     operationsSorter: alpha
     tagsSorter: alpha
+
+rsa:
+  rsa-private-key: classpath:certs\private.pem
+  rsa-public-key: classpath:certs\public.pem
