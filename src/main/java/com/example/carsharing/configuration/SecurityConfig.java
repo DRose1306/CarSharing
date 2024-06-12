@@ -1,11 +1,13 @@
 package com.example.carsharing.configuration;
 
+import com.example.carsharing.controller.handler.CustomAccessDeniedHandler;
 import com.example.carsharing.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -18,9 +20,12 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsServiceImpl;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -41,16 +46,16 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(SWAGGER_LIST).permitAll()
-                        .requestMatchers("users/registration/").permitAll()
-                        .requestMatchers(USER_LIST).hasRole(USER)
-                        .requestMatchers(ADMIN_LIST).hasRole(ADMIN)
-                        .requestMatchers(MANAGER_LIST).hasRole(MANAGER)
+                        .requestMatchers("/users/registration/create").permitAll()
+                        .requestMatchers(AUTH_LIST).hasAnyRole(ADMIN, MANAGER, USER)
                         .anyRequest().authenticated())
 
                 .httpBasic(withDefaults())
                 .formLogin(withDefaults())
                 .logout(logoutPage -> logoutPage.logoutSuccessUrl("/")
-                        .deleteCookies("JSESSIONID"));
+                        .deleteCookies("JSESSIONID"))
+                .exceptionHandling(exceptionHandling ->
+                        exceptionHandling.accessDeniedHandler(customAccessDeniedHandler));
         return http.build();
     }
 }

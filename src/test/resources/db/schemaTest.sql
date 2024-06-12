@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS roles (
     role_id BINARY(16) PRIMARY KEY,
-    role_name ENUM('ADMIN', 'MANAGER', 'USER', 'GUEST') DEFAULT 'USER'
+    role_name ENUM('ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER', 'ROLE_GUEST')
     );
 
 CREATE TABLE IF NOT EXISTS authorities (

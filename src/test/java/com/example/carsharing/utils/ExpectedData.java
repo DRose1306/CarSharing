@@ -72,6 +72,7 @@ public class ExpectedData {
         userRegistrationDto.setLastName("Brown");
         userRegistrationDto.setDateOfBirth("1988-07-07");
         userRegistrationDto.setEmail("mary@example.com");
+        userRegistrationDto.setPassword("mary_b");
         userRegistrationDto.setDriverLicense(DriverLicense.B);
         userRegistrationDto.setDriverLicenseIdentifier("DE884321098765");
 
