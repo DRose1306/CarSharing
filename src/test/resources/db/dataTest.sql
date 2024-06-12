@@ -1,9 +1,9 @@
 INSERT INTO roles (role_id, role_name)
 VALUES
-    (X'a91521fa12544467bfc1543adb21a1a1', 'ADMIN'),
-    (X'c4f448972aca4bf19d40c002d18bad39', 'MANAGER'),
-    (X'b3143434372f4793833cb85fc6fa9352', 'USER'),
-    (X'9056be056f664a058459ce9df8b13bc8', 'GUEST');
+    (X'a91521fa12544467bfc1543adb21a1a1', 'ROLE_ADMIN'),
+    (X'c4f448972aca4bf19d40c002d18bad39', 'ROLE_MANAGER'),
+    (X'b3143434372f4793833cb85fc6fa9352', 'ROLE_USER'),
+    (X'9056be056f664a058459ce9df8b13bc8', 'ROLE_GUEST');
 
 INSERT INTO authorities (auth_id, authority)
 VALUES

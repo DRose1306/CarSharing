@@ -12,6 +12,7 @@ import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +45,7 @@ public class CarController {
      * @param id The ID of the car to delete.
      * @return A message indicating the success of the operation.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @DeleteCar(path = "/delete_car/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteCarById(@PathVariable("id") @UuidFormatChecker String id) {
@@ -56,6 +58,7 @@ public class CarController {
      * @param carCreateDto The DTO containing the information for creating the new car.
      * @return The DTO containing information about the newly created car.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @AddCar(path = "/add_car")
     @ResponseStatus(HttpStatus.CREATED)
     public CarAfterCreationDto createCar(@RequestBody CarCreateDto carCreateDto) {
@@ -69,6 +72,7 @@ public class CarController {
      * @param car The updated car object.
      * @return The updated car object.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @UpdateCar(path = "/update_car/{id}")
     public Car updateCar(@PathVariable("id") @UuidFormatChecker String id, @RequestBody @Valid Car car) {
         return carService.updateCarById(UUID.fromString(id), car);

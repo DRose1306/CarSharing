@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -25,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username = "user1", password = "user1", roles = "ADMIN")
 @Sql("/db/drop_tables_test.sql")
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
@@ -35,7 +37,6 @@ class PaymentControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     @Test
     void getPaymentByIdTest() throws Exception {
         Payment expectedPayment = ExpectedData.returnPaymentById();
@@ -44,7 +45,7 @@ class PaymentControllerTest {
 
         MvcResult mvcResult =
                 mockMvc.perform(MockMvcRequestBuilders
-                                .get("/payment/get/{id}", expectedPayment.getPaymentId())
+                                .get("/payments/get/{id}", expectedPayment.getPaymentId())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(paymentJson))
                         .andExpect(status().isOk())
@@ -62,14 +63,14 @@ class PaymentControllerTest {
     @Test
     void getPaymentByIdTestWithException() throws Exception {
 
-        mockMvc.perform(get("/payment/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
+        mockMvc.perform(get("/payments/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void deletePaymentByIdTestPositive() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/payment/delete/92683b96-579e-4fee-9329-b442639582e7"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/payments/delete/92683b96-579e-4fee-9329-b442639582e7"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("Payment with this ID was deleted SUCCESSFULLY"))
@@ -78,7 +79,7 @@ class PaymentControllerTest {
 
     @Test
     void deletePaymentByIdTestWithException() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/payment/delete/93683b96-579e-4fee-9329-b442639582e7"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/payments/delete/93683b96-579e-4fee-9329-b442639582e7"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\"message\":\"PAYMENT_NOT_EXIST_EXCEPTION\",\"errorCode\":\"NOT_FOUND\"}"))
@@ -92,7 +93,7 @@ class PaymentControllerTest {
         String paymentWrite = objectMapper.writeValueAsString(paymentCreateDto);
 
         MvcResult createPaymentResult = mockMvc
-                .perform(MockMvcRequestBuilders.post("/payment/create")
+                .perform(MockMvcRequestBuilders.post("/payments/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(paymentWrite))
                 .andReturn();
@@ -109,7 +110,7 @@ class PaymentControllerTest {
     @Test
     void updatePaymentByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/payment/get/92683b96-579e-4fee-9329-b442639582e7")
+                .perform(MockMvcRequestBuilders.get("/payments/get/92683b96-579e-4fee-9329-b442639582e7")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String paymentJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -122,7 +123,7 @@ class PaymentControllerTest {
         String updatedPaymentJSON = objectMapper.writeValueAsString(payment);
 
         MvcResult updateResult = mockMvc
-                .perform(MockMvcRequestBuilders.put("/payment/update/92683b96-579e-4fee-9329-b442639582e7")
+                .perform(MockMvcRequestBuilders.put("/payments/update/92683b96-579e-4fee-9329-b442639582e7")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(updatedPaymentJSON))
                 .andExpect(status().isOk())
@@ -140,7 +141,7 @@ class PaymentControllerTest {
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"payment_date\": 2024-04-212 17:30:00}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/payment/update/" + nonExistId)
+        mockMvc.perform(MockMvcRequestBuilders.put("/payments/update/" + nonExistId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isBadRequest())

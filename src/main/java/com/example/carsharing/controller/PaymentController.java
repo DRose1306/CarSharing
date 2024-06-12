@@ -8,6 +8,7 @@ import com.example.carsharing.service.interfaces.PaymentService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,7 @@ public class PaymentController {
      * @param id The ID of the payment to delete.
      * @return A message indicating the success of the operation.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @DeletePayment(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deletePaymentById(@PathVariable("id") @UuidFormatChecker String id) {
@@ -52,6 +54,7 @@ public class PaymentController {
      * @param paymentCreateDto The DTO containing the information for creating the new payment.
      * @return The DTO containing information about the newly created payment.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @CreatePayment(path = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     public PaymentAfterCreationDto createPayment(@RequestBody PaymentCreateDto paymentCreateDto) {
@@ -65,6 +68,7 @@ public class PaymentController {
      * @param paymentCreateDto The DTO containing the updated payment information.
      * @return The updated payment object.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @UpdatePayment(path = "/update/{id}")
     public Payment updatePayment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody PaymentCreateDto paymentCreateDto) {
         return paymentService.updatePaymentById(UUID.fromString(id), paymentCreateDto);

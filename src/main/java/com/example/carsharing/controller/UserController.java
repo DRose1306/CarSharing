@@ -9,6 +9,7 @@ import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,7 @@ public class UserController {
      *
      * @return A list of user objects.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @GetAllUsers(path = "/get_all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();

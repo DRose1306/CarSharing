@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@WithMockUser(username = "user3", password = "user3", roles = "USER")
+@WithMockUser(username = "user1", password = "user1", roles = "ADMIN")
 @Sql("/db/drop_tables_test.sql")
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
@@ -34,7 +34,6 @@ class CarControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
-
 
     @Test
     void showCarByIdTest() throws Exception {
@@ -63,7 +62,6 @@ class CarControllerTest {
 
         Assertions.assertNotNull(actualCar.getCreatedAt());
     }
-
 
     @Test
     void showCarByIdTestWithException() throws Exception {

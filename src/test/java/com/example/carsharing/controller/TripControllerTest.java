@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -25,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username = "user1", password = "user1", roles = "ADMIN")
 @Sql("/db/drop_tables_test.sql")
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
@@ -35,7 +37,6 @@ class TripControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     @Test
     void getTripByIdTest() throws Exception {
         Trip expectedTrip = ExpectedData.returnTripById();
@@ -44,7 +45,7 @@ class TripControllerTest {
 
         MvcResult mvcResult =
                 mockMvc.perform(MockMvcRequestBuilders
-                                .get("/trip/get/{id}", expectedTrip.getTripId())
+                                .get("/trips/get/{id}", expectedTrip.getTripId())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(tripJson))
                         .andExpect(status().isOk())
@@ -62,14 +63,14 @@ class TripControllerTest {
     @Test
     void getTripByIdTestWithException() throws Exception {
 
-        mockMvc.perform(get("/trip/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
+        mockMvc.perform(get("/trips/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void deleteTripByIdTestPositive() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/trip/delete/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/trips/delete/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("Trip with this ID was deleted SUCCESSFULLY"))
@@ -78,7 +79,7 @@ class TripControllerTest {
 
     @Test
     void deleteTripByIdTestWithException() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/trip/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/trips/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\"message\":\"TRIP_NOT_EXIST_EXCEPTION\",\"errorCode\":\"NOT_FOUND\"}"))
@@ -92,7 +93,7 @@ class TripControllerTest {
         String tripWrite = objectMapper.writeValueAsString(tripCreateDto);
 
         MvcResult createTripResult = mockMvc
-                .perform(MockMvcRequestBuilders.post("/trip/create")
+                .perform(MockMvcRequestBuilders.post("/trips/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(tripWrite))
                 .andReturn();
@@ -109,7 +110,7 @@ class TripControllerTest {
     @Test
     void updateTripByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/trip/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
+                .perform(MockMvcRequestBuilders.get("/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String tripJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -122,7 +123,7 @@ class TripControllerTest {
         String updatedTripJSON = objectMapper.writeValueAsString(trip);
 
         MvcResult updateResult = mockMvc
-                .perform(MockMvcRequestBuilders.put("/trip/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
+                .perform(MockMvcRequestBuilders.put("/trips/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(updatedTripJSON))
                 .andExpect(status().isOk())
@@ -140,7 +141,7 @@ class TripControllerTest {
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"end_time\": 2024-08-25T17:30:00}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/trip/update/" + nonExistId)
+        mockMvc.perform(MockMvcRequestBuilders.put("/trips/update/" + nonExistId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isBadRequest())

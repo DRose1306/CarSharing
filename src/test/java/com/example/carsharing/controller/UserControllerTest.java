@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username = "user1", password = "user1", roles = "ADMIN")
 @Sql("/db/drop_tables_test.sql")
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
@@ -37,7 +39,6 @@ class UserControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     @Test
     void getUserByIdTest() throws Exception {
         User expectedUser = ExpectedData.returnUserById();
@@ -46,7 +47,7 @@ class UserControllerTest {
 
         MvcResult mvcResult =
                 mockMvc.perform(MockMvcRequestBuilders
-                                .get("/user/get/{id}", expectedUser.getUserId())
+                                .get("/users/get/{id}", expectedUser.getUserId())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(userJson))
                         .andExpect(status().isOk())
@@ -64,7 +65,7 @@ class UserControllerTest {
     @Test
     void getUserByIdTestWithException() throws Exception {
 
-        mockMvc.perform(get("/user/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
+        mockMvc.perform(get("/users/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
@@ -82,7 +83,7 @@ class UserControllerTest {
 
     @Test
     void deleteUserByIdTestPositive() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/user/delete/55035fe9-37e3-466f-ba4a-197f23fc5700"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/users/delete/55035fe9-37e3-466f-ba4a-197f23fc5700"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("User with this ID was deleted SUCCESSFULLY"))
@@ -91,7 +92,7 @@ class UserControllerTest {
 
     @Test
     void deleteUserByIdTestWithException() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/user/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd"))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/users/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\"message\":\"USER_NOT_EXIST_EXCEPTION\",\"errorCode\":\"NOT_FOUND\"}"))
@@ -105,7 +106,7 @@ class UserControllerTest {
         String userWrite = objectMapper.writeValueAsString(userRegistrationDto);
 
         MvcResult createUserResult = mockMvc
-                .perform(MockMvcRequestBuilders.post("/user/registration/create")
+                .perform(MockMvcRequestBuilders.post("/users/registration/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userWrite))
                 .andReturn();
@@ -122,7 +123,7 @@ class UserControllerTest {
     @Test
     void updateUserByIdTest() throws Exception {
         MvcResult mvcResultBeforeUpdate = mockMvc
-                .perform(MockMvcRequestBuilders.get("/user/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
+                .perform(MockMvcRequestBuilders.get("/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String userJSONBeforeUpdate = mvcResultBeforeUpdate.getResponse().getContentAsString();
@@ -135,7 +136,7 @@ class UserControllerTest {
         String updatedUserJSON = objectMapper.writeValueAsString(user);
 
         MvcResult updateResult = mockMvc
-                .perform(MockMvcRequestBuilders.put("/user/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
+                .perform(MockMvcRequestBuilders.put("/users/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(updatedUserJSON))
                 .andExpect(status().isOk())
@@ -153,7 +154,7 @@ class UserControllerTest {
         String nonExistId = "1f486486-97dc-4f50-8fb1-cd87d5dd37e2";
         String requestBody = "{\"first_name\": Mike}";
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/update/" + nonExistId)
+        mockMvc.perform(MockMvcRequestBuilders.put("/users/update/" + nonExistId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isBadRequest())
@@ -163,6 +164,6 @@ class UserControllerTest {
     private MvcResult gelAllUsers() throws Exception {
         return mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/user/get_all")).andExpect(status().isOk()).andReturn();
+                        .get("/users/get_all")).andExpect(status().isOk()).andReturn();
     }
 }

@@ -11,6 +11,7 @@ import com.example.carsharing.service.interfaces.TripService;
 import com.example.carsharing.validation.annotation.UuidFormatChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,6 +56,7 @@ public class TripController {
      * @param tripCreateDto The DTO containing the information for creating the new trip.
      * @return The DTO containing information about the newly created trip.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @CreateTrip(path = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     public TripAfterCreationDto createTrip(@RequestBody TripCreateDto tripCreateDto) {
