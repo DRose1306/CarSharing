@@ -1,0 +1,22 @@
+version: '3'
+services:
+  appcontainer:
+    image: carimage:latest
+    ports:
+      - "8090:8080"
+    environment:
+      - MYSQL_HOST=mysqlcontainer
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=carsharing
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=14131103
+    depends_on:
+      - mysqlcontainer
+
+  mysqlcontainer:
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=14131103
+      - MYSQL_DATABASE=carsharing

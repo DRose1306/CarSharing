@@ -3,15 +3,20 @@ server:
 spring:
   main:
     banner-mode: off
-
   datasource:
-    url: jdbc:mysql://localhost:3306/carsharing?allowMultiQueries=true
-    #  ${DATASOURCE_URL}
-    username: root
-    #  ${DATASOURCE_USERNAME}
-    password: 14131103
-    #  ${DATASOURCE_PASSWORD}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:carsharing}?allowMultiQueries=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:14131103}
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #  datasource:
+  #    url: jdbc:mysql://localhost:3306/carsharing?allowMultiQueries=true
+  #    #  ${DATASOURCE_URL}
+  #    username: root
+  #    #  ${DATASOURCE_USERNAME}
+  #    password: 14131103
+  #    #  ${DATASOURCE_PASSWORD}
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     show-sql: true
