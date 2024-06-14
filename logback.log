@@ -1,0 +1,1377 @@
+14.06.2024 18:58:59.255 [main] INFO  c.e.c.c.UserControllerTest - Starting UserControllerTest using Java 17.0.8 with PID 89849 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 18:58:59.256 [main] INFO  c.e.c.c.UserControllerTest - The following 1 profile is active: "test"
+14.06.2024 18:58:59.744 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 18:58:59.778 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 6 JPA repository interfaces.
+14.06.2024 18:59:00.189 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 18:59:00.219 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+14.06.2024 18:59:00.236 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 18:59:00.338 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 18:59:00.356 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 18:59:00.567 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 18:59:00.567 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+14.06.2024 18:59:00.580 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 18:59:01.112 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 18:59:01.114 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 18:59:02.095 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 18:59:02.552 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 18:59:02.649 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@64b262a7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@771c4015, org.springframework.security.web.context.SecurityContextHolderFilter@357904d7, org.springframework.security.web.header.HeaderWriterFilter@6c927487, org.springframework.web.filter.CorsFilter@34d776eb, org.springframework.security.web.authentication.logout.LogoutFilter@119d21ce, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@41cfcbb5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@48e7e2ca, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@60a3a0fa, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@674cd2da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@128fe3ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@750e313c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@17734113, org.springframework.security.web.access.ExceptionTranslationFilter@7061a5e7, org.springframework.security.web.access.intercept.AuthorizationFilter@527e6bd3]
+14.06.2024 18:59:03.114 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 18:59:03.205 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+14.06.2024 18:59:03.205 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+14.06.2024 18:59:03.206 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+14.06.2024 18:59:03.256 [main] INFO  c.e.c.c.UserControllerTest - Started UserControllerTest in 4.208 seconds (process running for 4.775)
+14.06.2024 18:59:03.653 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 18:59:03.737 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:03.803 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get_all
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getAllUsers
+14.06.2024 18:59:03.823 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: [User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 18:59:03.789957), User(userId=dfb0689f-5f69-4825-a154-33c897fa1b38, firstName=Emily, lastName=Anderson, createdAt=2024-06-14 18:59:03.789957), User(userId=55035fe9-37e3-466f-ba4a-197f23fc5700, firstName=Daniel, lastName=Brown, createdAt=2024-06-14 18:59:03.789957), User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 18:59:03.789957), User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 18:59:03.789957)]
+END OF REQUEST
+14.06.2024 18:59:03.895 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/55035fe9-37e3-466f-ba4a-197f23fc5700
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 18:59:03.916 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 18:59:03.939 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 18:59:03.944 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 18:59:03.936095)
+END OF REQUEST
+14.06.2024 18:59:03.950 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.updateUser
+14.06.2024 18:59:03.957 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Oli, lastName=Martinez, createdAt=2024-06-14 18:59:03.936095)
+END OF REQUEST
+14.06.2024 18:59:03.978 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 18:59:03.980 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.022 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/registration/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.createUser
+14.06.2024 18:59:04.196 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: UserAfterRegistrationDto(operation=CREATING_6, status=SUCCESSFUL_5, login=Mary_a_9, password=$2a$10$HRaEVi/4bN7ZTfPXUqv3KOhtRCNJVJj/xVVue9Xtf1D2PVOCEQa1K_9, createdAt=14.06.2024)
+END OF REQUEST
+14.06.2024 18:59:04.215 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 18:59:04.219 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 18:59:04.211308)
+END OF REQUEST
+14.06.2024 18:59:04.226 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.TripControllerTest]: TripControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 18:59:04.228 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.TripControllerTest
+14.06.2024 18:59:04.248 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 18:59:04.257 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.289 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 18:59:04.294 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 18:59:04.279283), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 18:59:04.279283})
+END OF REQUEST
+14.06.2024 18:59:04.321 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.createTrip
+14.06.2024 18:59:04.327 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: TripAfterCreationDto(cost=null, distance=0.0, user=Olivia Martinez, car=ef6869b7-2402-48c7-bff4-141563be2d8c)
+END OF REQUEST
+14.06.2024 18:59:04.369 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 18:59:04.373 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 18:59:04.355752), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 18:59:04.355752})
+END OF REQUEST
+14.06.2024 18:59:04.376 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.updateTrip
+14.06.2024 18:59:04.379 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 18:59:04.355752), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 18:59:04.355752})
+END OF REQUEST
+14.06.2024 18:59:04.393 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 18:59:04.395 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.408 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 18:59:04.413 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 18:59:04.417 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.PaymentControllerTest]: PaymentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 18:59:04.418 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.PaymentControllerTest
+14.06.2024 18:59:04.456 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.createPayment
+14.06.2024 18:59:04.464 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: PaymentAfterCreationDto(amount=200.0, paymentDate=2024-04-10T19:00:00, paymentMethod=PAYPAL, user=Daniel Brown, status=false)
+END OF REQUEST
+14.06.2024 18:59:04.488 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 18:59:04.496 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 18:59:04.510 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 18:59:04.512 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.527 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 18:59:04.530 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 18:59:04.522065))
+END OF REQUEST
+14.06.2024 18:59:04.547 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/93683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 18:59:04.548 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [93683b96-579e-4fee-9329-b442639582e7]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.562 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 18:59:04.564 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 18:59:04.559035))
+END OF REQUEST
+14.06.2024 18:59:04.567 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/update/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.updatePayment
+14.06.2024 18:59:04.569 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 18:59:04.559035))
+END OF REQUEST
+14.06.2024 18:59:04.573 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.CarControllerTest]: CarControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 18:59:04.574 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.CarControllerTest
+14.06.2024 18:59:04.588 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/add_car
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.createCar
+14.06.2024 18:59:04.593 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: CarAfterCreationDto(message=Car added, licensePlate=OS-KG13, brand=HYUNDAI, status=AVAILABLE, createdAt=2024-06-14T18:59:04.591+02:00)
+END OF REQUEST
+14.06.2024 18:59:04.607 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 18:59:04.608 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.621 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/8988bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 18:59:04.622 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8988bf3e-73a9-47da-8bae-e2e253a30ddd]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 18:59:04.633 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 18:59:04.634 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 18:59:04.630154}
+END OF REQUEST
+14.06.2024 18:59:04.645 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 18:59:04.646 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 18:59:04.642218}
+END OF REQUEST
+14.06.2024 18:59:04.650 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.updateCar
+14.06.2024 18:59:04.652 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2007', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 18:59:04.647}
+END OF REQUEST
+14.06.2024 18:59:04.674 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/ef6869b7-2402-48c7-bff4-141563be2d8c
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 18:59:04.676 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 18:59:04.686 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.CarSharingApplicationTest]: CarSharingApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 18:59:04.689 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.CarSharingApplicationTest
+14.06.2024 18:59:04.705 [main] INFO  c.e.c.CarSharingApplicationTest - Starting CarSharingApplicationTest using Java 17.0.8 with PID 89849 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 18:59:04.706 [main] INFO  c.e.c.CarSharingApplicationTest - The following 1 profile is active: "test"
+14.06.2024 18:59:04.837 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 18:59:04.846 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 6 JPA repository interfaces.
+14.06.2024 18:59:04.920 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 18:59:04.921 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 18:59:04.923 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 18:59:04.924 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Starting...
+14.06.2024 18:59:04.925 [main] INFO  c.z.h.p.HikariPool - HikariPool-2 - Added connection conn11: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 18:59:04.925 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Start completed.
+14.06.2024 18:59:04.926 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 18:59:05.032 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 18:59:05.032 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 18:59:05.435 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 18:59:05.648 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 18:59:05.694 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3dc70c5a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48d46169, org.springframework.security.web.context.SecurityContextHolderFilter@72ef05e4, org.springframework.security.web.header.HeaderWriterFilter@779ca2d5, org.springframework.web.filter.CorsFilter@62f90937, org.springframework.security.web.authentication.logout.LogoutFilter@c202a19, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48c5e6fb, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@272543a2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1d76d8c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@77871825, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a858d36, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7cbfa39d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4770430, org.springframework.security.web.access.ExceptionTranslationFilter@4d5a5cd6, org.springframework.security.web.access.intercept.AuthorizationFilter@91d86a3]
+14.06.2024 18:59:05.916 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 18:59:05.975 [main] INFO  c.e.c.CarSharingApplicationTest - Started CarSharingApplicationTest in 1.282 seconds (process running for 7.493)
+14.06.2024 18:59:06.038 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 18:59:06.043 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14.06.2024 18:59:06.044 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+14.06.2024 18:59:06.050 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 18:59:06.053 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated...
+14.06.2024 18:59:06.053 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed.
+14.06.2024 19:00:39.964 [main] INFO  c.e.c.c.UserControllerTest - Starting UserControllerTest using Java 17.0.8 with PID 89918 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:00:39.965 [main] INFO  c.e.c.c.UserControllerTest - The following 1 profile is active: "test"
+14.06.2024 19:00:40.606 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:00:40.641 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:00:41.028 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:00:41.065 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+14.06.2024 19:00:41.081 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:00:41.189 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:00:41.201 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:00:41.446 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 19:00:41.447 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+14.06.2024 19:00:41.460 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 19:00:41.979 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:00:41.981 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:00:42.960 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 19:00:43.431 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:00:43.537 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e3fa7a7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a5478e8, org.springframework.security.web.context.SecurityContextHolderFilter@223095d3, org.springframework.security.web.header.HeaderWriterFilter@1928930, org.springframework.web.filter.CorsFilter@7953a656, org.springframework.security.web.authentication.logout.LogoutFilter@3cc148d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1d0ac379, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@640c8cd, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@60f6c148, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@70916715, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@411bed55, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2539ab41, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3327406e, org.springframework.security.web.access.ExceptionTranslationFilter@f62ae87, org.springframework.security.web.access.intercept.AuthorizationFilter@12300573]
+14.06.2024 19:00:44.008 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 19:00:44.100 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+14.06.2024 19:00:44.100 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+14.06.2024 19:00:44.100 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+14.06.2024 19:00:44.150 [main] INFO  c.e.c.c.UserControllerTest - Started UserControllerTest in 4.394 seconds (process running for 4.902)
+14.06.2024 19:00:44.759 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:00:44.847 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:44.912 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get_all
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getAllUsers
+14.06.2024 19:00:44.931 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: [User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:00:44.901915), User(userId=dfb0689f-5f69-4825-a154-33c897fa1b38, firstName=Emily, lastName=Anderson, createdAt=2024-06-14 19:00:44.901915), User(userId=55035fe9-37e3-466f-ba4a-197f23fc5700, firstName=Daniel, lastName=Brown, createdAt=2024-06-14 19:00:44.901915), User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:00:44.901915), User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:00:44.901915)]
+END OF REQUEST
+14.06.2024 19:00:45.014 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/55035fe9-37e3-466f-ba4a-197f23fc5700
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 19:00:45.038 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:00:45.063 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:00:45.069 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:00:45.05851)
+END OF REQUEST
+14.06.2024 19:00:45.075 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.updateUser
+14.06.2024 19:00:45.083 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Oli, lastName=Martinez, createdAt=2024-06-14 19:00:45.05851)
+END OF REQUEST
+14.06.2024 19:00:45.103 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 19:00:45.105 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.132 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/registration/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.createUser
+14.06.2024 19:00:45.327 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: UserAfterRegistrationDto(operation=CREATING_b, status=SUCCESSFUL_9, login=Mary_f_c, password=$2a$10$x1c0OxRxiKjX32CircYp.eSpKTV35d3Wb1Jnf7RnkqBPc2gCxhgla_3, createdAt=14.06.2024)
+END OF REQUEST
+14.06.2024 19:00:45.346 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:00:45.349 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:00:45.342201)
+END OF REQUEST
+14.06.2024 19:00:45.365 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.TripControllerTest]: TripControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:00:45.368 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.TripControllerTest
+14.06.2024 19:00:45.392 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 19:00:45.401 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.425 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:00:45.431 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:00:45.417564), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:00:45.417564})
+END OF REQUEST
+14.06.2024 19:00:45.460 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.createTrip
+14.06.2024 19:00:45.466 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: TripAfterCreationDto(cost=null, distance=0.0, user=Olivia Martinez, car=ef6869b7-2402-48c7-bff4-141563be2d8c)
+END OF REQUEST
+14.06.2024 19:00:45.498 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:00:45.501 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:00:45.495288), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:00:45.495288})
+END OF REQUEST
+14.06.2024 19:00:45.504 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.updateTrip
+14.06.2024 19:00:45.508 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:00:45.495288), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:00:45.495288})
+END OF REQUEST
+14.06.2024 19:00:45.523 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:00:45.525 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.539 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 19:00:45.544 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:00:45.549 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.PaymentControllerTest]: PaymentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:00:45.551 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.PaymentControllerTest
+14.06.2024 19:00:45.588 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.createPayment
+14.06.2024 19:00:45.596 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: PaymentAfterCreationDto(amount=200.0, paymentDate=2024-04-10T19:00:00, paymentMethod=PAYPAL, user=Daniel Brown, status=false)
+END OF REQUEST
+14.06.2024 19:00:45.616 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 19:00:45.622 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:00:45.636 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:00:45.638 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.655 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:00:45.657 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:00:45.650987))
+END OF REQUEST
+14.06.2024 19:00:45.673 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/93683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 19:00:45.676 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [93683b96-579e-4fee-9329-b442639582e7]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.689 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:00:45.691 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:00:45.686342))
+END OF REQUEST
+14.06.2024 19:00:45.695 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/update/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.updatePayment
+14.06.2024 19:00:45.698 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:00:45.686342))
+END OF REQUEST
+14.06.2024 19:00:45.702 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.CarControllerTest]: CarControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:00:45.703 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.CarControllerTest
+14.06.2024 19:00:45.718 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/add_car
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.createCar
+14.06.2024 19:00:45.723 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: CarAfterCreationDto(message=Car added, licensePlate=OS-KG13, brand=HYUNDAI, status=AVAILABLE, createdAt=2024-06-14T19:00:45.721+02:00)
+END OF REQUEST
+14.06.2024 19:00:45.738 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:00:45.740 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.753 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/8988bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 19:00:45.754 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8988bf3e-73a9-47da-8bae-e2e253a30ddd]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 19:00:45.768 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:00:45.770 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:00:45.765645}
+END OF REQUEST
+14.06.2024 19:00:45.783 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:00:45.785 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:00:45.779838}
+END OF REQUEST
+14.06.2024 19:00:45.789 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.updateCar
+14.06.2024 19:00:45.792 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2007', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:00:45.786}
+END OF REQUEST
+14.06.2024 19:00:45.819 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/ef6869b7-2402-48c7-bff4-141563be2d8c
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 19:00:45.822 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:00:45.835 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.CarSharingApplicationTest]: CarSharingApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:00:45.839 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.CarSharingApplicationTest
+14.06.2024 19:00:45.856 [main] INFO  c.e.c.CarSharingApplicationTest - Starting CarSharingApplicationTest using Java 17.0.8 with PID 89918 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:00:45.856 [main] INFO  c.e.c.CarSharingApplicationTest - The following 1 profile is active: "test"
+14.06.2024 19:00:46.015 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:00:46.025 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:00:46.100 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:00:46.101 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:00:46.103 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:00:46.103 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Starting...
+14.06.2024 19:00:46.104 [main] INFO  c.z.h.p.HikariPool - HikariPool-2 - Added connection conn11: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 19:00:46.104 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Start completed.
+14.06.2024 19:00:46.104 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 19:00:46.183 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:00:46.183 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:00:46.579 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 19:00:46.783 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:00:46.825 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5694920a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@74c4ea35, org.springframework.security.web.context.SecurityContextHolderFilter@40883ca7, org.springframework.security.web.header.HeaderWriterFilter@5599aa2a, org.springframework.web.filter.CorsFilter@4b7305a4, org.springframework.security.web.authentication.logout.LogoutFilter@d55b14b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@655f29a2, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@27b19ac2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@19dfacf7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5478a4b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7b13d53a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@528a828c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b296904, org.springframework.security.web.access.ExceptionTranslationFilter@4e26774d, org.springframework.security.web.access.intercept.AuthorizationFilter@5f892e12]
+14.06.2024 19:00:47.043 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 19:00:47.094 [main] INFO  c.e.c.CarSharingApplicationTest - Started CarSharingApplicationTest in 1.253 seconds (process running for 7.845)
+14.06.2024 19:00:47.132 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:00:47.133 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14.06.2024 19:00:47.143 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+14.06.2024 19:00:47.145 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:00:47.147 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated...
+14.06.2024 19:00:47.147 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed.
+14.06.2024 19:33:58.256 [main] INFO  c.e.c.CarSharingApplication - Starting CarSharingApplication using Java 17.0.8 with PID 90544 (/Users/urmat/IdeaProjects/CarSharing/target/classes started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:33:58.258 [main] INFO  c.e.c.CarSharingApplication - No active profile set, falling back to 1 default profile: "default"
+14.06.2024 19:33:58.947 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:33:58.976 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:33:59.422 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14.06.2024 19:33:59.427 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+14.06.2024 19:33:59.427 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+14.06.2024 19:33:59.451 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+14.06.2024 19:33:59.451 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1177 ms
+14.06.2024 19:33:59.625 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:34:00.896 [main] ERROR c.z.h.p.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLSyntaxErrorException: Unknown database '${mysql_database=carsharing}'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.carsharing.CarSharingApplication.main(CarSharingApplication.java:10)
+14.06.2024 19:34:00.904 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [com/example/carsharing/configuration/LiquibaseConfig.class]: java.sql.SQLSyntaxErrorException: Unknown database '${mysql_database=carsharing}'
+14.06.2024 19:34:00.908 [main] INFO  o.a.c.c.StandardService - Stopping service [Tomcat]
+14.06.2024 19:34:00.934 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+14.06.2024 19:34:00.950 [main] ERROR o.s.b.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [com/example/carsharing/configuration/LiquibaseConfig.class]: java.sql.SQLSyntaxErrorException: Unknown database '${mysql_database=carsharing}'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.carsharing.CarSharingApplication.main(CarSharingApplication.java:10)
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLSyntaxErrorException: Unknown database '${mysql_database=carsharing}'
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 18 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Unknown database '${mysql_database=carsharing}'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283)
+	... 20 common frames omitted
+14.06.2024 19:39:42.241 [main] INFO  c.e.c.CarSharingApplication - Starting CarSharingApplication using Java 17.0.8 with PID 90638 (/Users/urmat/IdeaProjects/CarSharing/target/classes started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:39:42.243 [main] INFO  c.e.c.CarSharingApplication - No active profile set, falling back to 1 default profile: "default"
+14.06.2024 19:39:42.841 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:39:42.878 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:39:43.287 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14.06.2024 19:39:43.293 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+14.06.2024 19:39:43.293 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+14.06.2024 19:39:43.318 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+14.06.2024 19:39:43.318 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1059 ms
+14.06.2024 19:39:43.497 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:39:44.693 [main] ERROR c.z.h.p.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'jdbc:mysql://localhost:3306/carsharing'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.carsharing.CarSharingApplication.main(CarSharingApplication.java:10)
+14.06.2024 19:39:44.699 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [com/example/carsharing/configuration/LiquibaseConfig.class]: java.sql.SQLException: Access denied for user 'jdbc:mysql://localhost:3306/carsharing'@'localhost' (using password: YES)
+14.06.2024 19:39:44.704 [main] INFO  o.a.c.c.StandardService - Stopping service [Tomcat]
+14.06.2024 19:39:44.732 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+14.06.2024 19:39:44.746 [main] ERROR o.s.b.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [com/example/carsharing/configuration/LiquibaseConfig.class]: java.sql.SQLException: Access denied for user 'jdbc:mysql://localhost:3306/carsharing'@'localhost' (using password: YES)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1234)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.carsharing.CarSharingApplication.main(CarSharingApplication.java:10)
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'jdbc:mysql://localhost:3306/carsharing'@'localhost' (using password: YES)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 18 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'jdbc:mysql://localhost:3306/carsharing'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:283)
+	... 20 common frames omitted
+14.06.2024 19:43:18.162 [main] INFO  c.e.c.CarSharingApplication - Starting CarSharingApplication using Java 17.0.8 with PID 90715 (/Users/urmat/IdeaProjects/CarSharing/target/classes started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:43:18.164 [main] INFO  c.e.c.CarSharingApplication - No active profile set, falling back to 1 default profile: "default"
+14.06.2024 19:43:18.740 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:43:18.776 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:43:19.245 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14.06.2024 19:43:19.257 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+14.06.2024 19:43:19.258 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+14.06.2024 19:43:19.307 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+14.06.2024 19:43:19.307 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1127 ms
+14.06.2024 19:43:19.475 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:43:19.640 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12532e37
+14.06.2024 19:43:19.640 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+14.06.2024 19:43:19.786 [main] INFO  l.lockservice - Successfully acquired change log lock
+14.06.2024 19:43:19.789 [main] INFO  liquibase.command - Dropping Database Objects in schema: carsharing.carsharing
+14.06.2024 19:43:20.090 [main] INFO  liquibase.database - Successfully deleted all supported object types in schema carsharing.carsharing.
+14.06.2024 19:43:20.095 [main] WARN  l.lockservice - Failed to release change log lock
+14.06.2024 19:43:20.096 [main] INFO  liquibase.command - Command execution complete
+14.06.2024 19:43:20.163 [main] INFO  liquibase.changelog - Creating database history table with name: carsharing.databasechangelog
+14.06.2024 19:43:20.172 [main] INFO  liquibase.changelog - Reading from carsharing.databasechangelog
+14.06.2024 19:43:20.180 [main] WARN  liquibase.executor - Integer display width is deprecated and will be removed in a future release.
+14.06.2024 19:43:20.194 [main] INFO  l.lockservice - Successfully acquired change log lock
+14.06.2024 19:43:20.194 [main] INFO  liquibase.command - Using deploymentId: 8387000194
+14.06.2024 19:43:20.195 [main] INFO  liquibase.changelog - Reading from carsharing.databasechangelog
+14.06.2024 19:43:20.285 [main] INFO  liquibase.changelog - Custom SQL executed
+14.06.2024 19:43:20.286 [main] INFO  liquibase.changelog - ChangeSet /db/changelog/changes/v0.0.1-SNAPSHOT/schema.sql::raw::includeAll ran successfully in 86ms
+14.06.2024 19:43:20.297 [main] INFO  liquibase.changelog - Custom SQL executed
+14.06.2024 19:43:20.298 [main] INFO  liquibase.changelog - ChangeSet /db/changelog/changes/v0.0.1-SNAPSHOT/data.sql::raw::includeAll ran successfully in 9ms
+14.06.2024 19:43:20.315 [main] INFO  liquibase.changelog - Custom SQL executed
+14.06.2024 19:43:20.316 [main] INFO  liquibase.changelog - ChangeSet /db/changelog/changes/v0.0.1-SNAPSHOT/for_log_to_db.sql::raw::includeAll ran successfully in 17ms
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - UPDATE SUMMARY
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - Run:                          3
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - Previously run:               0
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - Filtered out:                 0
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - -------------------------------
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - Total change sets:            3
+14.06.2024 19:43:20.319 [main] INFO  liquibase.util - Update summary generated
+14.06.2024 19:43:20.320 [main] INFO  liquibase.command - Update command completed successfully.
+14.06.2024 19:43:20.322 [main] INFO  l.lockservice - Successfully released change log lock
+14.06.2024 19:43:20.322 [main] INFO  liquibase.command - Command execution complete
+14.06.2024 19:43:20.382 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:43:20.415 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+14.06.2024 19:43:20.430 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:43:20.529 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:43:21.023 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:43:21.024 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:43:22.327 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:43:22.428 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@11869005, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4589bc66, org.springframework.security.web.context.SecurityContextHolderFilter@16c2c396, org.springframework.security.web.header.HeaderWriterFilter@23867b97, org.springframework.web.filter.CorsFilter@731ccdfc, org.springframework.security.web.authentication.logout.LogoutFilter@7b6846c6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1b6dab22, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4a1bb556, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@734fcb45, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7107a4a3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39993624, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68fac558, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@566c6b91, org.springframework.security.web.access.ExceptionTranslationFilter@65e503a7, org.springframework.security.web.access.intercept.AuthorizationFilter@6aa7ea23]
+14.06.2024 19:43:22.930 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14.06.2024 19:43:22.940 [main] INFO  c.e.c.CarSharingApplication - Started CarSharingApplication in 5.055 seconds (process running for 5.462)
+14.06.2024 19:43:23.471 [RMI TCP Connection(3)-192.168.189.59] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14.06.2024 19:43:23.472 [RMI TCP Connection(3)-192.168.189.59] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14.06.2024 19:43:23.473 [RMI TCP Connection(3)-192.168.189.59] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+14.06.2024 19:47:46.985 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:47:46.991 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14.06.2024 19:47:47.006 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+14.06.2024 19:47:48.706 [main] INFO  c.e.c.CarSharingApplication - Starting CarSharingApplication using Java 17.0.8 with PID 90755 (/Users/urmat/IdeaProjects/CarSharing/target/classes started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:47:48.708 [main] INFO  c.e.c.CarSharingApplication - No active profile set, falling back to 1 default profile: "default"
+14.06.2024 19:47:49.252 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:47:49.282 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:47:49.695 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+14.06.2024 19:47:49.700 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+14.06.2024 19:47:49.700 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+14.06.2024 19:47:49.724 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+14.06.2024 19:47:49.724 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1000 ms
+14.06.2024 19:47:49.891 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:47:50.047 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@673a9db4
+14.06.2024 19:47:50.048 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+14.06.2024 19:47:50.194 [main] WARN  liquibase.executor - Integer display width is deprecated and will be removed in a future release.
+14.06.2024 19:47:50.207 [main] INFO  l.lockservice - Successfully acquired change log lock
+14.06.2024 19:47:50.210 [main] INFO  liquibase.command - Dropping Database Objects in schema: carsharing.carsharing
+14.06.2024 19:47:50.306 [main] INFO  liquibase.database - Successfully deleted all supported object types in schema carsharing.carsharing.
+14.06.2024 19:47:50.307 [main] WARN  l.lockservice - Failed to release change log lock
+14.06.2024 19:47:50.308 [main] INFO  liquibase.command - Command execution complete
+14.06.2024 19:47:50.378 [main] INFO  liquibase.changelog - Creating database history table with name: carsharing.databasechangelog
+14.06.2024 19:47:50.395 [main] INFO  liquibase.changelog - Reading from carsharing.databasechangelog
+14.06.2024 19:47:50.405 [main] WARN  liquibase.executor - Integer display width is deprecated and will be removed in a future release.
+14.06.2024 19:47:50.417 [main] INFO  l.lockservice - Successfully acquired change log lock
+14.06.2024 19:47:50.417 [main] INFO  liquibase.command - Using deploymentId: 8387270417
+14.06.2024 19:47:50.418 [main] INFO  liquibase.changelog - Reading from carsharing.databasechangelog
+14.06.2024 19:47:50.503 [main] INFO  liquibase.changelog - Custom SQL executed
+14.06.2024 19:47:50.504 [main] INFO  liquibase.changelog - ChangeSet /db/changelog/changes/v0.0.1-SNAPSHOT/schema.sql::raw::includeAll ran successfully in 78ms
+14.06.2024 19:47:50.520 [main] INFO  liquibase.changelog - Custom SQL executed
+14.06.2024 19:47:50.521 [main] INFO  liquibase.changelog - ChangeSet /db/changelog/changes/v0.0.1-SNAPSHOT/data.sql::raw::includeAll ran successfully in 13ms
+14.06.2024 19:47:50.539 [main] INFO  liquibase.changelog - Custom SQL executed
+14.06.2024 19:47:50.540 [main] INFO  liquibase.changelog - ChangeSet /db/changelog/changes/v0.0.1-SNAPSHOT/for_log_to_db.sql::raw::includeAll ran successfully in 17ms
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - UPDATE SUMMARY
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - Run:                          3
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - Previously run:               0
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - Filtered out:                 0
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - -------------------------------
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - Total change sets:            3
+14.06.2024 19:47:50.543 [main] INFO  liquibase.util - Update summary generated
+14.06.2024 19:47:50.544 [main] INFO  liquibase.command - Update command completed successfully.
+14.06.2024 19:47:50.549 [main] INFO  l.lockservice - Successfully released change log lock
+14.06.2024 19:47:50.550 [main] INFO  liquibase.command - Command execution complete
+14.06.2024 19:47:50.613 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:47:50.642 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+14.06.2024 19:47:50.657 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:47:50.755 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:47:51.416 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:47:51.418 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:47:52.552 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:47:52.648 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4a115c4c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55feda3f, org.springframework.security.web.context.SecurityContextHolderFilter@4d0042eb, org.springframework.security.web.header.HeaderWriterFilter@2a0a654a, org.springframework.web.filter.CorsFilter@787073b3, org.springframework.security.web.authentication.logout.LogoutFilter@60e06e7e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@cbbc0ac, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6174ff60, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@53a52b3f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2c6ee031, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c476b8f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@752daa1f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1396ee3b, org.springframework.security.web.access.ExceptionTranslationFilter@222e5e72, org.springframework.security.web.access.intercept.AuthorizationFilter@125a6446]
+14.06.2024 19:47:53.130 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+14.06.2024 19:47:53.140 [main] INFO  c.e.c.CarSharingApplication - Started CarSharingApplication in 4.727 seconds (process running for 5.143)
+14.06.2024 19:47:53.469 [RMI TCP Connection(2)-192.168.189.59] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14.06.2024 19:47:53.469 [RMI TCP Connection(2)-192.168.189.59] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14.06.2024 19:47:53.470 [RMI TCP Connection(2)-192.168.189.59] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+14.06.2024 19:48:23.343 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:48:23.347 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14.06.2024 19:48:23.353 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+14.06.2024 19:50:49.960 [main] INFO  c.e.c.c.UserControllerTest - Starting UserControllerTest using Java 17.0.8 with PID 90828 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:50:49.961 [main] INFO  c.e.c.c.UserControllerTest - The following 1 profile is active: "test"
+14.06.2024 19:50:50.515 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:50:50.557 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:50:50.959 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:50:50.991 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+14.06.2024 19:50:51.007 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:50:51.122 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:50:51.137 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:50:51.382 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 19:50:51.383 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+14.06.2024 19:50:51.396 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 19:50:51.928 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:50:51.929 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:50:52.788 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 19:50:53.253 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:50:53.356 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4988c303, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@798ac54d, org.springframework.security.web.context.SecurityContextHolderFilter@38f12596, org.springframework.security.web.header.HeaderWriterFilter@37b17938, org.springframework.web.filter.CorsFilter@51653509, org.springframework.security.web.authentication.logout.LogoutFilter@1a5478e8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6466e599, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@12300573, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@42ea4bac, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@30d4d6fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@fcd300e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b760eb7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4df50829, org.springframework.security.web.access.ExceptionTranslationFilter@5312940c, org.springframework.security.web.access.intercept.AuthorizationFilter@43e6bcfd]
+14.06.2024 19:50:53.837 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 19:50:53.930 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+14.06.2024 19:50:53.930 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+14.06.2024 19:50:53.931 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+14.06.2024 19:50:53.973 [main] INFO  c.e.c.c.UserControllerTest - Started UserControllerTest in 4.241 seconds (process running for 4.88)
+14.06.2024 19:50:54.371 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:50:54.495 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:54.592 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get_all
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getAllUsers
+14.06.2024 19:50:54.616 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: [User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:50:54.578652), User(userId=dfb0689f-5f69-4825-a154-33c897fa1b38, firstName=Emily, lastName=Anderson, createdAt=2024-06-14 19:50:54.578652), User(userId=55035fe9-37e3-466f-ba4a-197f23fc5700, firstName=Daniel, lastName=Brown, createdAt=2024-06-14 19:50:54.578652), User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:50:54.578652), User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:50:54.578652)]
+END OF REQUEST
+14.06.2024 19:50:54.698 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/55035fe9-37e3-466f-ba4a-197f23fc5700
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 19:50:54.720 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:50:54.742 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:50:54.746 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:50:54.738666)
+END OF REQUEST
+14.06.2024 19:50:54.752 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.updateUser
+14.06.2024 19:50:54.759 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Oli, lastName=Martinez, createdAt=2024-06-14 19:50:54.738666)
+END OF REQUEST
+14.06.2024 19:50:54.783 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 19:50:54.785 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:54.825 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/registration/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.createUser
+14.06.2024 19:50:55.010 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: UserAfterRegistrationDto(operation=CREATING_4, status=SUCCESSFUL_0, login=Mary_2_a, password=$2a$10$bFo3wqvQQv83vD82pl/J.OpSVWGcb.Z7RtJokW4PeO06Oe5.ABuWy_7, createdAt=14.06.2024)
+END OF REQUEST
+14.06.2024 19:50:55.032 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:50:55.036 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:50:55.027445)
+END OF REQUEST
+14.06.2024 19:50:55.043 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.TripControllerTest]: TripControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:50:55.047 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.TripControllerTest
+14.06.2024 19:50:55.079 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 19:50:55.084 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:55.121 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:50:55.129 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:50:55.10764), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:50:55.10764})
+END OF REQUEST
+14.06.2024 19:50:55.165 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.createTrip
+14.06.2024 19:50:55.172 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: TripAfterCreationDto(cost=null, distance=0.0, user=Olivia Martinez, car=ef6869b7-2402-48c7-bff4-141563be2d8c)
+END OF REQUEST
+14.06.2024 19:50:55.205 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:50:55.208 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:50:55.202047), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:50:55.202047})
+END OF REQUEST
+14.06.2024 19:50:55.210 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.updateTrip
+14.06.2024 19:50:55.213 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:50:55.202047), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:50:55.202047})
+END OF REQUEST
+14.06.2024 19:50:55.235 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:50:55.237 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:55.260 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 19:50:55.269 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:50:55.277 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.PaymentControllerTest]: PaymentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:50:55.280 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.PaymentControllerTest
+14.06.2024 19:50:55.335 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.createPayment
+14.06.2024 19:50:55.342 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: PaymentAfterCreationDto(amount=200.0, paymentDate=2024-04-10T19:00:00, paymentMethod=PAYPAL, user=Daniel Brown, status=false)
+END OF REQUEST
+14.06.2024 19:50:55.359 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 19:50:55.364 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:50:55.377 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:50:55.378 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:55.390 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:50:55.393 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:50:55.387379))
+END OF REQUEST
+14.06.2024 19:50:55.410 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/93683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 19:50:55.411 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [93683b96-579e-4fee-9329-b442639582e7]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:55.429 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:50:55.432 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:50:55.426064))
+END OF REQUEST
+14.06.2024 19:50:55.435 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/update/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.updatePayment
+14.06.2024 19:50:55.440 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:50:55.426064))
+END OF REQUEST
+14.06.2024 19:50:55.446 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.CarControllerTest]: CarControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:50:55.448 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.CarControllerTest
+14.06.2024 19:50:55.465 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/add_car
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.createCar
+14.06.2024 19:50:55.471 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: CarAfterCreationDto(message=Car added, licensePlate=OS-KG13, brand=HYUNDAI, status=AVAILABLE, createdAt=2024-06-14T19:50:55.467+02:00)
+END OF REQUEST
+14.06.2024 19:50:55.487 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:50:55.489 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:55.505 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/8988bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 19:50:55.507 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8988bf3e-73a9-47da-8bae-e2e253a30ddd]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 19:50:55.529 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:50:55.531 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:50:55.526291}
+END OF REQUEST
+14.06.2024 19:50:55.543 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:50:55.545 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:50:55.540271}
+END OF REQUEST
+14.06.2024 19:50:55.550 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.updateCar
+14.06.2024 19:50:55.553 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2007', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:50:55.547}
+END OF REQUEST
+14.06.2024 19:50:55.578 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/ef6869b7-2402-48c7-bff4-141563be2d8c
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 19:50:55.582 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:50:55.586 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.CarSharingApplicationTest]: CarSharingApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:50:55.589 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.CarSharingApplicationTest
+14.06.2024 19:50:55.600 [main] INFO  c.e.c.CarSharingApplicationTest - Starting CarSharingApplicationTest using Java 17.0.8 with PID 90828 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:50:55.600 [main] INFO  c.e.c.CarSharingApplicationTest - The following 1 profile is active: "test"
+14.06.2024 19:50:55.722 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:50:55.732 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:50:55.804 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:50:55.805 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:50:55.807 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:50:55.807 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Starting...
+14.06.2024 19:50:55.808 [main] INFO  c.z.h.p.HikariPool - HikariPool-2 - Added connection conn11: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 19:50:55.808 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Start completed.
+14.06.2024 19:50:55.808 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 19:50:55.896 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:50:55.896 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:50:56.272 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 19:50:56.473 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:50:56.517 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a1076b5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1acfd193, org.springframework.security.web.context.SecurityContextHolderFilter@6d46d1c4, org.springframework.security.web.header.HeaderWriterFilter@4f383036, org.springframework.web.filter.CorsFilter@1e43d40b, org.springframework.security.web.authentication.logout.LogoutFilter@181ae1b4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5fd6cf33, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7e5700c, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@444379eb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@363afb11, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@160088f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ae5a4ca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d4f1a08, org.springframework.security.web.access.ExceptionTranslationFilter@43a5443f, org.springframework.security.web.access.intercept.AuthorizationFilter@7e1716c2]
+14.06.2024 19:50:56.748 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 19:50:56.812 [main] INFO  c.e.c.CarSharingApplicationTest - Started CarSharingApplicationTest in 1.222 seconds (process running for 7.719)
+14.06.2024 19:50:56.852 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:50:56.856 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14.06.2024 19:50:56.857 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+14.06.2024 19:50:56.862 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:50:56.864 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated...
+14.06.2024 19:50:56.865 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed.
+14.06.2024 19:57:35.326 [main] INFO  c.e.c.c.UserControllerTest - Starting UserControllerTest using Java 17.0.8 with PID 90978 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:57:35.327 [main] INFO  c.e.c.c.UserControllerTest - The following 1 profile is active: "test"
+14.06.2024 19:57:35.993 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:57:36.028 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:57:36.429 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:57:36.459 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+14.06.2024 19:57:36.475 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:57:36.580 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:57:36.598 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+14.06.2024 19:57:36.804 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 19:57:36.805 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+14.06.2024 19:57:36.818 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 19:57:37.351 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:57:37.352 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:57:38.182 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 19:57:38.635 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:57:38.731 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4a48fe63, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7000df03, org.springframework.security.web.context.SecurityContextHolderFilter@4b9187de, org.springframework.security.web.header.HeaderWriterFilter@316975be, org.springframework.web.filter.CorsFilter@6daeaff2, org.springframework.security.web.authentication.logout.LogoutFilter@3a42610, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7bd0e2e9, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6a4d72bd, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@59aa646e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@68fe866b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67171221, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43a8dd9b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@541c32de, org.springframework.security.web.access.ExceptionTranslationFilter@33dcbdc2, org.springframework.security.web.access.intercept.AuthorizationFilter@4c475547]
+14.06.2024 19:57:39.221 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 19:57:39.301 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+14.06.2024 19:57:39.301 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+14.06.2024 19:57:39.302 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+14.06.2024 19:57:39.343 [main] INFO  c.e.c.c.UserControllerTest - Started UserControllerTest in 4.25 seconds (process running for 4.816)
+14.06.2024 19:57:39.734 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:57:39.817 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:39.886 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get_all
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getAllUsers
+14.06.2024 19:57:39.904 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: [User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:57:39.876581), User(userId=dfb0689f-5f69-4825-a154-33c897fa1b38, firstName=Emily, lastName=Anderson, createdAt=2024-06-14 19:57:39.876581), User(userId=55035fe9-37e3-466f-ba4a-197f23fc5700, firstName=Daniel, lastName=Brown, createdAt=2024-06-14 19:57:39.876581), User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:57:39.876581), User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:57:39.876581)]
+END OF REQUEST
+14.06.2024 19:57:39.984 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/55035fe9-37e3-466f-ba4a-197f23fc5700
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 19:57:40.005 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:57:40.028 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:57:40.035 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:57:40.024335)
+END OF REQUEST
+14.06.2024 19:57:40.041 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.updateUser
+14.06.2024 19:57:40.048 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Oli, lastName=Martinez, createdAt=2024-06-14 19:57:40.024335)
+END OF REQUEST
+14.06.2024 19:57:40.068 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.deleteUserById
+14.06.2024 19:57:40.071 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. USER_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.101 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/registration/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.createUser
+14.06.2024 19:57:40.317 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: UserAfterRegistrationDto(operation=CREATING_d, status=SUCCESSFUL_f, login=Mary_d_4, password=$2a$10$bObH4JJdYg4X.PUnHI1mbeoxnqkGWm1cYIXmxjZT6t2fn6UCFuwWq_6, createdAt=14.06.2024)
+END OF REQUEST
+14.06.2024 19:57:40.337 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cd8edecd-0d27-4228-8fe6-911c1cf7fd7c
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.UserController.getUserById
+14.06.2024 19:57:40.341 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: User(userId=cd8edecd-0d27-4228-8fe6-911c1cf7fd7c, firstName=Olivia, lastName=Martinez, createdAt=2024-06-14 19:57:40.33356)
+END OF REQUEST
+14.06.2024 19:57:40.348 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.TripControllerTest]: TripControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:57:40.351 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.TripControllerTest
+14.06.2024 19:57:40.377 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/8888bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 19:57:40.385 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8888bf3e-73a9-47da-8bae-e2e253a30ddd]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.409 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:57:40.412 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:57:40.400196), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:57:40.400196})
+END OF REQUEST
+14.06.2024 19:57:40.440 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.createTrip
+14.06.2024 19:57:40.449 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: TripAfterCreationDto(cost=null, distance=0.0, user=Olivia Martinez, car=ef6869b7-2402-48c7-bff4-141563be2d8c)
+END OF REQUEST
+14.06.2024 19:57:40.479 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:57:40.482 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:57:40.476061), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:57:40.476061})
+END OF REQUEST
+14.06.2024 19:57:40.485 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/update/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.updateTrip
+14.06.2024 19:57:40.488 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip(tripId=0628ad72-9f21-4dd4-98ea-ee08bcfbd36e, startTime=2024-08-10T00:00, endTime=2024-08-25T17:30, distance=500.0, cost=500.00, user=User(userId=7881bf3e-73a9-47da-8bae-e2e253a30ddd, firstName=William, lastName=Wilson, createdAt=2024-06-14 19:57:40.476061), car=Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:57:40.476061})
+END OF REQUEST
+14.06.2024 19:57:40.513 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.getTripById
+14.06.2024 19:57:40.514 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. TRIP_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.528 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/trips/delete/0628ad72-9f21-4dd4-98ea-ee08bcfbd36e
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.TripController.deleteTripById
+14.06.2024 19:57:40.533 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Trip with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:57:40.538 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.PaymentControllerTest]: PaymentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:57:40.540 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.PaymentControllerTest
+14.06.2024 19:57:40.574 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.createPayment
+14.06.2024 19:57:40.581 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: PaymentAfterCreationDto(amount=200.0, paymentDate=2024-04-10T19:00:00, paymentMethod=PAYPAL, user=Daniel Brown, status=false)
+END OF REQUEST
+14.06.2024 19:57:40.601 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 19:57:40.611 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:57:40.626 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:57:40.629 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.644 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:57:40.647 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:57:40.640064))
+END OF REQUEST
+14.06.2024 19:57:40.664 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/delete/93683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.deletePaymentById
+14.06.2024 19:57:40.666 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [93683b96-579e-4fee-9329-b442639582e7]. PAYMENT_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.678 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/get/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.getPaymentById
+14.06.2024 19:57:40.680 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:57:40.675188))
+END OF REQUEST
+14.06.2024 19:57:40.683 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/payments/update/92683b96-579e-4fee-9329-b442639582e7
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.PaymentController.updatePayment
+14.06.2024 19:57:40.687 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Payment(paymentId=92683b96-579e-4fee-9329-b442639582e7, amount=100.0, paymentDate=2024-04-10T19:00, paymentMethod=VISA, status=true, user=User(userId=7270910c-cc71-4634-97a0-a242eb5b6064, firstName=Michael, lastName=Johnson, createdAt=2024-06-14 19:57:40.675188))
+END OF REQUEST
+14.06.2024 19:57:40.691 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.controller.CarControllerTest]: CarControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:57:40.692 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.controller.CarControllerTest
+14.06.2024 19:57:40.705 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/add_car
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.createCar
+14.06.2024 19:57:40.710 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: CarAfterCreationDto(message=Car added, licensePlate=OS-KG13, brand=HYUNDAI, status=AVAILABLE, createdAt=2024-06-14T19:57:40.708+02:00)
+END OF REQUEST
+14.06.2024 19:57:40.723 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/1f486486-97dc-4f50-8fb1-cd87d5dd37e2
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:57:40.724 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [1f486486-97dc-4f50-8fb1-cd87d5dd37e2]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.737 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/8988bf3e-73a9-47da-8bae-e2e253a30ddd
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 19:57:40.738 [main] ERROR c.e.c.a.LoggingAspect - Request throw an exception. Cause - [8988bf3e-73a9-47da-8bae-e2e253a30ddd]. CAR_NOT_EXIST_EXCEPTION
+14.06.2024 19:57:40.750 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:57:40.752 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:57:40.746045}
+END OF REQUEST
+14.06.2024 19:57:40.776 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/show_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.showCarById
+14.06.2024 19:57:40.778 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2019', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:57:40.77318}
+END OF REQUEST
+14.06.2024 19:57:40.782 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/update_car/2e88a78d-b4a7-4a00-b590-4d0f7abe6c04
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.updateCar
+14.06.2024 19:57:40.786 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car{carId=2e88a78d-b4a7-4a00-b590-4d0f7abe6c04, yearOfRelease='2007', licensePlate='OS-OS5', status=IN_USE, brand=HONDA, createdAt=2024-06-14 19:57:40.779}
+END OF REQUEST
+14.06.2024 19:57:40.810 [main] INFO  c.e.c.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/cars/delete_car/ef6869b7-2402-48c7-bff4-141563be2d8c
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.carsharing.controller.CarController.deleteCarById
+14.06.2024 19:57:40.821 [main] INFO  c.e.c.a.LoggingAspect - 
+Return value: Car with this ID was deleted SUCCESSFULLY
+END OF REQUEST
+14.06.2024 19:57:40.825 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.carsharing.CarSharingApplicationTest]: CarSharingApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14.06.2024 19:57:40.829 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.carsharing.CarSharingApplication for test class com.example.carsharing.CarSharingApplicationTest
+14.06.2024 19:57:40.843 [main] INFO  c.e.c.CarSharingApplicationTest - Starting CarSharingApplicationTest using Java 17.0.8 with PID 90978 (started by urmat in /Users/urmat/IdeaProjects/CarSharing)
+14.06.2024 19:57:40.843 [main] INFO  c.e.c.CarSharingApplicationTest - The following 1 profile is active: "test"
+14.06.2024 19:57:40.960 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+14.06.2024 19:57:40.971 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 6 JPA repository interfaces.
+14.06.2024 19:57:41.048 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+14.06.2024 19:57:41.049 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+14.06.2024 19:57:41.052 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+14.06.2024 19:57:41.052 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Starting...
+14.06.2024 19:57:41.053 [main] INFO  c.z.h.p.HikariPool - HikariPool-2 - Added connection conn11: url=jdbc:h2:file:./testDB user=SA
+14.06.2024 19:57:41.053 [main] INFO  c.z.h.HikariDataSource - HikariPool-2 - Start completed.
+14.06.2024 19:57:41.053 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+14.06.2024 19:57:41.139 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+14.06.2024 19:57:41.139 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:57:41.528 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.06.2024 19:57:41.722 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+14.06.2024 19:57:41.762 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48d54b1c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@195a0de5, org.springframework.security.web.context.SecurityContextHolderFilter@59708aaa, org.springframework.security.web.header.HeaderWriterFilter@493658fa, org.springframework.web.filter.CorsFilter@4ced30b9, org.springframework.security.web.authentication.logout.LogoutFilter@3cfc147c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5a8d411f, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6f6ea81b, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@fefb1c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2fe44d9b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b6a81ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@648c8c22, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6291cdb4, org.springframework.security.web.access.ExceptionTranslationFilter@204e7223, org.springframework.security.web.access.intercept.AuthorizationFilter@5c66d83b]
+14.06.2024 19:57:41.980 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./testDB'
+14.06.2024 19:57:42.027 [main] INFO  c.e.c.CarSharingApplicationTest - Started CarSharingApplicationTest in 1.197 seconds (process running for 7.5)
+14.06.2024 19:57:42.075 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:57:42.076 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+14.06.2024 19:57:42.078 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+14.06.2024 19:57:42.085 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+14.06.2024 19:57:42.087 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated...
+14.06.2024 19:57:42.090 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed.
